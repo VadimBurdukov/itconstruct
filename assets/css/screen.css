@@ -1,0 +1,470 @@
+/*===============================common styles==============================*/
+
+body {
+    color: #777777;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+}
+
+
+h3 {
+    color: #333333;
+    font-size: 12px;
+}
+
+a:link,
+a:visited,
+a:active {
+     text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+img {
+    max-width:100%;
+}
+
+
+/*===============================CAR_ITEM==============================*/
+/*------------------------------CARS-----------------------------------*/
+
+.cars {
+    width:720px;
+}
+@media (max-width: 480px){
+    .cars {
+        width:480px;
+        flex-wrap: wrap;  
+    }
+}
+.car{
+    display: flex;
+    padding: 23px 25px 25px 25px;
+}
+@media (max-width: 480px){
+    .car {
+        border: none;
+        display: block;
+        padding: 36px 52px 36px;
+    }
+}
+.car__item {
+    border: 1px solid;
+    border-color: #f5f6f9; 
+    box-sizing: border-box;     
+}
+@media (max-width: 480px){
+    .car__item {
+        border: none;
+        display: block;
+        
+    }
+}
+
+li.car__item:first-child {
+    border-bottom: none;      
+}
+/*------------------------------car__photo-----------------------------------*/
+
+.car__photo { 
+    display: inline-block;
+}
+@media (max-width: 480px){
+    .car__photo { 
+        display: flex;
+    }
+}
+/*33px*/
+.car__photo-img {
+    margin-top: 3px;
+    max-width: 115px;
+}
+@media (max-width: 480px){
+    .car__photo-img {
+        margin-top: 0;   
+        max-width: 377px;
+    }
+}
+
+.car__tags {
+    position: absolute;
+    display: block;
+}
+
+@media (max-width: 480px){
+    .car__photo {
+        padding: 0 4px 0 0;
+        height: 377px;
+    }   
+}
+.tag {
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 9px;
+    text-align: center;
+}
+@media (max-width: 480px){
+    .tag {
+        font-size: 12px;
+        display: inline-block;
+    }
+}
+.green{
+    background-color: #62c34b;
+    display: inline-block;
+    margin-top: 2px;  
+    padding: 5px 0px;  
+    width:55px;
+}
+@media (max-width: 480px){
+    .green {
+        
+        padding: 7px 9px;
+        margin: 0px 0 0 1px; 
+    }
+}
+.purple{ 
+    margin-top: 2px; 
+    background-color: #7558cd;
+    padding: 5px 0;
+    width:75px;
+}
+@media (max-width: 480px){
+    .purple {
+
+        padding: 7px 15px 7px 9px;
+        margin-top: 0;
+        white-space:nowrap;
+    }
+}
+.yellow{
+    background-color: #f7d33b;
+    color: #333333;
+    padding: 5px 0;
+    width:42px;
+}
+@media (max-width: 480px){
+    .yellow {
+        padding: 7px 0px;
+        width: 57px;
+        margin-top: 0; 
+        margin-right: 2px;        
+    }
+}
+.red{
+    background-color: #e74650;
+    display: inline-block;
+    padding: 5px 0 5px 0;
+    width:30px;
+   
+}
+@media (max-width: 480px){
+    .red {
+        padding: 8px 0px 8px;
+        width: 38px;
+         margin: 0;
+    }
+}
+/*------------------------------CONTENT-----------------------------------*/
+
+.car__content {
+    display: inline-block;
+    padding: 4px 63px 0 26px;
+}
+
+@media(max-width:480px){
+    .car__content{
+        font-size: 16px;
+        padding: 21px 0;
+    }
+}
+@media(max-width:480px){
+    .car__name{
+        font-size: 16px;
+        padding: 10px 0 0 0 ;
+    }
+    .car__name h3{
+        font-size: 16px;
+    }
+}
+.car__info {
+    padding: 10px 0 0 0;
+}
+.car__description {
+    color: #777777;
+    font-size: 9.5px;
+    line-height: 15px;
+}
+@media(max-width:480px){
+    .car__description{
+        font-size: 13px;
+        line-height: 19px;
+        padding: 10px 0 0 0 ;
+    }
+}
+
+.car__specifications {
+    line-height: 15px;
+    padding: 16px 0 0 0;
+    
+}
+@media(max-width:480px){
+    .car__specifications{
+        font-size: 13px;
+        line-height: 21px;
+         padding: 19px 0 0 0 ;
+    }
+}
+.specification__name {
+    display: inline;
+   
+} 
+.specification__name:after {
+    content: "  —  ";
+}
+.specification__value {
+    line-height: 10px;
+    color: #333333;
+    display: inline;
+}
+
+
+/*------------------------------CART-----------------------------------*/
+
+.cart {
+    padding: 2px 0 0 0;
+    
+}
+@media(max-width:480px){
+    .cart{
+        padding: 13px 0 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+}
+.status {
+    font-size: 8px;
+    text-transform: uppercase;
+    
+}
+@media(max-width:480px){
+    .status{
+        font-size: 11px;
+        order:1;
+    }
+}
+.pending {
+    color: #f28c29;
+}
+.instock {
+    color: #5fa800;
+}
+.cart__info {
+    padding: 11px 0 0 0;
+}
+@media(max-width:480px){
+    .cart__info{   
+         padding: 0;
+        float: left;
+        order:3;
+ 
+    }
+}
+.car__pirce {
+    color:#333333;
+    font-size: 13px;
+    font-weight: bold;
+}
+@media(max-width:480px){
+    .car__pirce{
+         margin-top: -5px;
+        padding-left: 2px;
+        font-size: 17px;
+    }
+}
+.old__price{
+    color:#777777;
+    display: block;
+    font-size: 10px;
+    padding: 7px 0 0 0;
+    text-decoration: line-through;
+}
+@media(max-width:480px){
+    .old__price{
+        font-size: 13px;
+        display: flex;
+    }
+}
+.cart__add {
+    padding: 15px 0 0 1px;
+}
+@media(max-width:480px){
+    .cart__add{
+        display: block;
+        float:left;
+        padding: 21px 0 0 0;
+    }
+}
+
+a.counter__change {
+    color: #777777;
+    height: 10px;
+    padding: 8px 0 0 0;
+    position: absolute;
+    width: 10px;
+}
+@media(max-width:480px){
+    a.counter__change{
+        height: 16px;
+        width: 16px;
+    }   
+}
+a.counter__change:hover {
+    color: #4289e0;
+}
+a.minus {
+    padding-left: 6px;
+
+}
+@media(max-width:480px){
+    a.minus{
+        margin: 1px 0 0 3px;
+    }   
+}
+a.plus {
+    text-align: right;
+    margin-left: 121px;
+
+}
+@media(max-width:480px){
+    a.plus{
+        margin: 1px 0 0 168px;
+    }
+}
+.count{
+    height: 20px;
+    font-size: 9px;
+    text-align: center;
+    width: 131px;
+    
+}
+@media(max-width:480px){
+    .count{
+        font-size: 12px;
+        height: 28px;
+        width: 185px;
+
+    }
+}
+
+.count::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+
+}
+.cart__action {
+    padding: 2px 0 0 0;
+}
+@media(max-width:480px){
+    .cart__action{
+        padding: 4px 0 0 0;
+
+    }
+}
+.btn {
+    background-color: #2b7de0;
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    display: block;
+    font-size: 9px;
+    text-align: center;
+    padding: 8px 0px ;
+    text-transform: uppercase;
+    width: 139px;
+}
+@media(max-width:480px){
+    .btn{   
+        font-size: 12px;
+        float: left;
+        padding: 12px 30px 11px 22px;
+        width:100%;
+    }
+}
+.btn:hover{
+    background-color:#4289e0;
+}
+.btn:focus {
+    outline: none;
+}
+.special__info {
+    padding: 10px 0 0 0;
+}
+@media(max-width:480px){
+    .special__info{  
+        
+        margin-left: auto;
+        margin-right: -18px;
+        display: flex;
+        float: right; 
+        order: 2;
+        padding: 5px 0 0 0; 
+    }
+}
+
+.special__tag-img{
+    display: inline-block;
+    height: 13px ;
+    width: 13px;
+        
+}
+@media(max-width:480px){
+    .special__tag-img{
+        display: inline-block; 
+        width: 18px;
+        height: 18px ;
+    }
+}
+.special__tag {
+    
+    display:flex;
+    
+    float: right;
+    font-size: 9px;
+    line-height: 15px;
+    padding: 0 25px 0 0 ;
+    width: 70%;
+}
+
+@media(max-width:480px){
+    .special__tag{   
+        display: inline-block;    
+        padding: 1px 0 0 7px ;
+        width: 90%;
+    }
+    
+}
+.special__tag p{
+    word-wrap: break-word;
+}
+@media(max-width:480px){
+    .special__tag p{
+        font-size: 12px;
+        line-height: 15px;
+        word-wrap: normal;
+    }
+}
+
+
+/*===============================CAR__DIFFERENCES==============================*/
+
+.car-second {
+    border-top:none;
+}
+.car-second .car__info{
+    padding-bottom: 35px;
+}
+@media (max-width: 480px){
+    .car-second {
+        padding: 42px 0 0 0;
+    }
+}

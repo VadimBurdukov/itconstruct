@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/reset.css" media="all">
+    <link type="text/css" rel="stylesheet" href="assets/css/screen.css" media="all">
+    <title>Car catalog</title>
+</head>
+<body>
+    <ul class="cars">
+        <li class="car__item">
+            <div class="car">
+                <div class="car__photo">
+                    <ul class="car__tags tags">
+                        <li class="tag purple">Мы советуем</li>
+                        <li class="tag green">Новинка</li>
+                    </ul>
+                    <a href="#"><img src="_resources/carblue.jpg" alt="" class="car__photo-img"></a>
+                </div>
+                
+                <div class="car__content">
+                    <div class="car__name">
+                        <a href="#">
+                            <h3>Backen Ponevira</h3>
+                        </a>
+                    </div>              
+                    <div class="car__info">
+                        <div class="car__description">
+                            Люксовый автомобиль, который сумел объединить в себе несочетаемое: мощность и комфорт, динамику и экономичность, бизнес
+                            и поездки с семьей.
+                        </div>
+                        <div class="car__specifications">
+                            <dl class="specifications">
+                                <dt class="specification__name">Мощность, л.с.</dt>
+                                <dd class="specification__value">440</dd>
+                            </dl>
+                            <dl class="specifications">
+                                <dt class="specification__name">Объем двигателя, куб. см.</dt>
+                                <dd class="specification__value">2894</dd>
+                            </dl>
+                            <dl class="specifications">
+                                <dt class="specification__name">Разгон до 100 км/ч,</dt>
+                                <dd class="specification__value">4.4</dd>
+                            </dl>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="cart">
+                    <div class="car__status status">
+                        <span class="pending">Ожидается</span>
+                    </div>                   
+                    <div class="cart__info">
+                        <div class="car__pirce">
+                            <span>от 6 218 000 р.</span>
+                        </div>
+                        <div class="cart__add">
+                            <form id="cart" action="" method="post">
+                                <div class="counter">
+                                    <a href="javascript:void(0);"  oper="-" class="counter__change minus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="javascript:void(0);" oper="+" class="counter__change plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                    <input type="number" class="count" min="1" value="1"></input>
+                                </div>
+                                <div class="cart__action">
+                                    <input type="submit" class="btn" value="В корзину">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="special__info">
+                        <div class="special__tag-img">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>        
+                        <div class="special__tag" >
+                            <p>Немецкая сборка</p>
+                        </div> 
+                    </div>               
+                </div>
+            </div>
+        </li>
+
+<!--SECOND CAR-->
+
+        <li class="car__item">
+            <div class="car">
+                <div class="car__photo">
+                    <ul class="car__tags tags">
+                        <li class="tag yellow">Акция</li>
+                        <li class="tag purple">Мы советуем</li>
+                        <li class="tag green">Новинка</li>
+                        <li class="tag red">Хит</li>
+                    </ul>
+                    <img src="_resources/cargrey.jpg" alt="" class="car__photo-img">
+                </div>
+                
+                <div class="car__content">
+                    <div class="car__name">
+                        <h3>Backen Mocen</h3>
+                    </div>
+                    <div class="car__info">
+                        <div class="car__description">
+                            Спортивный кроссовер для тех, кто предпочитает быть всегда первым – эффектный вид, полный привод, возвышенная посадка и
+                            мощный двигатель.
+                        </div>
+                        <div class="car__specifications">
+                            <dl class="specifications">
+                                <dt class="specification__name">Мощность, л.с.</dt>
+                                <dd class="specification__value">360</dd>
+                            </dl>
+                            <dl class="specifications">
+                                <dt class="specification__name">Объем двигателя, куб. см.</dt>
+                                <dd class="specification__value">2997</dd>
+                            </dl>
+                            <dl class="specifications">
+                                <dt class="specification__name">Разгон до 100 км/ч,</dt>
+                                <dd class="specification__value">5.2</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart">
+                    <div class="car__status status">
+                        <span class="instock">В наличии</span>
+                    </div>
+                    <div class="cart__info">
+                        <div class="car__pirce">
+                            <span>от 5 506 000 р.</span>
+                        </div>
+                       
+                        <div class="old__price">
+                            <span>5 720 000 р.</span>
+                        </div>                      
+                        <div class="cart__add">
+                            <form id="cart" action="" method="post">
+                                <div class="counter">
+                                    <a href="javascript:void(0);" oper="-" class="counter__change minus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="javascript:void(0);" oper="+" class="counter__change plus">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                    <input type="number" class="count" min="1" value="1"></input>
+                                </div>
+                                <div class="cart__action">
+                                    <input type="submit" class="btn" value="В корзину">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="special__info">
+                        <div class="special__tag-img">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <div class="special__tag">
+                            <p>Прямая поставка из Германии</p>
+                        </div>
+                    </div>         
+                </div>
+            </div>
+        </li>
+    </ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="assets/js/calc.js"></script>
+</body>
+</html>
