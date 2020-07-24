@@ -61,26 +61,20 @@
 			</div>
 		</nav>
 	</header>
-	<?
-		getAllCtgrs();
-		var_dump(getAllCtgrs());
-		foreach ($ctgs as $c) {
-			echo $c;
-	}?>
+
 	<div class="content">
 		<div class="wrapper content__wrapper">
 			<div class="sidebar">
 				<section class="catalog">
 					<h2 class="sidebar__headline">Каталог</h2>
 					<ul class="catalog-list">
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Электронные сигареты</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Трубки</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Жидкости для заправки</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Аккумуляторы и атомайзеры</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Картриджи</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Зарядные устройства</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Аксессуары</a></li>
-						<li class="catalog-list__item"><a class="catalog-list__link" href="#">Подарочные наборы</a></li>
+						<?
+							global $ctgs;
+							foreach ($ctgs as $cat) 
+							{?>
+								<li class="catalog-list__item"><a class="catalog-list__link" href="#"><?echo $cat['name']?></a></li>
+							<? 
+							} ?>
 					</ul>
 				</section>
 				<section class="news">

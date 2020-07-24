@@ -3,21 +3,24 @@
     $pdo;
     function getDBConnection()
     {
+         global $pdo;   
         $host = host;
         $db = db;
         $charset = charset;
-        $dsn = "mysql:host=$host; dname=$db";
+        $dsn = "mysql:host=$host; dbname=$db";
         try
         {
-            global $pdo;
-            $pdo = new PDO ($dsn, user, pass);         
+             
+            $pdo = new PDO ($dsn, user, pass);  
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
             return $pdo;
         }   
         catch (PDOException $e)
         {
             return "При подключении произошла ошибка: ". $e->getMessage();
             die();
-        }       
+        }     
+        
     }
     function getheader()
     {
@@ -30,11 +33,8 @@
     function getAllCtgrs()
     {  
         global $pdo;
-        $sql = 'SELECT * FROM categories';
-        $ctgs = $pdo->query( 'SELECT * FROM categories' );
-        foreach ($ctgs->fetch( PDO::FETCH_ASSOC )  as $c) {
-            echo $c;
-        }
+        $sql = "SELECT * FROM categories";
+        $ctgs = $pdo->query( $sql )->fetchAll();
         return $ctgs;  
     }
 ?>
