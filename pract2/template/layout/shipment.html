@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="layout/css/stylesheet.css">
-	<link rel="shortcut icon" href="layout/img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
 	<link rel="alternate" href="https://allfont.ru/allfont.css?fonts=arial-narrow">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="layout/js/script.js"></script>
+	<script src="js/script.js"></script>
 	<title>Company - Интернет-магазин электронных сигарет</title>
 </head>
 
@@ -16,7 +17,7 @@
 		<div class="wrapper">
 			<aside class="header-top">
 				<div class="header-logo">
-					<img class="header-logo__image" src="layout/img/logo.png" alt="Логотип" width="95" height="75">
+					<img class="header-logo__image" src="img/logo.png" alt="Логотип" width="95" height="75">
 					<span class="header-logo__caption">Company</span>
 				</div>
 				<div class="company-info">
@@ -35,11 +36,7 @@
 			<div class="wrapper">
 				<span class="menu-toggler">Меню</span>
 				<ul class="menu-togglable">
-					<li class="header-nav-item">
-                        <span>
-                            <span class="header-nav-item__link header-nav-item__link_current">Главная</span>
-                        </span>
-                    </li>
+					<li class="header-nav-item"><span><a class="header-nav-item__link" href="index.html">Главная</a></span></li>
 					<li class="header-nav-item">
 						<span class="header-nav-item__container-for-link"><a class="header-nav-item__link" href="catalog.html">Каталог</a></span>
 						<ul class="sub-menu">
@@ -53,22 +50,41 @@
 							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Подарочные наборы</a></li>
 						</ul>
 					</li>
-					<?foreach (topMenuItems as $item) {?>
-						<li class="header-nav-item"><span><a class="header-nav-item__link" href="#"><?=$item?></a></span></li>
-					<?
-					}?>
+					<li class="header-nav-item"><span><a class="header-nav-item__link" href="#">О компании</a></span></li>
+					<li class="header-nav-item"><span><a class="header-nav-item__link" href="#">Новости</a></span></li>
+					<li class="header-nav-item"><span><span class="header-nav-item__link header-nav-item__link_current">Доставка и
+								оплата</span></span></li>
+					<li class="header-nav-item"><span><a class="header-nav-item__link" href="contacts.html">Контакты</a></span></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
-	<?
-		getAllCtgrs();
-		var_dump(getAllCtgrs());
-		foreach ($ctgs as $c) {
-			echo $c;
-	}?>
 	<div class="content">
 		<div class="wrapper content__wrapper">
+			<main class="inside-content">
+				<article class="shipment-article">
+					<h1>Доставка</h1>
+					<p><b>Уважаемые покупатели!</b></p>
+					<p>
+						Оплатить свой заказ Вы можете любым из следующих способов:
+					</p>
+					<ol>
+						<li>Оплата наличными курьеру (в Москве в пределах МКАД)</li>
+						<li>Оплата с помощью Яндекс.Деньги</li>
+						<li>Оплата по безналичному расчету</li>
+						<li>Оплата по квитанции Сбербанка РФ или другого коммерческого банка.</li>
+					</ol>
+					<p>В двух последних случаях мы выписываем Вам счет, который Вы получаете по электронной почте после подтверждения
+						Вашего заказа. После получения денег, мы в течение 2-3 рабочих дней доставляем Вам товар с помощью транспортных
+						компаний "СПСР" и "Грузовозофф" (по РФ), а так же по желанию "Почтой РФ". Стоимость доставки по РФ
+						согласовывается с Вами и включается в стоимость счета.</p>
+					<p>Доставка по Москве осуществляется на следующий день после согласования заказа.</p>
+					<p>Стоимость курьерской доставки по Москве составляет <b>250 р.</b></p>
+					<p>Доставка по Москве крупногабаритных товаров (от 5 кг) - <b>300 р.</b></p>
+					<p>Доставка за пределы МКАД - по договоренности</p>
+					<p><i>Также, Вы имеете возможность приобрести товары в нашем шоу-руме на м.Сходненская</i></p>
+				</article>
+			</main>
 			<div class="sidebar">
 				<section class="catalog">
 					<h2 class="sidebar__headline">Каталог</h2>
@@ -127,3 +143,31 @@
 				</section>
 			</div>
 		</div>
+	</div>
+	<footer class="page-footer">
+		<div class="wrapper page-footer__wrapper">
+			<div class="copyright">
+				<span class="copyright__part copyright__lifetime">Copyright ©2007-2010</span>
+				<span class="copyright__part copyright__company-lifetime"><b>© "Company"</b>, 2010</span>
+				<img class="copyright__image" src="img/logo.png" alt="Company-logo">
+				<span class="copyright__part copyrhigt__company-name">Company</span>
+			</div>
+			<nav class="footer-nav">
+				<ul class="footer-nav__list">
+					<li class="footer-nav__list-item"><a class="footer-nav__link" href="index.html">Главная</a></li>
+					<li class="footer-nav__list-item"><a class="footer-nav__link" href="catalog.html">Каталог</a></li>
+					<li class="footer-nav__list-item"><a class="footer-nav__link" href="#">О компании</a></li>
+					<li class="footer-nav__list-item"><a class="footer-nav__link" href="#">Новости</a></li>
+					<li class="footer-nav__list-item"><span class="footer-nav__link">Доставка и оплата</span></li>
+					<li class="footer-nav__list-item"><a class="footer-nav__link" href="contacts.html">Контакты</a></li>
+				</ul>
+			</nav>
+			<div class="developer">
+				<span class="developer__ref">Разработка сайта - <a class="developer__link" href="#">ITConstruct</a></span>
+				<img class="counter" src="img/counter.png" alt="Page-counter">
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>
