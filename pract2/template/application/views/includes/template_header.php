@@ -43,14 +43,15 @@
 					<li class="header-nav-item">
 						<span class="header-nav-item__container-for-link"><a class="header-nav-item__link" href="catalog.html">Каталог</a></span>
 						<ul class="sub-menu">
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Электронные сигареты</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Трубки</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Картриджи</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Аккумуляторы и атомайзеры</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Аксессуары</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Зарядные устройства</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Жидкости для заправки</a></li>
-							<li class="sub-menu__list-item"><a class="sub-menu__link" href="#">Подарочные наборы</a></li>
+							<?
+								global $ctgs;
+									foreach ($ctgs as $cat) 
+									{
+							?>
+										<li class="sub-menu__list-item"><a class="sub-menu__link" href="#"><?=$cat['name']?></a></li>
+							<?
+									}
+							?>
 						</ul>
 					</li>
 					<?foreach (topMenuItems as $item) {?>
@@ -87,9 +88,9 @@
 							{?>
 								<li class="news-item">
 									<a class="news-item__link" href="#">
-										<? echo $n['announcement'];?>
+										<?=$n['announcement'];?>
 									</a>
-									<span class="news-item__date"><? echo $n['date'];?></span>
+									<span class="news-item__date"><?=$n['date'];?></span>
 								</li>
 							<? 
 							} 

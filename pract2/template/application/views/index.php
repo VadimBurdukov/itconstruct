@@ -1,6 +1,7 @@
 <?
 
     getheader();
+    global $seoArticle;
 ?>
 
     <main class="categories">
@@ -25,8 +26,10 @@
             
         </ul>
     </main>
-
-
+    
+<?
+    echo $seoArticle;
+?>                
 
 
 </div>
