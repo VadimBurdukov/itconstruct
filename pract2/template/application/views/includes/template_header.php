@@ -72,52 +72,30 @@
 							global $ctgs;
 							foreach ($ctgs as $cat) 
 							{?>
-								<li class="catalog-list__item"><a class="catalog-list__link" href="#"><?echo $cat['name']?></a></li>
+								<li class="catalog-list__item"><a class="catalog-list__link" href="#"><?=$cat['name']?></a></li>
 							<? 
-							} ?>
+							} 
+						?>
 					</ul>
 				</section>
 				<section class="news">
 					<h2 class="sidebar__headline news__headline">Новости</h2>
 					<ul class="news-list">
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Поздравительная речь президента международной корпорации Хуа Шэн господина Ли Вея в Международный...
-							</a>
-							<span class="news-item__date">2010-03-03</span>
-						</li>
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Собрание правления киевского филиала
-							</a>
-							<span class="news-item__date">2010-02-27</span>
-						</li>
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Петропавловскому офису международной корпорации Хуа Шен исполнился 1 год
-							</a>
-							<span class="news-item__date">2010-02-23</span>
-						</li>
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Проведение церемонии награждения в бишкекском филиале
-							</a>
-							<span class="news-item__date">2010-02-22</span>
-						</li>
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Сотрудники иркутского филиала отметили китайский новый
-							</a>
-							<span class="news-item__date">2010-02-15</span>
-						</li>
-						<li class="news-item">
-							<a class="news-item__link" href="#">
-								Празднование китайского нового года в одесском филиале
-							</a>
-							<span class="news-item__date">2010-02-14</span>
-						</li>
+						<?
+							global $news;
+							foreach ($news as $n) 
+							{?>
+								<li class="news-item">
+									<a class="news-item__link" href="#">
+										<? echo $n['announcement'];?>
+									</a>
+									<span class="news-item__date"><? echo $n['date'];?></span>
+								</li>
+							<? 
+							} 
+						?>
 					</ul>
 					<span class="archive"><a class="archive__link" href="#">Архив новостей</a></span>
 				</section>
 			</div>
-		</div>
+		

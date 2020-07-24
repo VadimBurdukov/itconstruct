@@ -33,8 +33,15 @@
     function getAllCtgrs()
     {  
         global $pdo;
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM categories ORDER BY rang";
         $ctgs = $pdo->query( $sql )->fetchAll();
         return $ctgs;  
+    }
+    function getAllNews()
+    {  
+        global $pdo;
+        $sql = "SELECT * FROM news ORDER BY date DESC limit 6";
+        $news = $pdo->query( $sql )->fetchAll();
+        return $news;  
     }
 ?>

@@ -2,13 +2,8 @@
     include ("includes/lib.php");
     getDBConnection();
     $ctgs = getAllCtgrs();
-    /*
-    foreach ($ctgs as $cat) 
-    {
-        echo $cat['name']."<br />\n";
-    } 
-    */
-    if ($ctgs != NULL)
-    include ("application/views/index.php");
+    $news = getAllNews();
+    if ($ctgs != NULL && $news!= NULL)
+        include ("application/views/index.php");
 
 ?>
