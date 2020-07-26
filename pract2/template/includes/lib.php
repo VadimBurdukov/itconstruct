@@ -30,23 +30,19 @@
     {
         return include(srcHF['footerSrc']);  
     }
-    function getAllCtgrs()
+    function getAllCtgrs($pdo)
     {  
-        global $pdo;
         $sql = "SELECT * FROM categories ORDER BY rang";
         $ctgs = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $ctgs;  
     }
-    function getAllNews()
+    function getAllNews($pdo)
     {  
-        global $pdo;
         $sql = "SELECT * FROM news ORDER BY date DESC limit 6";
         $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
-    function getProducst__Limited(){
-        global $pdo;
-        global $page;
+    function getProducst__Limited($pdo, $page){
         $sql = 'SELECT * 
                 FROM product 
                 LIMIT :start, :end';

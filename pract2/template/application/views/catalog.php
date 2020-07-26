@@ -10,6 +10,7 @@
                 <li class="bread-crumb bread-crumb_current">Каталог</li>
             </ul>
         </nav>
+
         <form class="search-filter" id="catalog-page__search-filter-1" method="POST">
             <span class="search-filter__item">
                 <label class="search-filter__label" for="cost-from">Цена</label>
