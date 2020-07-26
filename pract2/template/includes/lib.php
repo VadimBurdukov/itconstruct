@@ -42,28 +42,62 @@
         $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
-    function getProducst__Limited($pdo, $page){
+    function getProducst__Limited($pdo, $page, $startPrice, $finalPrice){
+        if (($startPrice==0)&&($finalPrice==0)) 
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     LIMIT :start, :end
+                   ';
+            $products = $pdo->prepare($sql);
+        }
+        else 
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     WHERE price >= :startPrice AND
+                           price <= :finalPrice
+                     LIMIT :start, :end
+                    ';
+            $products = $pdo->prepare($sql);
+            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
+            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
+        }
         $sql = 'SELECT * 
                 FROM product 
                 LIMIT :start, :end';
-        $products = $pdo->prepare($sql);
         $products->bindValue(':start', prodPerPage*($page -1), PDO::PARAM_INT);  
         $products->bindValue(':end', prodPerPage, PDO::PARAM_INT);  
         $products -> execute();
         $products = $products->fetchAll(PDO::FETCH_ASSOC);
         return $products;
     }
-    function paginationCount(){
-        global $pdo;
-        $sql = 'SELECT * 
-                FROM product 
-                ';
-        
-        $pag =  $pdo->query( $sql)->rowCount();
-
-        if( $pag%prodPerPage ==0 )
-            return (int)$pag/prodPerPage;
+    function paginationCount($pdo, $startPrice,$finalPrice)
+    {
+        if (($startPrice==0)&&($finalPrice==0)) 
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                   ';
+            $maxPage =  $pdo->query( $sql)->rowCount();
+        }
+        else 
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     WHERE price >= :startPrice AND
+                           price <= :finalPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':startPrice', $startPrice);  
+            $maxPage->bindValue(':finalPrice', $finalPrice);  
+            $maxPage-> execute();
+            $maxPage = $maxPage->rowCount();
+        }
+       
+        if( $maxPage%prodPerPage ==0 )
+            return $maxPage/prodPerPage;
         else
-            return (int)($pag/prodPerPage) + 1;
+            return (int)($maxPage/prodPerPage) + 1;
     }
 ?>

@@ -1,13 +1,13 @@
 <?
     getheader();
+    global $ctgs;
     global $seoArticle;
 ?>
-
     <main class="categories">
         <h1 class="invisible">Company - Электронные сигареты</h1>
         <ul class="categories">
             <?
-                global $ctgs;
+                
                     foreach ($ctgs as $cat) 
                     {
                         if ($cat['img'] == NULL)
@@ -24,13 +24,10 @@
             ?>
             
         </ul>
-    </main>
-    
+    </main>  
 <?
     echo $seoArticle;
 ?>                
-
-
 </div>
 <?
     getfooter();

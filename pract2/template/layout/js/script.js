@@ -59,6 +59,7 @@ function validate(item) {
 
 // Назначение элементам событий после загрузки документа
 $(function () {
+	
 	{ // Общие настройки для всего сайта
 		// Переключатель основного меню
 		$('.menu-toggler').on('click', function () {
@@ -240,4 +241,16 @@ $(function () {
 			})
 		}
 	}
+
+	//самописная функция для сброса фильтра
+	{
+		const button = document.querySelector('input.reset__button');
+		button.addEventListener('click', resetButton);
+
+		function resetButton() {
+
+			document.location.href = "catalog.php";
+		}
+	}
+	
 });

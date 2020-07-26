@@ -1,6 +1,9 @@
 
 <?
     getheader();
+    global $curPage;
+    global $products;
+    global $maxPage;
 ?>
     <main class="inside-content">
         <h1 class="invisible">Каталог товаров</h1>
@@ -11,7 +14,7 @@
             </ul>
         </nav>
 
-        <form class="search-filter" id="catalog-page__search-filter-1" method="POST">
+        <form class="search-filter" id="catalog-page__search-filter-1" action="catalog.php" method="POST">
             <span class="search-filter__item">
                 <label class="search-filter__label" for="cost-from">Цена</label>
                 <input class="search-filter__input" step="0.01" type="number" min="0" name="cost-from" id="cost-from" placeholder="от">
@@ -21,10 +24,10 @@
                 <input class="search-filter__input" type="number" min="0" name="cost-to" id="cost-to" placeholder="до">
             </span>
             <input class="form-submit search-filter__apply" type="submit" value="Применить">
+            <input class="form-submit search-filter__apply reset__button" type="button" value="Сбросить">
         </form>
         <ul class="categories categories__reposition">
-            <?
-                global $products;
+            <? 
                 foreach ($products as $product) 
                 {
                     if ($product['img'] == NULL)
@@ -42,15 +45,10 @@
             ?>
         </ul>
         <ul class="paginator catalog-page__paginator">
-            <?
-                global $page;
-                $pag = (int)paginationCount();
-               
-                
-                for ($i = 1; $i <=$pag; $i++) 
-                { 
-                    
-                    if ($i == $page) 
+            <?                
+                for ($i = 1; $i <=$maxPage; $i++) 
+                {  
+                    if ($i == $curPage) 
                     {
                         ?>
                             <li class="paginator__elem paginator__elem_current"><span class="paginator__link"><?=$i?></span></li>
@@ -63,15 +61,20 @@
                         <?
                     }
                 }
-                if ($page != $pag) 
+                if ($curPage != $maxPage) 
                 {
+                    /*
+                    var_dump($curPage);
+                    var_dump($maxPage);*/
                     ?>
-                        <li class="paginator__elem paginator__elem_next"><a href="catalog.php?page=<?=$page+1;?>" class="paginator__link">Следующая страница</a></li>
+                        <li class="paginator__elem paginator__elem_next"><a href="catalog.php?page=<?=$curPage+1;?>" class="paginator__link">Следующая страница</a></li>
                     <?
                 }  
             ?>         
         </ul>
     </main>
+</div>
 <?
+
     getfooter();
 ?>

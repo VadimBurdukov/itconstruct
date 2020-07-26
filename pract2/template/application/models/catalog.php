@@ -2,12 +2,23 @@
    
   include ("includes/lib.php");
   getDBConnection();
-  global $pdo;
-  global $page;
   $ctgs = getAllCtgrs($pdo);
   $news = getAllNews($pdo);
-  $products = getProducst__Limited($pdo, $page); 
+  
+  if (isset($startPrice) && isset($finalPrice))
+  {
+    $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice);
+    $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice); 
+  }
+    
+  else
+  {
+    $maxPage = (int)paginationCount($pdo,0,0);
+    $products = getProducst__Limited($pdo, $curPage, 0, 0); 
+  }
+    
   if ($ctgs != NULL && $news!= NULL && $products!= NULL) 
     include ("application/views/catalog.php");
+  
 
 ?>
