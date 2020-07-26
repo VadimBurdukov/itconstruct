@@ -1,10 +1,11 @@
 
 <?php
 
-
-    if (isset( $_GET['cat_tipe']))
+    if (isset( $_GET['page']))
     {
-        $cat_tipe = $_GET['cat_tipe'];
+        $page = (int)$_GET['page'];
     }
+    else 
+        $page = 1;
     include("application/models/catalog.php");
 ?>

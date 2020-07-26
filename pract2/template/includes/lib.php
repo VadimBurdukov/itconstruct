@@ -34,27 +34,40 @@
     {  
         global $pdo;
         $sql = "SELECT * FROM categories ORDER BY rang";
-        $ctgs = $pdo->query( $sql )->fetchAll();
+        $ctgs = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $ctgs;  
     }
     function getAllNews()
     {  
         global $pdo;
         $sql = "SELECT * FROM news ORDER BY date DESC limit 6";
-        $news = $pdo->query( $sql )->fetchAll();
+        $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
-    function getProducstLimited(){
+    function getProducst__Limited(){
+        global $pdo;
+        global $page;
+        $sql = 'SELECT * 
+                FROM product 
+                LIMIT :start, :end';
+        $products = $pdo->prepare($sql);
+        $products->bindValue(':start', prodPerPage*($page -1), PDO::PARAM_INT);  
+        $products->bindValue(':end', prodPerPage, PDO::PARAM_INT);  
+        $products -> execute();
+        $products = $products->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+    }
+    function paginationCount(){
         global $pdo;
         $sql = 'SELECT * 
                 FROM product 
-                limit :lim';
-        $products = $pdo->prepare($sql);
-        $products->bindValue(':lim', prodPerPage, PDO::PARAM_INT);  
-        $products -> execute();
-        $products_res = $products->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($products_res);
-        //->fetchAll();
-        return $products_res;  
+                ';
+        
+        $pag =  $pdo->query( $sql)->rowCount();
+
+        if( $pag%prodPerPage ==0 )
+            return (int)$pag/prodPerPage;
+        else
+            return (int)($pag/prodPerPage) + 1;
     }
 ?>
