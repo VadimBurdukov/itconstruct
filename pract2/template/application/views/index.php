@@ -1,5 +1,4 @@
 <?
-
     getheader();
     global $seoArticle;
 ?>

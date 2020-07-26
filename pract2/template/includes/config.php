@@ -1,15 +1,27 @@
 <?php
+
+    /*
+     *
+     *  Connection consts
+     * 
+     */
     const host = '127.0.0.1';
     const db   = 'cig_store';
     const user = 'root';
     const pass = '';
     const charset = 'utf8';
+    
+
+
+    /*===============================MAIN PAGE=====================================*/
+
+    /*----------------------------DB CONNECTION------------------------------------*/
     const topMenuItems = array("О компании","Новости", "Доставка и оплата","Контакты" );
     const srcHF = array(
         "headerSrc" => "application/views/includes/template_header.php",
         "footerSrc" => "application/views/includes/template_footer.php"
     );
-
+    /*----------------------------TEXT STATIC------------------------------------*/
     $seoArticle = '
         <article class="seo-article">
             <h2>Высокое качество японских ножей</h2>
@@ -44,6 +56,8 @@
                 титановые, керамические ножи из Японии.
             </p>
         </article>
-    '
-
+    ';
+    
+    /*===============================CAT PAGE=====================================*/
+    const prodPerPage = 1;
 ?>

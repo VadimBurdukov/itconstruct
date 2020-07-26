@@ -1,0 +1,8 @@
+
+<?
+    getheader();
+?>
+    
+<?
+    getfooter();
+?>

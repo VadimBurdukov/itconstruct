@@ -41,7 +41,7 @@
                         </span>
                     </li>
 					<li class="header-nav-item">
-						<span class="header-nav-item__container-for-link"><a class="header-nav-item__link" href="catalog.html">Каталог</a></span>
+						<span class="header-nav-item__container-for-link"><a class="header-nav-item__link" href="catalog.php">Каталог</a></span>
 						<ul class="sub-menu">
 							<?
 								global $ctgs;

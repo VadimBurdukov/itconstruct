@@ -1,2 +1,10 @@
+
 <?php
-    //контроллер для списка товаров. проверяем корректность параметров и подключаем соответствующую модель
+
+
+    if (isset( $_GET['cat_tipe']))
+    {
+        $cat_tipe = $_GET['cat_tipe'];
+    }
+    include("application/models/catalog.php");
+?>

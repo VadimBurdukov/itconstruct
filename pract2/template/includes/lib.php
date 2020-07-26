@@ -3,7 +3,7 @@
     $pdo;
     function getDBConnection()
     {
-         global $pdo;   
+        global $pdo;   
         $host = host;
         $db = db;
         $charset = charset;
@@ -43,5 +43,18 @@
         $sql = "SELECT * FROM news ORDER BY date DESC limit 6";
         $news = $pdo->query( $sql )->fetchAll();
         return $news;  
+    }
+    function getProducstLimited(){
+        global $pdo;
+        $sql = 'SELECT * 
+                FROM product 
+                limit :lim';
+        $products = $pdo->prepare($sql);
+        $products->bindValue(':lim', prodPerPage, PDO::PARAM_INT);  
+        $products -> execute();
+        $products_res = $products->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($products_res);
+        //->fetchAll();
+        return $products_res;  
     }
 ?>
