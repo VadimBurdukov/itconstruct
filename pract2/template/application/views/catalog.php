@@ -14,7 +14,7 @@
             </ul>
         </nav>
 
-        <form class="search-filter" id="catalog-page__search-filter-1" action="catalog.php" method="POST">
+        <form class="search-filter" id="catalog-page__search-filter-1" action="catalog.php" method="GET">
             <span class="search-filter__item">
                 <label class="search-filter__label" for="cost-from">Цена</label>
                 <input class="search-filter__input" step="0.01" type="number" min="0" name="cost-from" id="cost-from" placeholder="от">
@@ -24,7 +24,6 @@
                 <input class="search-filter__input" type="number" min="0" name="cost-to" id="cost-to" placeholder="до">
             </span>
             <input class="form-submit search-filter__apply" type="submit" value="Применить">
-            <input class="form-submit search-filter__apply reset__button" type="button" value="Сбросить">
         </form>
         <ul class="categories categories__reposition">
             <? 
@@ -41,7 +40,7 @@
                         <span class="good-price good_price"><?=$product['price']." "?><small class="good-price__currency">руб.</small></span>
                     </li>
             <?  
-                    }                 
+                }                 
             ?>
         </ul>
         <ul class="paginator catalog-page__paginator">
@@ -63,9 +62,6 @@
                 }
                 if ($curPage != $maxPage) 
                 {
-                    /*
-                    var_dump($curPage);
-                    var_dump($maxPage);*/
                     ?>
                         <li class="paginator__elem paginator__elem_next"><a href="catalog.php?page=<?=$curPage+1;?>" class="paginator__link">Следующая страница</a></li>
                     <?

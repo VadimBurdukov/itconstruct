@@ -241,16 +241,4 @@ $(function () {
 			})
 		}
 	}
-
-	//самописная функция для сброса фильтра
-	{
-		const button = document.querySelector('input.reset__button');
-		button.addEventListener('click', resetButton);
-
-		function resetButton() {
-
-			document.location.href = "catalog.php";
-		}
-	}
-	
 });

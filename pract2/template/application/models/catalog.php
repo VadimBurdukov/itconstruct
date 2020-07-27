@@ -4,6 +4,9 @@
   getDBConnection();
   $ctgs = getAllCtgrs($pdo);
   $news = getAllNews($pdo);
+ 
+  $startPrice =   $_SESSION['startPrice'];
+  $finalPrice =   $_SESSION['finalPrice'];
   
   if (isset($startPrice) && isset($finalPrice))
   {
@@ -19,6 +22,4 @@
     
   if ($ctgs != NULL && $news!= NULL && $products!= NULL) 
     include ("application/views/catalog.php");
-  
-
 ?>
