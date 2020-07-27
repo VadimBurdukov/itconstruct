@@ -48,7 +48,11 @@
 									foreach ($ctgs as $cat) 
 									{
 							?>
-										<li class="sub-menu__list-item"><a class="sub-menu__link" href="#"><?=$cat['name']?></a></li>
+										<li class="sub-menu__list-item">
+											<a class="sub-menu__link" href="catalog.php?cat=<?=$cat['name']?>">
+												<?=$cat['name']?>
+											</a>
+										</li>
 							<?
 									}
 							?>
@@ -73,7 +77,11 @@
 							global $ctgs;
 							foreach ($ctgs as $cat) 
 							{?>
-								<li class="catalog-list__item"><a class="catalog-list__link" href="#"><?=$cat['name']?></a></li>
+								<li class="catalog-list__item">
+									<a class="catalog-list__link" href="catalog.php?catId=<?=$cat['id']?>">
+										<?=$cat['name']?>
+									</a>
+								</li>
 							<? 
 							} 
 						?>

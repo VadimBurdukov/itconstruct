@@ -14,13 +14,17 @@
 
     if (isset( $_GET['cost-from']) && isset( $_GET['cost-to']))
     {
-       // $startPrice = $_POST['cost-from'];
-        //$finalPrice = $_POST['cost-to'];
         $_SESSION['startPrice'] = $_GET['cost-from'];
         $_SESSION['finalPrice'] = $_GET['cost-to'];
+    }
+
+    if (isset( $_GET['catId']))
+    {
+
+        $_SESSION['catId'] = $_GET['catId'];
         
     }
-    
+   
     include("application/models/catalog.php");
     
 ?>

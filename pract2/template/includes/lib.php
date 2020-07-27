@@ -41,25 +41,57 @@
         $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
-    function getProducst__Limited($pdo, $page, $startPrice, $finalPrice)
+    function getProducst__Limited($pdo, $page, $startPrice, $finalPrice, $catId)
     {
-        if (($startPrice==0)&&($finalPrice==0)) 
+        if(($catId==0) && ($startPrice==0)&&($finalPrice==0)) 
         {
-            $sql = ' SELECT * 
-                     FROM product 
-                     LIMIT :start, :end
+            $sql = 'SELECT * 
+                    FROM product 
+                    LIMIT :start, :end
                    ';
             $products = $pdo->prepare($sql);
         }
-        else 
+        elseif (($startPrice==0)&&($finalPrice==0)) 
         {
-            $sql = ' SELECT * 
-                     FROM product 
-                     WHERE price >= :startPrice AND
-                           price <= :finalPrice
-                     LIMIT :start, :end
+            $sql = 'SELECT * 
+                    FROM categories
+                    JOIN productcategories
+                    ON categories.id = productcategories.cat_id
+                    JOIN product
+                    ON productcategories.product_id = product.id 
+                WHERE categories.id = :cat_id
+                LIMIT :start, :end 
                     ';
             $products = $pdo->prepare($sql);
+            $products->bindValue(':cat_id', $_SESSION['catId'], PDO::PARAM_INT);   
+        }
+        elseif (($catId==0)) 
+        {
+            $sql = 'SELECT * 
+                    FROM product 
+                WHERE price >= :startPrice AND
+                      price <= :finalPrice
+                LIMIT :start, :end                
+                    ';
+            $products = $pdo->prepare($sql);
+            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
+            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);     
+        }
+        else 
+        {
+            $sql = 'SELECT * 
+                    FROM categories 
+                    JOIN productcategories
+                    ON categories.id = productcategories.cat_id 
+                    JOIN product 
+                    ON productcategories.product_id = product.id 
+                 WHERE categories.id = :cat_id AND
+                       price >= :startPrice AND
+                       price <= :finalPrice
+                LIMIT :start, :end    
+                    ';
+            $products = $pdo->prepare($sql);   
+            $products->bindValue(':cat_id', $_SESSION['catId'], PDO::PARAM_INT);   
             $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
             $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
         }
@@ -69,7 +101,7 @@
         $products = $products->fetchAll(PDO::FETCH_ASSOC);
         return $products;
     }
-    function paginationCount($pdo, $startPrice,$finalPrice)
+    function paginationCount($pdo, $startPrice,$finalPrice, $catId)
     {
         if (($startPrice==0)&&($finalPrice==0)) 
         {
