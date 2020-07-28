@@ -1,30 +1,31 @@
 
 <?php
-    
-    
-    session_start();
-    
-    if (isset( $_GET['page']))
-    {
-        $curPage = (int)$_GET['page'];
-    }
 
+    $query = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
+    parse_str($query, $output);
+    
+    if (isset( $output['page']))
+    {
+        $curPage = (int)$output['page'];
+    }
+   
     else 
         $curPage = 1;
 
-    if (isset( $_GET['cost-from']) && isset( $_GET['cost-to']))
+    if (isset( $output['cost-from']) && isset( $output['cost-to']))
     {
-        $_SESSION['startPrice'] = $_GET['cost-from'];
-        $_SESSION['finalPrice'] = $_GET['cost-to'];
+        $startPrice = $output['cost-from'];
+        $finalPrice = $output['cost-to'];
     }
 
-    if (isset( $_GET['catId']))
+    if (isset( $output['catId']))
     {
 
-        $_SESSION['catId'] = $_GET['catId'];
+        $catId = $output['catId'];
         
     }
-   
+    
+    
     include("application/models/catalog.php");
     
 ?>

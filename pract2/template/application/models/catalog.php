@@ -1,29 +1,34 @@
 <?
-   
   include ("includes/lib.php");
   getDBConnection();
+
+  global $curPage;
+  global $startPrice;
+  global $finalPrice;
+  global $catId;
+
   $ctgs = getAllCtgrs($pdo);
   $news = getAllNews($pdo);
   
 
 
-  if ((isset($catId)) && isset( $_SESSION['startPrice']) && isset($_SESSION['finalPrice']))
+  if ((isset($catId)) && isset( $startPrice) && isset($finalPrice))
   {
     print(1);
-    $maxPage = (int)paginationCount($pdo, $_SESSION['startPrice'], $_SESSION['finalPrice'],$_SESSION['catId']);
-    $products = getProducst__Limited($pdo, $curPage, $_SESSION['startPrice'], $_SESSION['finalPrice'],$_SESSION['catId']); 
+    $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,$catId);
+    $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,$catId); 
   }
-  elseif (isset($_SESSION['startPrice']) && isset($_SESSION['finalPrice']))
+  elseif (isset($startPrice) && isset($finalPrice))
   {
     print(2);
-    $maxPage = (int)paginationCount($pdo, $_SESSION['startPrice'], $_SESSION['finalPrice'],0);
-    $products = getProducst__Limited($pdo, $curPage, $_SESSION['startPrice'], $_SESSION['finalPrice'],0); 
+    $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,0);
+    $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,0); 
   }
-  elseif (isset($_SESSION['catId']))
+  elseif (isset($catId))
   {
     print(3);
-    $maxPage = (int)paginationCount($pdo, 0, 0,$_SESSION['catId']);
-    $products = getProducst__Limited($pdo, $curPage, 0, 0,$_SESSION['catId']); 
+    $maxPage = (int)paginationCount($pdo, 0, 0,$catId);
+    $products = getProducst__Limited($pdo, $curPage, 0, 0,$catId); 
   }
   else
   {

@@ -63,7 +63,7 @@
                 LIMIT :start, :end 
                     ';
             $products = $pdo->prepare($sql);
-            $products->bindValue(':cat_id', $_SESSION['catId'], PDO::PARAM_INT);   
+            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
         }
         elseif (($catId==0)) 
         {
@@ -91,7 +91,7 @@
                 LIMIT :start, :end    
                     ';
             $products = $pdo->prepare($sql);   
-            $products->bindValue(':cat_id', $_SESSION['catId'], PDO::PARAM_INT);   
+            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
             $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
             $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
         }
