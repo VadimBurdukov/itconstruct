@@ -14,25 +14,25 @@
 
   if ((isset($catId)) && isset( $startPrice) && isset($finalPrice))
   {
-    print(1);
+   // print(1);
     $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,$catId);
     $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,$catId); 
   }
   elseif (isset($startPrice) && isset($finalPrice))
   {
-    print(2);
+  //  print(2);
     $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,0);
     $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,0); 
   }
   elseif (isset($catId))
   {
-    print(3);
+  //  print(3);
     $maxPage = (int)paginationCount($pdo, 0, 0,$catId);
     $products = getProducst__Limited($pdo, $curPage, 0, 0,$catId); 
   }
   else
   {
-    print(4);
+  //  print(4);
     $maxPage = (int)paginationCount($pdo,0,0,0);
     $products = getProducst__Limited($pdo, $curPage, 0,0,0); 
   }

@@ -25,7 +25,16 @@
         
     }
     
+    $data = array('curPage'=>$curPage,
+              'startPrice'=>$startPrice,
+              'finalPrice'=>$finalPrice,
+              'catId'=>$catId);
+
+    echo http_build_query($data);
+    //НУЖНО ЛИ ВСТАВЛЯТЬ ЭТО В URL, ИЛИ ДОБАВЛЯЕТСЯ АВТОМАТИЧЕСКИ?
+    //ПОСЛЕ РИДЕРЕКТА ИЗ ВЬЮХИ ВСЕ ЗНАЧЕНИЯ ОБНУЛЯЮТСЯ
     
+
     include("application/models/catalog.php");
     
 ?>
