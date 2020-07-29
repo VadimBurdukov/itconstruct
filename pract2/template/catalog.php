@@ -1,9 +1,10 @@
 
 <?php
-
-    $query = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
-    parse_str($query, $output);
     
+    
+    $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
+    parse_str($paramString, $output);
+
     if (isset( $output['page']))
     {
         $curPage = (int)$output['page'];
@@ -24,17 +25,7 @@
         $catId = $output['catId'];
         
     }
-    
-    $data = array('curPage'=>$curPage,
-              'startPrice'=>$startPrice,
-              'finalPrice'=>$finalPrice,
-              'catId'=>$catId);
-
-    echo http_build_query($data);
-    //НУЖНО ЛИ ВСТАВЛЯТЬ ЭТО В URL, ИЛИ ДОБАВЛЯЕТСЯ АВТОМАТИЧЕСКИ?
-    //ПОСЛЕ РИДЕРЕКТА ИЗ ВЬЮХИ ВСЕ ЗНАЧЕНИЯ ОБНУЛЯЮТСЯ
-    
-
+ 
     include("application/models/catalog.php");
     
 ?>

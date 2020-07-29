@@ -103,14 +103,28 @@
     }
     function paginationCount($pdo, $startPrice,$finalPrice, $catId)
     {
-        if (($startPrice==0)&&($finalPrice==0)) 
+        if (($catId==0) &&($startPrice==0)&&($finalPrice==0)) 
         {
             $sql = ' SELECT * 
                      FROM product 
                    ';
-            $maxPage =  $pdo->query( $sql)->rowCount();
+            $maxPage =  $pdo->query( $sql);
         }
-        else 
+         elseif(($startPrice==0)&&($finalPrice==0))
+        {
+             $sql = ' SELECT * 
+                      FROM product 
+                      JOIN productcategories
+                      ON  product.id = productcategories.product_id 
+                      JOIN categories 
+                      ON productcategories.cat_id = categories.id 
+                    WHERE categories.id = :cat_id 
+                    ';
+            $maxPage = $pdo->prepare($sql);   
+            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
+            $maxPage-> execute();
+        }
+        elseif($catId==0)
         {
             $sql = ' SELECT * 
                      FROM product 
@@ -121,8 +135,27 @@
             $maxPage->bindValue(':startPrice', $startPrice);  
             $maxPage->bindValue(':finalPrice', $finalPrice);  
             $maxPage-> execute();
-            $maxPage = $maxPage->rowCount();
+            
         }
+        else
+        {
+            $sql = '  SELECT * 
+                      FROM product 
+                      JOIN productcategories
+                      ON product.id = productcategories.product_id 
+                      JOIN categories 
+                      ON productcategories.cat_id = categories.id 
+                    WHERE categories.id = :cat_id AND 
+                    price >= :startPrice AND
+                    price <= :finalPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT); 
+            $maxPage->bindValue(':startPrice', $startPrice);  
+            $maxPage->bindValue(':finalPrice', $finalPrice);  
+            $maxPage-> execute();
+        }
+        $maxPage = $maxPage->rowCount();
        
         if( $maxPage%prodPerPage ==0 )
             return $maxPage/prodPerPage;

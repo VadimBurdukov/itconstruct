@@ -1,7 +1,7 @@
 <?
   include ("includes/lib.php");
   getDBConnection();
-
+ 
   global $curPage;
   global $startPrice;
   global $finalPrice;
