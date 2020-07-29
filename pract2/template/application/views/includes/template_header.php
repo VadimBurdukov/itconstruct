@@ -45,13 +45,12 @@
 						<ul class="sub-menu">
 							<?
 								global $ctgs;
-								global $paramString;
 									foreach ($ctgs as $cat) 
 									{
 							?>
 										<li class="sub-menu__list-item">
-											<a class="sub-menu__link" href="catalog.php?cat=<?=$cat['name']?>&<?=$paramString?>">
-												<?=$cat['name'].'<br>'?>
+											<a class="sub-menu__link" href="catalog.php?cat=<?=$cat['name']?>">
+												<?=$cat['name']?>
 											</a>
 										</li>
 							<?
@@ -77,9 +76,14 @@
 						<?
 							global $ctgs;
 							foreach ($ctgs as $cat) 
-							{?>
+							{
+								$output = array();
+								$output['catId'] = $cat['id'];
+								$paramString = http_build_query($output);
+							?>
+								
 								<li class="catalog-list__item">
-									<a class="catalog-list__link" href="catalog.php?catId=<?=$cat['id']?>&<?=$paramString?>">
+									<a class="catalog-list__link" href="catalog.php?<?=$paramString?>">
 										<?=$cat['name']?>
 									</a>
 								</li>

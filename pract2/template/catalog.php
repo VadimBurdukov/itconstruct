@@ -1,10 +1,9 @@
 
 <?php
     
-    
+
     $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
     parse_str($paramString, $output);
-    //var_dump($output['catId']);
     if (isset( $output['page']))
     {
         $curPage = (int)$output['page'];
@@ -25,7 +24,7 @@
         $catId = $output['catId'];
         
     }
- 
+
     include("application/models/catalog.php");
     
 ?>

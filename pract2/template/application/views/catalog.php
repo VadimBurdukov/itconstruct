@@ -5,7 +5,7 @@
     global $products;
     global $maxPage;
     global $output;
-    
+    var_dump($output);
 ?>
     <main class="inside-content">
         <h1 class="invisible">Каталог товаров</h1>
