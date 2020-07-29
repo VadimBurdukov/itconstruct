@@ -1,4 +1,5 @@
 </div>
+
 <footer class="page-footer">
 		<div class="wrapper page-footer__wrapper">
 			<div class="copyright">

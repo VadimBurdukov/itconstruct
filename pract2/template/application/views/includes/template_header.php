@@ -75,9 +75,19 @@
 					<ul class="catalog-list">
 						<?
 							global $ctgs;
+							global $startPrice;
+							global $finalPrice;
+							if(isset($startPrice)&&isset($finalPrice))
+									$output = array('cost-from' => $startPrice,
+													 'cost-to' => $finalPrice);
+								else 
+								{
+									$output = array();
+								}
 							foreach ($ctgs as $cat) 
 							{
-								$output = array();
+								
+								
 								$output['catId'] = $cat['id'];
 								$paramString = http_build_query($output);
 							?>
@@ -88,7 +98,9 @@
 									</a>
 								</li>
 							<? 
+							
 							} 
+							
 						?>
 					</ul>
 				</section>

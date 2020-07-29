@@ -5,6 +5,7 @@
     global $products;
     global $maxPage;
     global $output;
+
     var_dump($output);
 ?>
     <main class="inside-content">
@@ -27,12 +28,12 @@
             </span>
             
             <?foreach ($output as $o =>$value) 
-            {?>
-                
+            {
+                if ($o != "cost-from" && $o !="cost-to") 
+                { ?>
                     <input type="hidden" name=<?=$o?> value=<?=$value?>>
-            <?
-                }
-            ?>
+                <? }    
+            } ?>
              
             <input class="form-submit search-filter__apply" type="submit" value="Применить">
         </form>

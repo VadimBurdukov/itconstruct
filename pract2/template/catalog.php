@@ -1,8 +1,8 @@
 
 <?php
-    
 
     $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
+   
     parse_str($paramString, $output);
     if (isset( $output['page']))
     {
@@ -24,7 +24,7 @@
         $catId = $output['catId'];
         
     }
-
+     
     include("application/models/catalog.php");
     
 ?>
