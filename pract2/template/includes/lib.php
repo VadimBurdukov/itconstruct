@@ -162,4 +162,5 @@
         else
             return (int)($maxPage/prodPerPage) + 1;
     }
+    
 ?>

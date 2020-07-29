@@ -5,7 +5,7 @@
     global $products;
     global $maxPage;
     global $output;
-    var_dump($output);
+    
 ?>
     <main class="inside-content">
         <h1 class="invisible">Каталог товаров</h1>
@@ -61,20 +61,41 @@
                     if ($i == $curPage) 
                     {
                         ?>
-                            <li class="paginator__elem paginator__elem_current"><span class="paginator__link"><?=$i?></span></li>
+                            <li class="paginator__elem paginator__elem_current">
+                                <span class="paginator__link">
+                                    <?=$i?>
+                                </span>
+                            </li>
                         <?
                     }
                     else
                     {
+                        
                         ?>
-                            <li class="paginator__elem"><a href="catalog.php?<?=$paramString?>&page=<?=$i;?>" class="paginator__link"><?=$i;?></a></li>
+                            <li class="paginator__elem">
+                                <?
+
+                                        $output['page'] = $i;
+
+                                        $paramString = http_build_query($output);
+
+                                ?>
+                                <a href="catalog.php?<?=$paramString?>" class="paginator__link">
+                                    
+                                    <?=$i;?>
+                                </a>
+                            </li>
                         <?
                     }
                 }
                 if ($curPage != $maxPage) 
                 {
                     ?>
-                        <li class="paginator__elem paginator__elem_next"><a href="catalog.php?<?=$paramString?>&page=<?=$curPage+1;?>" class="paginator__link">Следующая страница</a></li>
+                        <li class="paginator__elem paginator__elem_next">
+                            <a href="catalog.php?<?=$paramString?>&page=<?=$curPage+1;?>" class="paginator__link">
+                                Следующая страница
+                            </a>
+                        </li>
                     <?
                 }  
             ?>         
