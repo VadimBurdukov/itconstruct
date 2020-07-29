@@ -74,11 +74,8 @@
                         ?>
                             <li class="paginator__elem">
                                 <?
-
                                         $output['page'] = $i;
-
                                         $paramString = http_build_query($output);
-
                                 ?>
                                 <a href="catalog.php?<?=$paramString?>" class="paginator__link">
                                     
@@ -90,9 +87,11 @@
                 }
                 if ($curPage != $maxPage) 
                 {
+                    $output['page'] = $curPage+1;
+                    $paramString = http_build_query($output);
                     ?>
                         <li class="paginator__elem paginator__elem_next">
-                            <a href="catalog.php?<?=$paramString?>&page=<?=$curPage+1;?>" class="paginator__link">
+                            <a href="catalog.php?<?=$paramString?>" class="paginator__link">
                                 Следующая страница
                             </a>
                         </li>
