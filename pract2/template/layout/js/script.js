@@ -240,5 +240,11 @@ $(function () {
 					return false;
 			})
 		}
+		{
+			$('input[type="button"]').on('click', function () 
+			{
+				location.href = 'catalog.php';
+			})
+		}
 	}
 });

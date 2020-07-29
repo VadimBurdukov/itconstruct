@@ -1325,13 +1325,24 @@ body {
 	margin: auto 0 auto 9px;
 	height: 17px;
 }
-
+.search-filter__drop {
+	color: #f00;
+	margin: auto 0 auto 9px;
+	height: 17px;
+}
 .search-filter__apply:hover {
 	color: #00f028;
 	border-color: #00f028;
 }
+.search-filter__drop:hover {
+	color: #ff7070;
+	border-color: #ff7070;
+}
 
 .search-filter__apply:focus {
+	outline: none;
+}
+.search-filter__drop:focus {
 	outline: none;
 }
 
@@ -1357,13 +1368,25 @@ body {
 		margin-left: 2px;
 	}
 
+	.search-filter__drop {
+		background: #fff url(../img/search__apply-icon.png) no-repeat 50% 50%;
+		border: 1px solid #f00;
+		border-radius: 9px;
+		height: 29px;
+		width: 30px;
+		color: transparent;
+		margin-left: 2px;
+	}
+
 	.search-filter__apply:hover {
 		color: transparent;
 	}
+	
 
 	.search-filter__apply:focus {
 		color: transparent;
 	}
+	
 }
 
 /**********************************************************************************************************************/

@@ -36,6 +36,7 @@
             } ?>
              
             <input class="form-submit search-filter__apply" type="submit" value="Применить">
+            <input class="form-submit search-filter__drop" type="button" value="Сбросить фильтры">
         </form>
         <ul class="categories categories__reposition">
             <? 
