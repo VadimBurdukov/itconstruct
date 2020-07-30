@@ -58,8 +58,14 @@
 							?>
 						</ul>
 					</li>
-					<?foreach (topMenuItems as $item) {?>
-						<li class="header-nav-item"><span><a class="header-nav-item__link" href="#"><?=$item?></a></span></li>
+					<?foreach (topMenuItems as $item => $href) {?>
+						<li class="header-nav-item">
+							<span>
+								<a class="header-nav-item__link" href="<?=$href?>">
+									<?=$item?>
+								</a>
+							</span>
+						</li>
 					<?
 					}?>
 				</ul>

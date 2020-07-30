@@ -16,7 +16,8 @@
     /*===============================MAIN PAGE=====================================*/
 
     /*----------------------------DB CONNECTION------------------------------------*/
-    const topMenuItems = array("О компании","Новости", "Доставка и оплата","Контакты" );
+    const topMenuItems = array("О компании" => "about.php","Новости" => "news.php", 
+                                "Доставка и оплата" => "paydelivery.php","Контакты" => "contacts.php" );
     const srcHF = array(
         "headerSrc" => "application/views/includes/template_header.php",
         "footerSrc" => "application/views/includes/template_footer.php"
