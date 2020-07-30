@@ -181,4 +181,17 @@
         $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
         return $prod;
    }
+   function getNewsById($pdo, $id)
+   { 
+        $sql = ' SELECT * 
+                 FROM news 
+                 WHERE news.id = :id
+                 
+                ';
+        $news = $pdo->prepare($sql);
+        $news -> bindValue(':id', $id, PDO::PARAM_INT);
+        $news-> execute(); 
+        $news = $news-> fetchAll(PDO::FETCH_ASSOC);
+        return $news;
+   }
 ?>

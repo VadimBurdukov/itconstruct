@@ -1,5 +1,60 @@
+		<div class="sidebar">
+			<section class="catalog">
+				<h2 class="sidebar__headline">Каталог</h2>
+				<ul class="catalog-list">
+					<?
+						global $ctgs;
+						global $startPrice;
+						global $finalPrice;
+						if(isset($startPrice)&&isset($finalPrice))
+								$output = array('cost-from' => $startPrice,
+													'cost-to' => $finalPrice);
+							else 
+							{
+								$output = array();
+							}
+						foreach ($ctgs as $cat) 
+						{
+							
+							
+							$output['catId'] = $cat['id'];
+							$paramString = http_build_query($output);
+						?>
+							
+							<li class="catalog-list__item">
+								<a class="catalog-list__link" href="catalog.php?<?=$paramString?>">
+									<?=$cat['name']?>
+								</a>
+							</li>
+						<? 
+						
+						} 
+						
+					?>
+				</ul>
+			</section>
+			<section class="news">
+				<h2 class="sidebar__headline news__headline">Новости</h2>
+				<ul class="news-list">
+					<?
+						global $news;
+						foreach ($news as $n) 
+						{?>
+							<li class="news-item">
+								<a class="news-item__link" href="#">
+									<?=$n['announcement'];?>
+								</a>
+								<span class="news-item__date"><?=$n['date'];?></span>
+							</li>
+						<? 
+						} 
+					?>
+				</ul>
+				<span class="archive"><a class="archive__link" href="#">Архив новостей</a></span>
+			</section>
+		</div>
+	</div>
 </div>
-
 <footer class="page-footer">
 		<div class="wrapper page-footer__wrapper">
 			<div class="copyright">

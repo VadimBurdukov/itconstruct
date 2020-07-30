@@ -105,7 +105,6 @@
             ?>         
         </ul>
     </main>
-</div>
 <?
     getfooter();
 ?>

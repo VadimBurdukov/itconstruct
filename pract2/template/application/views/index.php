@@ -28,7 +28,6 @@
 <?
     echo $seoArticle;
 ?>                
-</div>
 <?
     getfooter();
 ?>
