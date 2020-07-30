@@ -5,8 +5,6 @@
     global $products;
     global $maxPage;
     global $output;
-
-    var_dump($output);
 ?>
     <main class="inside-content">
         <h1 class="invisible">Каталог товаров</h1>
@@ -42,11 +40,17 @@
             <? 
                 foreach ($products as $product) 
                 {
+                    $prodParam = array();
+                    if (isset($catId))
+                        $prodParam+=['catIdProd' => $catId];
+                    $prodParam+=['id' => $product['id']];
+                    $prodParamString = http_build_query($prodParam);
                     if ($product['img'] == NULL)
                         $product['img'] = "layout/img/category-none.jpg" 
+
             ?>
                     <li class="category good-piece">
-                        <a class="category__link" href="product.html">
+                        <a class="category__link" href="product.php?<?=$prodParamString?>">
                             <img class="category__image good__image" src="<?=$product['img']?>" alt="category-image-1">
                             <span class="category__name-container good_name"><span class="category__name-inner"><?=$product['name']?></span></span>
                         </a>
@@ -79,8 +83,7 @@
                                         $output['page'] = $i;
                                         $paramString = http_build_query($output);
                                 ?>
-                                <a href="catalog.php?<?=$paramString?>" class="paginator__link">
-                                    
+                                <a href="catalog.php?<?=$paramString?>" class="paginator__link">  
                                     <?=$i;?>
                                 </a>
                             </li>
