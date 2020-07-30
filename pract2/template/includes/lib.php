@@ -1,4 +1,6 @@
 <?php
+
+/*=======================================DB_CONECT=================================== */
     include ("config.php");
     $pdo;
     function getDBConnection()
@@ -21,6 +23,7 @@
         }     
         
     }
+/*=======================================INCLUDES=================================== */
     function getheader()
     {
         return include(srcHF['headerSrc']);  
@@ -29,6 +32,7 @@
     {
         return include(srcHF['footerSrc']);  
     }
+/*=======================================SIDEBAR=================================== */
     function getAllCtgrs($pdo)
     {  
         $sql = "SELECT * FROM categories ORDER BY rang";
@@ -41,6 +45,7 @@
         $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
+/*=======================================CATALOG=================================== */
     function getProducst__Limited($pdo, $page, $startPrice, $finalPrice, $catId)
     {
         if(($catId==0) && ($startPrice==0)&&($finalPrice==0)) 
@@ -156,11 +161,24 @@
             $maxPage-> execute();
         }
         $maxPage = $maxPage->rowCount();
-       
+        
         if( $maxPage%prodPerPage ==0 )
             return $maxPage/prodPerPage;
         else
             return (int)($maxPage/prodPerPage) + 1;
     }
-    
+
+/*=======================================PRODUCT=================================== */
+   function getProd($pdo, $id)
+   { 
+        $sql = ' SELECT * 
+                 FROM product 
+                 WHERE product.id = :id
+                ';
+        $prod = $pdo->prepare($sql);
+        $prod -> bindValue(':id', $id, PDO::PARAM_INT);
+        $prod-> execute(); 
+        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
+        return $prod;
+   }
 ?>

@@ -107,6 +107,5 @@
     </main>
 </div>
 <?
-
     getfooter();
 ?>
