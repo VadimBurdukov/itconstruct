@@ -14,7 +14,11 @@
     const prodPerPage = 2;
 
     /*===============================MAIN PAGE=====================================*/
-
+    /*----------------------------BREAD CRUMB------------------------------------*/
+    const bread_crumb = array(
+        "headerSrc" => "application/views/includes/template_header.php",
+        "footerSrc" => "application/views/includes/template_footer.php"
+    );
     /*----------------------------DB CONNECTION------------------------------------*/
     const topMenuItems = array("О компании" => "about.php","Новости" => "news.php", 
                                 "Доставка и оплата" => "paydelivery.php","Контакты" => "contacts.php" );

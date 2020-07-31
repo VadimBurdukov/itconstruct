@@ -8,7 +8,7 @@
 						global $finalPrice;
 						if(isset($startPrice)&&isset($finalPrice))
 								$output = array('cost-from' => $startPrice,
-													'cost-to' => $finalPrice);
+												'cost-to' => $finalPrice);
 							else 
 							{
 								$output = array();
@@ -50,7 +50,7 @@
 						} 
 					?>
 				</ul>
-				<span class="archive"><a class="archive__link" href="#">Архив новостей</a></span>
+				<span class="archive"><a class="archive__link" href="news.php">Архив новостей</a></span>
 			</section>
 		</div>
 	</div>

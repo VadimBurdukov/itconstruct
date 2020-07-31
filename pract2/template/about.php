@@ -6,6 +6,12 @@
     getheader();
 ?>
     <main class="inside-content">
+        <nav class="bread-crumbs-container product__bread-crumbs">
+            <ul class="bread-crumbs">
+                <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li> 
+                <li class="bread-crumb bread-crumb_current">О нас</li>
+            </ul>
+        </nav>
         <article class="shipment-article">
             <h1><b>О нас</b></h1>
 

@@ -2,7 +2,7 @@
 <?php
 
     $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
-   
+    
     parse_str($paramString, $output);
     if (isset( $output['page']))
     {
@@ -14,14 +14,14 @@
 
     if (isset( $output['cost-from']) && isset( $output['cost-to']))
     {
-        $startPrice = $output['cost-from'];
-        $finalPrice = $output['cost-to'];
+        $startPrice = (float)$output['cost-from'];
+        $finalPrice = (float)$output['cost-to'];
     }
 
     if (isset( $output['catId']))
     {
 
-        $catId = $output['catId'];
+        $catId = (int)$output['catId'];
         
     }
      

@@ -2,6 +2,12 @@
     getheader();
 ?>
     <main class="inside-content">
+        <nav class="bread-crumbs-container product__bread-crumbs">
+            <ul class="bread-crumbs">
+                <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
+                <li class="bread-crumb bread-crumb_current">Контакты</li>
+            </ul>
+        </nav>
         <h1 class="contacts-page__main-headline">Контакты</h1>
         <table class="contacts-section">
             <tbody>
@@ -122,7 +128,6 @@ $(document).ready(function () {
 });
 </script>
 <?
-    var_dump($_SESSION);
     session_destroy();
     getfooter();
     

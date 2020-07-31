@@ -6,10 +6,10 @@
     {
         $id = (int)$output['id'];
     }
-    if (isset( $output['catId']))
+    if (isset( $output['catIdProd']))
     {
-        $catId = $output['catId'];
+        $catId = (int)$output['catIdProd'];
     }
-
+    
     include("application/models/product.php");
 ?>

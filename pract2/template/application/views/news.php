@@ -4,10 +4,8 @@
 <main class="inside-content">
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
-            <li class="bread-crumb"><a class="bread-crumb__link" href="index.html">Главная</a></li>
-            <li class="bread-crumb"><a class="bread-crumb__link" href="catalog.html">Каталог</a></li>
-            <li class="bread-crumb"><a class="bread-crumb__link" href="#">Электронные сигареты</a></li>
-            <li class="bread-crumb bread-crumb_current">Электронная сигарета «Такая-то»</li>
+            <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
+            <li class="bread-crumb bread-crumb_current">Все новости</li>
         </ul>
     </nav>
     <section class="product">

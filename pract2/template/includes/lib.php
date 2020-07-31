@@ -194,4 +194,7 @@
         $news = $news-> fetchAll(PDO::FETCH_ASSOC);
         return $news;
    }
+
+
+ 
 ?>
