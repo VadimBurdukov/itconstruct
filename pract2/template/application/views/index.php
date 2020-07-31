@@ -24,10 +24,11 @@
             ?>
             
         </ul>
-    </main>  
+    
 <?
     echo $seoArticle;
-?>                
+?>       
+</main>           
 <?
     getfooter();
 ?>
