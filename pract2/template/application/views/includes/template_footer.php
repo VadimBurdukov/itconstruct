@@ -80,7 +80,7 @@
 				</ul>
 			</nav>
 			<div class="developer">
-				<span class="developer__ref">Разработка сайта - <a class="developer__link" href="#">ITConstruct</a></span>
+				<span class="developer__ref">Разработка сайта - <a class="developer__link" href="https://itconstruct.ru/">ITConstruct</a></span>
 				<img class="counter" src="layout/img/counter.png" alt="Page-counter">
 			</div>
 		</div>
