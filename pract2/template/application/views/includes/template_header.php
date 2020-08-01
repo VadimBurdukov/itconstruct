@@ -49,7 +49,7 @@
 									{
 							?>
 										<li class="sub-menu__list-item">
-											<a class="sub-menu__link" href="catalog.php?cat=<?=$cat['name']?>">
+											<a class="sub-menu__link" href="catalog.php?catId=<?=$cat['id']?>">
 												<?=$cat['name']?>
 											</a>
 										</li>
