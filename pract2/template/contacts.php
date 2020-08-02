@@ -9,11 +9,8 @@
         {
             $_SESSION['phone'] = $_POST['phone'];
         }
-
-    }
         
-       
+    }
     
-
     include("application/models/contacts.php");
 ?>

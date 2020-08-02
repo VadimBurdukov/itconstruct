@@ -7,7 +7,7 @@
     
      if (isset($_SESSION['author']) && (isset($_SESSION['email']))&& (isset($_SESSION['text'])))
     {
-        $errorParam = 2;
+        $errorParam = 1;
     }
 
 

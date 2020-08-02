@@ -4,7 +4,7 @@
     if (isset( $output['id']) && $output['id'] != NULL)
     {
         $id = (int)$output['id'];
-         include("application/models/news-detail.php"); 
+        include("application/models/news-detail.php"); 
     }
     else
          include("404.php"); 

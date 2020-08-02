@@ -181,20 +181,18 @@
         $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
         return $prod;
    }
-   function getNewsById($pdo, $id)
+ 
+/*=======================================CONTUCTS=================================== */
+function addToSql($pdo, $id)
    { 
         $sql = ' SELECT * 
-                 FROM news 
-                 WHERE news.id = :id
-                 
+                 FROM product 
+                 WHERE product.id = :id
                 ';
-        $news = $pdo->prepare($sql);
-        $news -> bindValue(':id', $id, PDO::PARAM_INT);
-        $news-> execute(); 
-        $news = $news-> fetchAll(PDO::FETCH_ASSOC);
-        return $news;
+        $prod = $pdo->prepare($sql);
+        $prod -> bindValue(':id', $id, PDO::PARAM_INT);
+        $prod-> execute(); 
+        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
+        return $prod;
    }
-
-
- 
 ?>

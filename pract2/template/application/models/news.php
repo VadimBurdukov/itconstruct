@@ -4,5 +4,11 @@
     
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    include("application/views/news.php"); 
+    if ($ctgs != NULL && $news!= NULL) 
+    {
+        include("application/views/news.php"); 
+    }
+    else
+        include("404.php"); 
+
 ?>
