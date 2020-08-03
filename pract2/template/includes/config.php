@@ -11,11 +11,11 @@
     const charset = 'utf8';
     
     /*===============================CAT PAGE=====================================*/
-    const prodPerPage = 2;
+    const prodPerPage = 1;
     const newsPerPage = 2;
 
     /*===============================MAIN PAGE=====================================*/
     /*----------------------------DB CONNECTION------------------------------------*/
-    const topMenuItems = array("about.php" => "О компании","news.php" => "Новости", 
+    const topMenuItems = array("index.php"=>"Главная","catalog.php"=>array("items"=>"","name"=>"Каталог"),"about.php" => "О компании","news.php" => "Новости", 
                                 "paydelivery.php" => "Доставка и оплата","contacts.php" => "Контакты" );    
 ?>

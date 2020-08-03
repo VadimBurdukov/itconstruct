@@ -3,10 +3,6 @@
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-
-    global $catId;
-    global $id; 
-
     foreach ($ctgs as $breadCrumbs) 
     {
        if ($breadCrumbs['id'] == $catId)

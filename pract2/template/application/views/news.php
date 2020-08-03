@@ -1,7 +1,7 @@
 <?
     require("application/views/includes/template_header.php");
 ?>  
-<main class="inside-content">
+
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
             <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
@@ -10,7 +10,6 @@
     </nav>
     <section class="product">
         <?
-            global $news;
             foreach ($news as $n):?>
                 <li class="news-item">
                     <a class="news-item__link" href="news-detail.php?id=<?=$n['id'];?>">

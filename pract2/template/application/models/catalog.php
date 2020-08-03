@@ -1,11 +1,6 @@
 <?
   include ("includes/lib.php");
   $pdo = getDBConnection();
-  global $curPage;
-  global $startPrice;
-  global $finalPrice;
-  global $catId;
-  global $output; 
   $ctgs = getAllCtgrs($pdo);
   $news = getAllNews($pdo);
   

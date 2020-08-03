@@ -35,32 +35,41 @@
 			<div class="wrapper">
 				<span class="menu-toggler">Меню</span>
 				<ul class="menu-togglable">
-					<li class="header-nav-item">
-                        <span>
-                            <span class="header-nav-item__link header-nav-item__link_current">Главная</span>
-                        </span>
-                    </li>
-					<li class="header-nav-item">
-						<span class="header-nav-item__container-for-link"><a class="header-nav-item__link" href="catalog.php">Каталог</a></span>
-						<ul class="sub-menu">
-							<?
-								global $ctgs;
-									foreach ($ctgs as $cat) :
-							?>
-										<li class="sub-menu__list-item">
-											<a class="sub-menu__link" href="catalog.php?catId=<?=$cat['id']?>">
-												<?=$cat['name']?>
-											</a>
-										</li>
-							<? 		endforeach 		?>
-						</ul>
-					</li>
-					<?foreach (topMenuItems as $href => $name) :?>
-						<li class="header-nav-item">
+					<?foreach (topMenuItems as $href => $item) :?>				
+						<li class="header-nav-item">	
+							<?if($href=="catalog.php"):
+								if($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
+									<span class="header-nav-item__link header-nav-item__link_current">
+										<?=$item['name']?>
+									</span>
+								<?else:?>
+									<span class="header-nav-item__container-for-link">
+										<a class="header-nav-item__link" href="<?=$href?>">
+											<?=$item['name']?>
+										</a>
+									</span>
+								<?endif;?>
+								<ul class="sub-menu">
+									<?
+										global $ctgs;
+											foreach ($ctgs as $cat) : ?>
+												<li class="sub-menu__list-item">
+													<a class="sub-menu__link" href="catalog.php?catId=<?=$cat['id']?>">
+														<?=$cat['name']?>
+													</a>
+												</li>
+									<? 		endforeach 		?>
+								</ul>						
+							<? elseif($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
 							<span>
-								<a class="header-nav-item__link" href="<?=$href?>">
-									<?=$name?>
-								</a>
+								<span class="header-nav-item__link header-nav-item__link_current">
+									<?=$item?>
+								</span>
+							<?else:?>
+							<a class="header-nav-item__link" href="<?=$href?>">
+								<?=$item?>
+							</a>
+							<?endif;?>
 							</span>
 						</li>
 					<? endforeach ?>
@@ -71,5 +80,9 @@
 
 	<div class="content">
 		<div class="wrapper content__wrapper">
-			
+			<?if($href=="index.php"):?>
+			    <main class="categories"> 
+			<?else:?>
+				<main class="inside-content"> 
+			<?endif;?>
 		

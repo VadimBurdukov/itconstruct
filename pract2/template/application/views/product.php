@@ -1,11 +1,8 @@
 <?
     require("application/views/includes/template_header.php");
-    global $catId;
-    global $id; 
-    global $prod;
 
 ?>
-<main class="inside-content">
+
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
             <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
