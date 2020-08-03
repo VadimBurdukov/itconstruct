@@ -24,7 +24,6 @@
         
         <?foreach ($output as $o =>$value) 
         {
-            var_dump($o);
             if ($o == "catId"): ?>
                 <input type="hidden" name=<?=$o?> value=<?=$value?>>
             <?endif;?>

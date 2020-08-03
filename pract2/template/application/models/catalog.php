@@ -25,7 +25,11 @@
     $products = getProducst__Limited($pdo, $curPage, 0,0,0); 
   } 
 
-
+  if(isset($startPrice)&&isset($finalPrice))
+    $outputFilt = array('cost-from' => $startPrice,
+                    'cost-to' => $finalPrice);
+  else 
+    $outputFilt = array();
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
     include ("application/views/catalog.php");
   else 

@@ -12,7 +12,7 @@
         }
     }
    
-    $prodInfo = getProd($pdo, $id);
+    $prodInfo = getProd($pdo, $id, $catId);
    
     if ($prodInfo)
     {

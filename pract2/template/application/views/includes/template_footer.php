@@ -5,17 +5,9 @@
 				<h2 class="sidebar__headline">Каталог</h2>
 				<ul class="catalog-list">
 					<?
-						global $ctgs;
-						global $startPrice;
-						global $finalPrice;
-						if(isset($startPrice)&&isset($finalPrice))
-								$output = array('cost-from' => $startPrice,
-												'cost-to' => $finalPrice);
-						else 
-							$output = array();
 						foreach ($ctgs as $cat):	
-							$output['catId'] = $cat['id'];
-							$paramString = http_build_query($output);
+							$outputFilt['catId'] = $cat['id'];
+							$paramString = http_build_query($outputFilt);
 					?>		
 							<li class="catalog-list__item">
 								<a class="catalog-list__link" href="catalog.php?<?=$paramString?>">

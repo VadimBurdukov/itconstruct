@@ -6,6 +6,7 @@
     parse_str($paramString, $output);
     if (isset( $output['page']))
     {
+       
         if( (int)$output['page'])
             $curPage = (int)$output['page'];
         else 
@@ -28,7 +29,7 @@
         else 
             require("404.php");
     }
-     
+    
     include("application/models/catalog.php");
     
 ?>
