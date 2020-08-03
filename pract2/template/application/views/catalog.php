@@ -22,28 +22,24 @@
             <input class="search-filter__input" type="number" min="0" name="cost-to" id="cost-to" placeholder="до">
         </span>
         
-        <?foreach ($output as $o =>$value) 
-        {
+        <?foreach ($output as $o =>$value):
             if ($o == "catId"): ?>
                 <input type="hidden" name=<?=$o?> value=<?=$value?>>
             <?endif;?>
-    <?  } ?>
+        <? endforeach?>
             
         <input class="form-submit search-filter__apply" type="submit" value="Применить">
         <input class="form-submit search-filter__drop" type="button" value="Сбросить фильтры">
     </form>
     <ul class="categories categories__reposition">
-        <? 
-            foreach ($products as $product):
+        <?  foreach ($products as $product):
                 $prodParam = array();
                 if (isset($catId))
                     $prodParam+=['catIdProd' => $catId];
                 $prodParam+=['id' => $product['id']];
                 $prodParamString = http_build_query($prodParam);
                 if (!$product['img'])
-                    $product['img'] = "layout/img/category-none.jpg" 
-
-        ?>
+                    $product['img'] = "layout/img/category-none.jpg" ?>
                 <li class="category good-piece">
                     <a class="category__link" href="product.php?<?=$prodParamString?>">
                         <img class="category__image good__image" src="<?=$product['img']?>" alt="category-image-1">
@@ -54,48 +50,35 @@
         <?  endforeach  ?>
     </ul>
     <ul class="paginator catalog-page__paginator">
-        <?                
-            for ($i = 1; $i <=$maxPage; $i++) 
-            {  
-                if ($i == $curPage) 
-                {
-                    ?>
-                        <li class="paginator__elem paginator__elem_current">
-                            <span class="paginator__link">
-                                <?=$i?>
-                            </span>
-                        </li>
-                    <?
-                }
-                else
-                {
-                    
-                    ?>
-                        <li class="paginator__elem">
-                            <?
-                                    $output['page'] = $i;
-                                    $paramString = http_build_query($output);
-                            ?>
-                            <a href="catalog.php?<?=$paramString?>" class="paginator__link">  
-                                <?=$i;?>
-                            </a>
-                        </li>
-                    <?
-                }
-            }
-            if ($curPage != $maxPage) 
-            {
-                $output['page'] = $curPage+1;
-                $paramString = http_build_query($output);
-                ?>
-                    <li class="paginator__elem paginator__elem_next">
-                        <a href="catalog.php?<?=$paramString?>" class="paginator__link">
-                            Следующая страница
-                        </a>
+        <? for ($i = 1; $i <=$maxPage; $i++) 
+        {  
+            if ($i == $curPage): ?>
+                    <li class="paginator__elem paginator__elem_current">
+                        <span class="paginator__link">
+                            <?=$i?>
+                        </span>
                     </li>
-                <?
-            }  
-        ?>         
+            <? else: ?>
+                <li class="paginator__elem">
+                    <?
+                            $output['page'] = $i;
+                            $paramString = http_build_query($output);
+                    ?>
+                    <a href="catalog.php?<?=$paramString?>" class="paginator__link">  
+                        <?=$i;?>
+                    </a>
+                </li>
+            <? endif;
+        }
+        if ($curPage != $maxPage):
+            $output['page'] = $curPage+1;
+            $paramString = http_build_query($output); ?>
+                <li class="paginator__elem paginator__elem_next">
+                    <a href="catalog.php?<?=$paramString?>" class="paginator__link">
+                        Следующая страница
+                    </a>
+                </li>
+        <? endif; ?>         
     </ul>
 </main>
 <?

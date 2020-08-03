@@ -9,15 +9,14 @@
         </ul>
     </nav>
     <section class="product">
-        <?
-            foreach ($news as $n):?>
-                <li class="news-item">
-                    <a class="news-item__link" href="news-detail.php?id=<?=$n['id'];?>">
-                        
-                        <?=$n['announcement'];?>
-                    </a>
-                    <span class="news-item__date"><?=$n['date'];?></span>
-                </li>
+        <? foreach ($news as $n):?>
+            <li class="news-item">
+                <a class="news-item__link" href="news-detail.php?id=<?=$n['id'];?>">
+                    
+                    <?=$n['announcement'];?>
+                </a>
+                <span class="news-item__date"><?=$n['date'];?></span>
+            </li>
         <?  endforeach  ?>
     </section>
 </main>
