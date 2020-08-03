@@ -1,10 +1,9 @@
 <?
     include ("includes/lib.php");
-    getDBConnection();
-    
+    $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    if ($ctgs != NULL && $news!= NULL) 
+    if (($ctgs) && ($news)) 
     {
         include("application/views/news.php"); 
     }

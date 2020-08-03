@@ -1,6 +1,6 @@
 <?
     include ("includes/lib.php");
-    getDBConnection();
+    $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
 
@@ -14,7 +14,7 @@
     }
     $prodInfo = getProd($pdo, $id);
    
-    if ($prodInfo != NULL)
+    if ($prodInfo)
     {
         $prod = $prodInfo[0];
         include ("application/views/product.php");

@@ -12,16 +12,12 @@
     
     /*===============================CAT PAGE=====================================*/
     const prodPerPage = 2;
+    const newsPerPage = 2;
 
     /*===============================MAIN PAGE=====================================*/
-    /*----------------------------BREAD CRUMB------------------------------------*/
-    const bread_crumb = array(
-        "headerSrc" => "application/views/includes/template_header.php",
-        "footerSrc" => "application/views/includes/template_footer.php"
-    );
     /*----------------------------DB CONNECTION------------------------------------*/
-    const topMenuItems = array("О компании" => "about.php","Новости" => "news.php", 
-                                "Доставка и оплата" => "paydelivery.php","Контакты" => "contacts.php" );
+    const topMenuItems = array("about.php" => "О компании","news.php" => "Новости", 
+                                "paydelivery.php" => "Доставка и оплата","contacts.php" => "Контакты" );
     const srcHF = array(
         "headerSrc" => "application/views/includes/template_header.php",
         "footerSrc" => "application/views/includes/template_footer.php"

@@ -1,3 +1,4 @@
+
 		<div class="sidebar">
 			<section class="catalog">
 				<h2 class="sidebar__headline">Каталог</h2>
@@ -9,28 +10,18 @@
 						if(isset($startPrice)&&isset($finalPrice))
 								$output = array('cost-from' => $startPrice,
 												'cost-to' => $finalPrice);
-							else 
-							{
-								$output = array();
-							}
-						foreach ($ctgs as $cat) 
-						{
-							
-							
+						else 
+							$output = array();
+						foreach ($ctgs as $cat):	
 							$output['catId'] = $cat['id'];
 							$paramString = http_build_query($output);
-						?>
-							
+					?>		
 							<li class="catalog-list__item">
 								<a class="catalog-list__link" href="catalog.php?<?=$paramString?>">
 									<?=$cat['name']?>
 								</a>
 							</li>
-						<? 
-						
-						} 
-						
-					?>
+					<?  endforeach ?>
 				</ul>
 			</section>
 			<section class="news">
@@ -38,17 +29,14 @@
 				<ul class="news-list">
 					<?
 						global $news;
-						foreach ($news as $n) 
-						{?>
+						foreach ($news as $n):?>
 							<li class="news-item">
-								<a class="news-item__link" href="#">
+								<a class="news-item__link" href="news-detail.php?id=<?=$n['id']?>">
 									<?=$n['announcement'];?>
 								</a>
 								<span class="news-item__date"><?=$n['date'];?></span>
 							</li>
-						<? 
-						} 
-					?>
+					<? 	endforeach ?>
 				</ul>
 				<span class="archive"><a class="archive__link" href="news.php">Архив новостей</a></span>
 			</section>
@@ -67,16 +55,16 @@
 				<ul class="footer-nav__list">
 					<li class="footer-nav__list-item"><span class="footer-nav__link">Главная</span></li>
 					<li class="footer-nav__list-item"><a class="footer-nav__link" href="catalog.php">Каталог</a></li>
-					<?foreach (topMenuItems as $item => $href) {?>
+					<?foreach (topMenuItems as $href => $name) :?>
+					
 						<li class="footer-nav__list-item">
 							<span>
 								<a class="footer-nav__link" href="<?=$href?>">
-									<?=$item?>
+									<?=$name?>
 								</a>
 							</span>
 						</li>
-					<?
-					}?>
+					<? endforeach ?>
 				</ul>
 			</nav>
 			<div class="developer">

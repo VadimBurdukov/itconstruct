@@ -1,28 +1,7 @@
 <?php
+include ("config.php");
+include ("dbconn.php");
 
-/*=======================================DB_CONECT=================================== */
-    include ("config.php");
-    $pdo;
-    function getDBConnection()
-    {
-        global $pdo;   
-        $host = host;
-        $db = db;
-        $charset = charset;
-        $dsn = "mysql:host=$host; dbname=$db";
-        try
-        {  
-            $pdo = new PDO ($dsn, user, pass);  
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-            return $pdo;
-        }   
-        catch (PDOException $e)
-        {
-            return "При подключении произошла ошибка: ". $e->getMessage();
-            die();
-        }     
-        
-    }
 /*=======================================INCLUDES=================================== */
     function getheader()
     {
@@ -41,14 +20,21 @@
     }
     function getAllNews($pdo)
     {  
-        $sql = "SELECT * FROM news ORDER BY date DESC limit 6";
-        $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * 
+                FROM news
+                ORDER BY date DESC 
+                LIMIT :count";
+       // $news = $pdo->query( $sql )->fetchAll(PDO::FETCH_ASSOC);
+        $news = $pdo->prepare($sql);
+        $news->bindValue(':count', newsPerPage, PDO::PARAM_INT);   
+        $news -> execute();
+        $news = $news->fetchAll(PDO::FETCH_ASSOC);
         return $news;  
     }
 /*=======================================CATALOG=================================== */
     function getProducst__Limited($pdo, $page, $startPrice, $finalPrice, $catId)
     {
-        if(($catId==0) && ($startPrice==0)&&($finalPrice==0)) 
+        if((!$catId) && (!$startPrice)&&(!$finalPrice)) 
         {
             $sql = 'SELECT * 
                     FROM product 
@@ -56,7 +42,7 @@
                    ';
             $products = $pdo->prepare($sql);
         }
-        elseif (($startPrice==0)&&($finalPrice==0)) 
+        elseif ((!$startPrice)&&(!$finalPrice)) 
         {
             $sql = 'SELECT * 
                     FROM categories
@@ -70,7 +56,7 @@
             $products = $pdo->prepare($sql);
             $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
         }
-        elseif (($catId==0)) 
+        elseif ((!$catId)) 
         {
             $sql = 'SELECT * 
                     FROM product 
@@ -108,14 +94,14 @@
     }
     function paginationCount($pdo, $startPrice,$finalPrice, $catId)
     {
-        if (($catId==0) &&($startPrice==0)&&($finalPrice==0)) 
+        if ((!$catId) &&(!$startPrice)&&(!$finalPrice)) 
         {
             $sql = ' SELECT * 
                      FROM product 
                    ';
             $maxPage =  $pdo->query( $sql);
         }
-         elseif(($startPrice==0)&&($finalPrice==0))
+         elseif((!$startPrice)&&(!$finalPrice))
         {
              $sql = ' SELECT * 
                       FROM product 
@@ -129,7 +115,7 @@
             $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
             $maxPage-> execute();
         }
-        elseif($catId==0)
+        elseif(!$catId)
         {
             $sql = ' SELECT * 
                      FROM product 
@@ -183,16 +169,17 @@
    }
  
 /*=======================================CONTUCTS=================================== */
-function addToSql($pdo, $id)
+function addToSql($pdo, $author,$email, $text,$phone)
    { 
-        $sql = ' SELECT * 
-                 FROM product 
-                 WHERE product.id = :id
+        $sql = ' INSERT INTO feedback 
+                 (name, email, tel,request) 
+                 VALUES (:author, :email, :text, :phone)
                 ';
-        $prod = $pdo->prepare($sql);
-        $prod -> bindValue(':id', $id, PDO::PARAM_INT);
-        $prod-> execute(); 
-        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
-        return $prod;
+        $req = $pdo->prepare($sql);
+        $req -> bindValue(':author', $author, PDO::PARAM_INT);
+        $req -> bindValue(':email', $email, PDO::PARAM_INT);
+        $req -> bindValue(':text', $text, PDO::PARAM_INT);
+        $req -> bindValue(':phone', $phone, PDO::PARAM_INT);
+        $req-> execute(); 
    }
 ?>

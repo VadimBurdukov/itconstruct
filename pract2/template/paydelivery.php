@@ -1,6 +1,6 @@
 <?
     include ("includes/lib.php");
-    getDBConnection();
+	$pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     getheader();

@@ -27,25 +27,22 @@
             
             <?foreach ($output as $o =>$value) 
             {
-                if ($o != "cost-from" && $o !="cost-to") 
-                { ?>
+                if ($o != "cost-from" && $o !="cost-to") ?>
                     <input type="hidden" name=<?=$o?> value=<?=$value?>>
-                <? }    
-            } ?>
+        <?  } ?>
              
             <input class="form-submit search-filter__apply" type="submit" value="Применить">
             <input class="form-submit search-filter__drop" type="button" value="Сбросить фильтры">
         </form>
         <ul class="categories categories__reposition">
             <? 
-                foreach ($products as $product) 
-                {
+                foreach ($products as $product):
                     $prodParam = array();
                     if (isset($catId))
                         $prodParam+=['catIdProd' => $catId];
                     $prodParam+=['id' => $product['id']];
                     $prodParamString = http_build_query($prodParam);
-                    if ($product['img'] == NULL)
+                    if (!$product['img'])
                         $product['img'] = "layout/img/category-none.jpg" 
 
             ?>
@@ -56,9 +53,7 @@
                         </a>
                         <span class="good-price good_price"><?=$product['price']." "?><small class="good-price__currency">руб.</small></span>
                     </li>
-            <?  
-                }                 
-            ?>
+            <?  endforeach  ?>
         </ul>
         <ul class="paginator catalog-page__paginator">
             <?                

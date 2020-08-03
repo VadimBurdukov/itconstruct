@@ -1,6 +1,6 @@
 <?
     include ("includes/lib.php");
-    getDBConnection();
+    $pdo = getDBConnection();
     $newsId = 0;
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
@@ -15,7 +15,7 @@
             $desc = $n['description'];
         }
     }
-    if (($ctgs != NULL) && ($news != NULL)  && ($newsId != NULL) ) 
+    if (($ctgs) && ($news )  && ($newsId )) 
         include("application/views/news-detail.php"); 
     else
         include("404.php"); 

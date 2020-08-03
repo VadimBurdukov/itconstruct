@@ -1,6 +1,9 @@
 <?
-
+    require_once ("includes/lib.php");
+    $pdo = getDBConnection();
     getheader();
+    $ctgs = getAllCtgrs($pdo);
+    $news = getAllNews($pdo);
 ?>
     <main class="inside-content">
         Упс, страница не найдена<br>

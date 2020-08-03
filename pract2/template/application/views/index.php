@@ -8,9 +8,8 @@
         <ul class="categories">
             <?
                 
-                    foreach ($ctgs as $cat) 
-                    {
-                        if ($cat['img'] == NULL)
+                    foreach ($ctgs as $cat):
+                        if (!$cat['img'])
                             $cat['img'] = "layout/img/category-none.jpg" 
             ?>
                         <li class="category">
@@ -19,9 +18,7 @@
                                 <span class="category__name-container"><span class="category__name-inner"><?=$cat['name']?></span></span>
                             </a>
                         </li>
-            <?  
-                    } 
-            ?>
+            <?      endforeach ?>
             
         </ul>
     

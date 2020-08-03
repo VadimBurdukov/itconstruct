@@ -110,7 +110,7 @@ $(document).ready(function () {
     $('input.data-send').on('click', function (e) {
         
         var errorParam = $(this).attr("errorParam");
-        if(errorParam == 1)
+        if(errorParam)
         {
             e.preventDefault();
             $('.error-box').css('opacity', 1);

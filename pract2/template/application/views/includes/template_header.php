@@ -45,29 +45,25 @@
 						<ul class="sub-menu">
 							<?
 								global $ctgs;
-									foreach ($ctgs as $cat) 
-									{
+									foreach ($ctgs as $cat) :
 							?>
 										<li class="sub-menu__list-item">
 											<a class="sub-menu__link" href="catalog.php?catId=<?=$cat['id']?>">
 												<?=$cat['name']?>
 											</a>
 										</li>
-							<?
-									}
-							?>
+							<? 		endforeach 		?>
 						</ul>
 					</li>
-					<?foreach (topMenuItems as $item => $href) {?>
+					<?foreach (topMenuItems as $href => $name) :?>
 						<li class="header-nav-item">
 							<span>
 								<a class="header-nav-item__link" href="<?=$href?>">
-									<?=$item?>
+									<?=$name?>
 								</a>
 							</span>
 						</li>
-					<?
-					}?>
+					<? endforeach ?>
 				</ul>
 			</div>
 		</nav>

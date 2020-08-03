@@ -11,8 +11,7 @@
     <section class="product">
         <?
             global $news;
-            foreach ($news as $n) 
-            {?>
+            foreach ($news as $n):?>
                 <li class="news-item">
                     <a class="news-item__link" href="news-detail.php?id=<?=$n['id'];?>">
                         
@@ -20,9 +19,7 @@
                     </a>
                     <span class="news-item__date"><?=$n['date'];?></span>
                 </li>
-            <? 
-            } 
-        ?>
+        <?  endforeach  ?>
     </section>
 </main>
 <?

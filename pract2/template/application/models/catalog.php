@@ -1,7 +1,6 @@
 <?
   include ("includes/lib.php");
-  getDBConnection();
- 
+  $pdo = getDBConnection();
   global $curPage;
   global $startPrice;
   global $finalPrice;
@@ -11,7 +10,7 @@
   $news = getAllNews($pdo);
   
 
-  if (isset($curPage) && $curPage != NULL) 
+  if (isset($curPage) && $curPage) 
   {
     if ((isset($catId)) && isset( $startPrice) && isset($finalPrice))
     {
@@ -33,7 +32,7 @@
       $maxPage = (int)paginationCount($pdo,0,0,0);
       $products = getProducst__Limited($pdo, $curPage, 0,0,0); 
     } 
-    if ($ctgs != NULL && $news!= NULL && $products!= NULL && $maxPage != NULL) 
+    if (($ctgs) && ($news) && ($products) && ($maxPage)) 
       include ("application/views/catalog.php");
     else 
       include ("404.php");
