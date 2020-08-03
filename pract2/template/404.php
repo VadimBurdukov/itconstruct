@@ -1,9 +1,10 @@
 <?
     require_once ("includes/lib.php");
     $pdo = getDBConnection();
-    require("application/views/includes/template_header.php");
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
+    $title="Ошибка";
+    require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">
         Упс, страница не найдена<br>

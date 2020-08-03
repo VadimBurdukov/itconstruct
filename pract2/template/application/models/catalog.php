@@ -31,7 +31,19 @@
   else 
     $outputFilt = array();
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
+  {
+    $title = "Каталог";
+    if (isset($catId)) 
+    {
+      foreach ($ctgs as $cat) 
+      {
+        if($cat['id'] == $catId)
+          $title = $cat['name'];    
+      }
+    }
     include ("application/views/catalog.php");
+  }
+    
   else 
     include ("404.php");
 ?>

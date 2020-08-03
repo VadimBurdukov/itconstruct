@@ -15,6 +15,6 @@
         }
     }
 
-
+    $title = "Контакты";
     include ("application/views/contacts.php");
 ?>

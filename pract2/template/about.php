@@ -3,6 +3,7 @@
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
+    $title="О компании";
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">

@@ -8,7 +8,7 @@
 	<link rel="alternate" href="https://allfont.ru/allfont.css?fonts=arial-narrow">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="layout/js/script.js"></script>
-	<title>Company - Интернет-магазин электронных сигарет</title>
+	<title><?=$title?></title>
 </head>
 
 <body>

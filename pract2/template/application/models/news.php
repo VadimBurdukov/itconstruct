@@ -3,6 +3,7 @@
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
+    $title = "Новости";
     if (($ctgs) && ($news)) 
     {
         include("application/views/news.php"); 

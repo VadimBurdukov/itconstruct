@@ -4,7 +4,8 @@
     $seo_article = ("include_areas/index_seo.php");
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
+    $title = "Company";
     if (($ctgs)  && ($news))
         include ("application/views/index.php");
-
+    
 ?>

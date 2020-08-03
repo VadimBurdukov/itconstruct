@@ -2,7 +2,8 @@
     include ("includes/lib.php");
 	$pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
-    $news = getAllNews($pdo);
+	$news = getAllNews($pdo);
+	$title="Доставка и оплата";
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">

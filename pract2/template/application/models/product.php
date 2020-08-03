@@ -7,16 +7,23 @@
     {
         foreach ($ctgs as $breadCrumbs) 
         {
+            
             if ($breadCrumbs['id'] == $catId)
                 $curCategoryName = $breadCrumbs['name'];
         }
-    }
-   
-    $prodInfo = getProd($pdo, $id, $catId);
+         $prodInfo = getProd($pdo, $id, $catId);
+    }  
+    else
+         $prodInfo = getProd($pdo, $id, 0);
+
+
+    
    
     if ($prodInfo)
     {
         $prod = $prodInfo[0];
+       //var_dump($prod);
+        $title = $prod['name'];
         include ("application/views/product.php");
     }
     else 

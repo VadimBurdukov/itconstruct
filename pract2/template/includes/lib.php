@@ -148,21 +148,35 @@ include ("dbconn.php");
 
 /*=======================================PRODUCT=================================== */
    function getProd($pdo, $id, $catId)
-   { 
-        $sql = ' SELECT * 
-                 FROM product 
-                 JOIN productcategories
-                 ON  product.id = product_id
-                 JOIN categories
-                 ON cat_id = categories.id
-                 WHERE product.id = :id AND
-                       categories.id = :catId
+   {
+       if ($catId) 
+       {
+             $sql = ' SELECT product.id,  product.name, product.description, product.price, product.img
+                     FROM product 
+                     JOIN productcategories
+                     ON  product.id = product_id
+                     JOIN categories
+                     ON cat_id = categories.id
+                     WHERE product.id = :id AND
+                           categories.id = :catId
                 ';
-        $prod = $pdo->prepare($sql);
+            $prod = $pdo->prepare($sql);
+            $prod -> bindValue(':catId', $catId, PDO::PARAM_INT);
+            
+       }
+       else
+       {
+            $sql = ' SELECT * 
+                     FROM product 
+                     WHERE product.id = :id 
+                   ';
+            $prod = $pdo->prepare($sql);
+       }
+        
         $prod -> bindValue(':id', $id, PDO::PARAM_INT);
-        $prod -> bindValue(':catId', $catId, PDO::PARAM_INT);
         $prod-> execute(); 
-        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC);
+        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC); 
+        
         return $prod;
    }
  

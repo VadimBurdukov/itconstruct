@@ -15,8 +15,12 @@
             $desc = $n['description'];
         }
     }
+    
     if (($ctgs) && ($news )  && ($newsId )) 
-        include("application/views/news-detail.php"); 
+    {
+        $title = $newsTitle;
+        include("application/views/news-detail.php");
+    }         
     else
         include("404.php"); 
 ?>

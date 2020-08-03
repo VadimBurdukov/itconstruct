@@ -6,6 +6,7 @@
     {
         $id = (int)$output['id'];
     }
+    
         else 
             require("404.php");
     if (isset( $output['catIdProd']))
