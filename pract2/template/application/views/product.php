@@ -1,5 +1,5 @@
 <?
-    getheader();
+    require("application/views/includes/template_header.php");
     global $catId;
     global $id; 
     global $prod;
@@ -31,5 +31,5 @@
     </section>
 </main>
 <?
-    getfooter();
+    require("application/views/includes/template_footer.php");
 ?>

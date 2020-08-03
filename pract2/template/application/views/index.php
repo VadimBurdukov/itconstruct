@@ -1,5 +1,5 @@
 <?
-    getheader();
+    require("application/views/includes/template_header.php");
     global $ctgs;
     global $seoArticle;
 ?>
@@ -22,10 +22,7 @@
             
         </ul>
     
+         
 <?
-    echo $seoArticle;
-?>       
-</main>           
-<?
-    getfooter();
+    require("application/views/includes/template_footer.php");
 ?>

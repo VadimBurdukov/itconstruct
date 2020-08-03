@@ -1,4 +1,11 @@
 
+		
+<?
+	var_dump(basename($_SERVER['SCRIPT_FILENAME']));
+	if (isset($seo_article))
+		require($seo_article);
+?>       
+	</main>  
 		<div class="sidebar">
 			<section class="catalog">
 				<h2 class="sidebar__headline">Каталог</h2>

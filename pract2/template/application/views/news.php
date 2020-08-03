@@ -1,5 +1,5 @@
 <?
-    getheader();
+    require("application/views/includes/template_header.php");
 ?>  
 <main class="inside-content">
     <nav class="bread-crumbs-container product__bread-crumbs">
@@ -23,5 +23,5 @@
     </section>
 </main>
 <?
-    getfooter();
+    require("application/views/includes/template_footer.php");
 ?>

@@ -2,15 +2,7 @@
 include ("config.php");
 include ("dbconn.php");
 
-/*=======================================INCLUDES=================================== */
-    function getheader()
-    {
-        return include(srcHF['headerSrc']);  
-    }
-    function getfooter()
-    {
-        return include(srcHF['footerSrc']);  
-    }
+
 /*=======================================SIDEBAR=================================== */
     function getAllCtgrs($pdo)
     {  

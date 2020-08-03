@@ -1,6 +1,6 @@
 
 <?
-    getheader();
+    require("application/views/includes/template_header.php");
     global $curPage;
     global $products;
     global $maxPage;
@@ -101,5 +101,5 @@
         </ul>
     </main>
 <?
-    getfooter();
+    require("application/views/includes/template_footer.php");
 ?>

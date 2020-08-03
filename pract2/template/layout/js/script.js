@@ -241,7 +241,7 @@ $(function () {
 			})
 		}
 		{
-			$('input[type="button"]').on('click', function () 
+			$('input[type="button"].search-filter__drop').on('click', function () 
 			{
 				location.href = 'catalog.php';
 			})

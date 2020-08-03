@@ -1,7 +1,7 @@
 <?
     require_once ("includes/lib.php");
     $pdo = getDBConnection();
-    getheader();
+    require("application/views/includes/template_header.php");
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
 ?>
@@ -11,5 +11,5 @@
     </main>
         
 <?
-    getfooter();
+    require("application/views/includes/template_footer.php");
 ?>

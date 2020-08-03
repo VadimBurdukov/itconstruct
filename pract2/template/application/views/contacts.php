@@ -1,5 +1,5 @@
 <?
-    getheader();
+    require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">
         <nav class="bread-crumbs-container product__bread-crumbs">
@@ -129,6 +129,6 @@ $(document).ready(function () {
 </script>
 <?
     session_destroy();
-    getfooter();
+    require("application/views/includes/template_footer.php");
     
 ?>
