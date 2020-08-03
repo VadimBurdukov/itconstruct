@@ -3,11 +3,15 @@
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    foreach ($ctgs as $breadCrumbs) 
+    if (isset($catId))
     {
-       if ($breadCrumbs['id'] == $catId)
-         $curCategoryName = $breadCrumbs['name'];
+        foreach ($ctgs as $breadCrumbs) 
+        {
+            if ($breadCrumbs['id'] == $catId)
+                $curCategoryName = $breadCrumbs['name'];
+        }
     }
+   
     $prodInfo = getProd($pdo, $id);
    
     if ($prodInfo)

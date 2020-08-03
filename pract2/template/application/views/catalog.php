@@ -24,8 +24,10 @@
         
         <?foreach ($output as $o =>$value) 
         {
-            if ($o != "cost-from" && $o !="cost-to") ?>
+            var_dump($o);
+            if ($o == "catId"): ?>
                 <input type="hidden" name=<?=$o?> value=<?=$value?>>
+            <?endif;?>
     <?  } ?>
             
         <input class="form-submit search-filter__apply" type="submit" value="Применить">

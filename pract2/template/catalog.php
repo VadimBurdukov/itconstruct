@@ -6,7 +6,10 @@
     parse_str($paramString, $output);
     if (isset( $output['page']))
     {
-        $curPage = (int)$output['page'];
+        if( (int)$output['page'])
+            $curPage = (int)$output['page'];
+        else 
+            require("404.php");
     }
    
     else 
@@ -20,9 +23,10 @@
 
     if (isset( $output['catId']))
     {
-
-        $catId = (int)$output['catId'];
-        
+        if( (int)$output['catId'])
+            $catId = (int)$output['catId'];
+        else 
+            require("404.php");
     }
      
     include("application/models/catalog.php");
