@@ -22,7 +22,6 @@
     if ($prodInfo)
     {
         $prod = $prodInfo[0];
-       //var_dump($prod);
         $title = $prod['name'];
         include ("application/views/product.php");
     }

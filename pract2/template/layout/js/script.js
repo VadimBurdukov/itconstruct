@@ -229,8 +229,10 @@ $(function () {
 				var min = parseFloat($(this).find('.search-filter__input[name="cost-from"]').val());
 				var max = parseFloat($(this).find('.search-filter__input[name="cost-to"]').val());
 				// Проверка на пустоту, логичность и неотрицательость
-				if (!(min <= max) || min < 0 || max < 0)
-					return false;
+				if ( (min) && (max) && (!(min <= max)))
+						return false;
+					if  ( min < 0 || max < 0)
+						return false;
 			});
 
 			// Валидация формы "Положить в корзину" на странице "О продукте"

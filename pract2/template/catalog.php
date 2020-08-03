@@ -16,12 +16,15 @@
     else 
         $curPage = 1;
 
-    if (isset( $output['cost-from']) && isset( $output['cost-to']))
+    if (isset( $output['cost-from'])&& ($output['cost-from'] !=""))
     {
         $startPrice = (float)$output['cost-from'];
+    }
+    if ( isset( $output['cost-to'])&& ($output['cost-to'] !=""))
+    {
+        
         $finalPrice = (float)$output['cost-to'];
     }
-
     if (isset( $output['catId']))
     {
         if( (int)$output['catId'])

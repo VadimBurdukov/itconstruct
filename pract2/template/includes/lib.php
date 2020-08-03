@@ -48,7 +48,7 @@ include ("dbconn.php");
             $products = $pdo->prepare($sql);
             $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
         }
-        elseif ((!$catId)) 
+        elseif((!$catId) && (($startPrice)&&($finalPrice)))
         {
             $sql = 'SELECT * 
                     FROM product 
@@ -59,6 +59,63 @@ include ("dbconn.php");
             $products = $pdo->prepare($sql);
             $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
             $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);     
+        }
+        elseif((!$finalPrice)&& (!$catId))
+        {
+            $sql = 'SELECT * 
+                    FROM product 
+                WHERE price >= :startPrice
+                LIMIT :start, :end                
+                    ';
+            $products = $pdo->prepare($sql);
+            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
+            
+        }
+        elseif((!$startPrice) && (!$catId))
+        {
+            
+            $sql = 'SELECT * 
+                    FROM product 
+                WHERE price <= :finalPrice
+                LIMIT :start, :end                
+                    ';
+            $products = $pdo->prepare($sql);
+            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
+            
+            
+        }
+        elseif((!$finalPrice)&& ($catId))
+        {
+            $sql = 'SELECT * 
+                    FROM categories 
+                    JOIN productcategories
+                    ON categories.id = productcategories.cat_id 
+                    JOIN product 
+                    ON productcategories.product_id = product.id 
+                 WHERE categories.id = :cat_id AND
+                       price >= :startPrice 
+                LIMIT :start, :end    
+                    ';
+            $products = $pdo->prepare($sql);   
+            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
+            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
+             
+        }
+        elseif((!$startPrice)&& ($catId))
+        {
+            $sql = 'SELECT * 
+                    FROM categories 
+                    JOIN productcategories
+                    ON categories.id = productcategories.cat_id 
+                    JOIN product 
+                    ON productcategories.product_id = product.id 
+                 WHERE categories.id = :cat_id AND
+                       price <= :finalPrice 
+                LIMIT :start, :end    
+                    ';
+            $products = $pdo->prepare($sql);   
+            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
+            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
         }
         else 
         {
@@ -77,6 +134,7 @@ include ("dbconn.php");
             $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
             $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
             $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
+            
         }
         $products->bindValue(':start', prodPerPage*($page -1), PDO::PARAM_INT);  
         $products->bindValue(':end', prodPerPage, PDO::PARAM_INT);  
@@ -107,7 +165,7 @@ include ("dbconn.php");
             $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
             $maxPage-> execute();
         }
-        elseif(!$catId)
+        elseif((!$catId) && (($startPrice)&&($finalPrice)))
         {
             $sql = ' SELECT * 
                      FROM product 
@@ -117,6 +175,62 @@ include ("dbconn.php");
             $maxPage = $pdo->prepare($sql);
             $maxPage->bindValue(':startPrice', $startPrice);  
             $maxPage->bindValue(':finalPrice', $finalPrice);  
+            $maxPage-> execute();
+            
+        }
+        elseif((!$finalPrice)&& (!$catId))
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     WHERE price >= :startPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':startPrice', $startPrice);  
+            $maxPage-> execute();
+            
+        }
+        elseif((!$startPrice)&& (!$catId))
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     WHERE price <= :finalPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':finalPrice', $finalPrice);  
+            $maxPage-> execute();
+            
+        }
+        elseif((!$finalPrice)&& ($catId))
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     JOIN productcategories
+                      ON  product.id = productcategories.product_id 
+                      JOIN categories 
+                      ON productcategories.cat_id = categories.id 
+                    WHERE categories.id = :cat_id AND
+                          price >= :startPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':startPrice', $startPrice);  
+            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
+            $maxPage-> execute();
+            
+        }
+         elseif((!$startPrice)&& ($catId))
+        {
+            $sql = ' SELECT * 
+                     FROM product 
+                     JOIN productcategories
+                      ON  product.id = productcategories.product_id 
+                      JOIN categories 
+                      ON productcategories.cat_id = categories.id 
+                    WHERE categories.id = :cat_id AND
+                          price <= :finalPrice
+                    ';
+            $maxPage = $pdo->prepare($sql);
+            $maxPage->bindValue(':finalPrice', $finalPrice);  
+            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
             $maxPage-> execute();
             
         }
