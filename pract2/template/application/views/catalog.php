@@ -7,8 +7,13 @@
     <h1 class="invisible">Каталог товаров</h1>
     <nav class="bread-crumbs-container">
         <ul class="bread-crumbs">
-            <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
-            <li class="bread-crumb bread-crumb_current">Каталог</li>
+            <?foreach ($breadCrumbs as $b => $href):
+                if($href!=""):?>
+                    <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
+                <?else:?>
+                    <li class="bread-crumb bread-crumb_current"><?=$b?></li>
+                <?endif;?>
+            <?endforeach;?>
         </ul>
     </nav>
 

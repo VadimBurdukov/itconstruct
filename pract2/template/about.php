@@ -4,13 +4,19 @@
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     $title="О компании";
+    $breadCrumbs = array("Главная" => "index.php",  $title=>""); 
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">
         <nav class="bread-crumbs-container product__bread-crumbs">
             <ul class="bread-crumbs">
-                <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li> 
-                <li class="bread-crumb bread-crumb_current">О нас</li>
+                <?foreach ($breadCrumbs as $b => $href):
+                    if($href!=""):?>
+                        <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
+                    <?else:?>
+                        <li class="bread-crumb bread-crumb_current"><?=$b?></li>
+                    <?endif;?>
+                <?endforeach;?>
             </ul>
         </nav>
         <article class="shipment-article">

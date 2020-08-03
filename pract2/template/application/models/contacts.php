@@ -16,5 +16,6 @@
     }
 
     $title = "Контакты";
+    $breadCrumbs = array("Главная" => "index.php",  $title=> ""); 
     include ("application/views/contacts.php");
 ?>

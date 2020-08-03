@@ -5,13 +5,13 @@
 
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
-            <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
-            <li class="bread-crumb"><a class="bread-crumb__link" href="catalog.php">Каталог</a></li>
-            <? if (isset($curCategoryName)) 
-                { ?>
-                    <li class="bread-crumb"><a class="bread-crumb__link" href="catalog.php?catId=<?=$catId?>"><?=$curCategoryName?></a></li>
-              <?} ?>         
-            <li class="bread-crumb bread-crumb_current"><?=$prod['name']?></li>
+            <?foreach ($breadCrumbs as $b => $href):
+                if($href!=""):?>
+                    <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
+                <?else:?>
+                    <li class="bread-crumb bread-crumb_current"><?=$b?></li>
+                <?endif;?>
+            <?endforeach;?>
         </ul>
     </nav>
     <section class="product">

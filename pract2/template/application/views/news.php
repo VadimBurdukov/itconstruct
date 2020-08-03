@@ -4,8 +4,13 @@
 
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
-            <li class="bread-crumb"><a class="bread-crumb__link" href="index.php">Главная</a></li>
-            <li class="bread-crumb bread-crumb_current">Все новости</li>
+            <?foreach ($breadCrumbs as $b => $href):
+                if($href!=""):?>
+                    <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
+                <?else:?>
+                    <li class="bread-crumb bread-crumb_current"><?=$b?></li>
+                <?endif;?>
+            <?endforeach;?>
         </ul>
     </nav>
     <section class="product">

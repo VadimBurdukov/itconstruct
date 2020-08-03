@@ -5,11 +5,11 @@
     $news = getAllNews($pdo);
     if (isset($catId))
     {
-        foreach ($ctgs as $breadCrumbs) 
+        foreach ($ctgs as $ct) 
         {
             
-            if ($breadCrumbs['id'] == $catId)
-                $curCategoryName = $breadCrumbs['name'];
+            if ($ct['id'] == $catId)
+                $curCategoryName = $ct['name'];
         }
          $prodInfo = getProd($pdo, $id, $catId);
     }  
@@ -23,6 +23,11 @@
     {
         $prod = $prodInfo[0];
         $title = $prod['name'];
+        $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php", $title=>""); 
+        if(isset($curCategoryName))
+        {
+          $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php", $curCategoryName=>"catalog.php?catId=$catId", $title=>"");
+        }
         include ("application/views/product.php");
     }
     else 

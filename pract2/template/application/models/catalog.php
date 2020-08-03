@@ -57,18 +57,24 @@
     $outputFilt = array('cost-from' => $startPrice);             
   if (isset($finalPrice))
     $outputFilt = array('cost-to' => $finalPrice);
-
+  
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
   {
     $title = "Каталог";
+    $breadCrumbs = array("Главная" => "index.php", "Каталог"=> ""); 
     if (isset($catId)) 
     {
       foreach ($ctgs as $cat) 
       {
         if($cat['id'] == $catId)
-          $title = $cat['name'];    
+        {
+          $title = $cat['name'];  
+          $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php",  $title=>"");
+        }
+           
       }
     }
+    
     include ("application/views/catalog.php");
   }
     

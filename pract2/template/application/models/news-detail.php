@@ -19,6 +19,7 @@
     if (($ctgs) && ($news )  && ($newsId )) 
     {
         $title = $newsTitle;
+        $breadCrumbs = array("Главная" => "index.php", "Новости"=> "news.php", $title=>""); 
         include("application/views/news-detail.php");
     }         
     else
