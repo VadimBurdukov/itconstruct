@@ -23,5 +23,7 @@
         include("application/views/news-detail.php");
     }         
     else
+    {
         include("404.php"); 
+    }   
 ?>

@@ -1,38 +1,38 @@
    
 	</main>  
 		<div class="sidebar">
-			<section class="catalog">
-				<h2 class="sidebar__headline">Каталог</h2>
-				<ul class="catalog-list">
-					<?
-						foreach ($ctgs as $cat):	
+   			<?if($ctgs != NULL):?>
+				<section class="catalog">
+					<h2 class="sidebar__headline">Каталог</h2>
+					<ul class="catalog-list">				
+						<?foreach ($ctgs as $cat):	
 							$outputFilt['catId'] = $cat['id'];
-							$paramString = http_build_query($outputFilt);
-					?>		
+							$paramString = http_build_query($outputFilt);?>		
 							<li class="catalog-list__item">
 								<a class="catalog-list__link" href="catalog.php?<?=$paramString?>">
 									<?=$cat['name']?>
 								</a>
 							</li>
-					<?  endforeach ?>
-				</ul>
-			</section>
-			<section class="news">
-				<h2 class="sidebar__headline news__headline">Новости</h2>
-				<ul class="news-list">
-					<?
-						global $news;
-						foreach ($news as $n):?>
-							<li class="news-item">
-								<a class="news-item__link" href="news-detail.php?id=<?=$n['id']?>">
-									<?=$n['announcement'];?>
-								</a>
-								<span class="news-item__date"><?=$n['date'];?></span>
-							</li>
-					<? 	endforeach ?>
-				</ul>
-				<span class="archive"><a class="archive__link" href="news.php">Архив новостей</a></span>
-			</section>
+						<?endforeach;?>						
+					</ul>
+				</section>
+			<?endif;
+			if($news != NULL):?>
+				<section class="news">
+					<h2 class="sidebar__headline news__headline">Новости</h2>				
+						<ul class="news-list">			
+							<?foreach ($news as $n):?>
+								<li class="news-item">
+									<a class="news-item__link" href="news-detail.php?id=<?=$n['id']?>">
+										<?=$n['announcement'];?>
+									</a>
+									<span class="news-item__date"><?=$n['date'];?></span>
+								</li>
+							<?endforeach;?>					
+						</ul>					
+					<span class="archive"><a class="archive__link" href="news.php">Архив новостей</a></span>
+				</section>
+			<?endif;?>
 		</div>
 		<?
 			if (isset($seo_article))

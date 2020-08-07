@@ -35,6 +35,9 @@
         include ("application/views/product.php");
     }
     else 
+    {
         include ("404.php");
+    }
+        
         
 ?>
