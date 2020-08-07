@@ -7,7 +7,7 @@
     <h1 class="invisible">Каталог товаров</h1>
     <nav class="bread-crumbs-container">
         <ul class="bread-crumbs">
-            <?foreach ($breadCrumbs as $b => $href):
+            <?foreach ($breadCrumbs as $href => $b):
                 if($href!=""):?>
                     <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
                 <?else:?>

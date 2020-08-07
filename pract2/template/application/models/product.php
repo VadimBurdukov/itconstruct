@@ -23,11 +23,15 @@
     {
         $prod = $prodInfo[0];
         $title = $prod['name'];
-        $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php", $title=>""); 
+        $curHref="";
+        $breadCrumbs = array("index.php" => "Главная", "catalog.php"=> "Каталог" ); 
+        //$breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php", $title=>""); 
         if(isset($curCategoryName))
-        {
-          $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php", $curCategoryName=>"catalog.php?catId=$catId", $title=>"");
+        {              
+            
+            $breadCrumbs["catalog.php?catId=$catId"] = $curCategoryName;
         }
+        $breadCrumbs[$curHref] = $title;
         include ("application/views/product.php");
     }
     else 

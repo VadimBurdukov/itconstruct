@@ -5,7 +5,7 @@
 
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
-            <?foreach ($breadCrumbs as $b => $href):
+            <?foreach ($breadCrumbs as $href => $b):
                 if($href!=""):?>
                     <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
                 <?else:?>

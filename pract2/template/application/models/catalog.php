@@ -60,8 +60,9 @@
   
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
   {
+    $curHref="";
     $title = "Каталог";
-    $breadCrumbs = array("Главная" => "index.php", "Каталог"=> ""); 
+    $breadCrumbs = array("index.php" => "Главная", "$curHref"=> "Каталог"); 
     if (isset($catId)) 
     {
       foreach ($ctgs as $cat) 
@@ -69,12 +70,14 @@
         if($cat['id'] == $catId)
         {
           $title = $cat['name'];  
-          $breadCrumbs = array("Главная" => "index.php", "Каталог"=> "catalog.php",  $title=>"");
+          unset($breadCrumbs[$curHref]);
+          $breadCrumbs['catalog.php'] = "Каталог";
+          $breadCrumbs[$curHref] = $title;
         }
            
       }
     }
-    
+    var_dump($breadCrumbs);
     include ("application/views/catalog.php");
   }
     
