@@ -6,7 +6,7 @@
     $title = "Новости";
     if (($ctgs) && ($news)) 
     {
-        $breadCrumbs = array("Главная" => "index.php",  $title=> ""); 
+        $breadCrumbs = array("index.php" => "Главная", "" => $title ); 
         include("application/views/news.php"); 
     }
     else

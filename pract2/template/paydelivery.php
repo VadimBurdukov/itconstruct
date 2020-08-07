@@ -4,13 +4,13 @@
     $ctgs = getAllCtgrs($pdo);
 	$news = getAllNews($pdo);
 	$title="Доставка и оплата";
-	$breadCrumbs = array("Главная" => "index.php",  $title=>""); 
+	$breadCrumbs = array("index.php" => "Главная",  "" => $title); 
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">
 		<nav class="bread-crumbs-container product__bread-crumbs">
             <ul class="bread-crumbs">
-               <?foreach ($breadCrumbs as $b => $href):
+                <?foreach ($breadCrumbs as $href => $b):
                     if($href!=""):?>
                         <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
                     <?else:?>
