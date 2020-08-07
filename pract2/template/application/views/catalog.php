@@ -9,22 +9,33 @@
         <ul class="bread-crumbs">
             <?foreach ($breadCrumbs as $href => $b):
                 if($href!=""):?>
-                    <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"><?=$b?></a></li>   
+                    <li class="bread-crumb"><a class="bread-crumb__link" href="<?=$href?>"> <?=$b?></a></li>   
                 <?else:?>
                     <li class="bread-crumb bread-crumb_current"><?=$b?></li>
                 <?endif;?>
-            <?endforeach;?>
+            <?endforeach;
+            
+            ?>
         </ul>
     </nav>
 
     <form class="search-filter" id="catalog-page__search-filter-1" action="catalog.php" method="GET">
         <span class="search-filter__item">
             <label class="search-filter__label" for="cost-from">Цена</label>
-            <input class="search-filter__input" step="0.01" type="number" min="0" name="cost-from" id="cost-from" placeholder="от">
+            <?if(isset( $startPrice) && $startPrice>0):?>
+                <input class="search-filter__input" step="0.01" type="number" min="0" value=<?=$startPrice?> name="cost-from" id="cost-from" placeholder="от">
+            <?else:?>
+                <input class="search-filter__input" step="0.01" type="number" min="0" name="cost-from" id="cost-from" placeholder="от">
+            <?endif;?>
         </span>
         <span class="search-filter__item">
             <label class="search-filter__label" for="cost-to">—</label>
-            <input class="search-filter__input" type="number" min="0" name="cost-to" id="cost-to" placeholder="до">
+            <?if(isset( $finalPrice) && $finalPrice>0):?>
+                <input class="search-filter__input" step="0.01" type="number" min="0" value=<?=$finalPrice?> name="cost-from" id="cost-from" placeholder="от">
+            <?else:?>
+                 <input class="search-filter__input" type="number" min="0"  name="cost-to" id="cost-to" placeholder="до">
+            <?endif;?>
+           
         </span>
         
         <?foreach ($output as $o =>$value):
@@ -55,14 +66,24 @@
         <?  endforeach  ?>
     </ul>
     <ul class="paginator catalog-page__paginator">
-        <? for ($i = 1; $i <=$maxPage; $i++) 
+        <?if ($curPage != 1): 
+            $output['page'] = $curPage-1;
+            $paramString = http_build_query($output); ?>
+                <li class="paginator__elem paginator__elem_next">
+                    <a href="catalog.php?<?=$paramString?>" class="paginator__link">
+                        Предыдущая страница
+                    </a>
+                </li>
+        <? endif; 
+        for ($i = 1; $i <=$maxPage; $i++) 
         {  
+            
             if ($i == $curPage): ?>
-                    <li class="paginator__elem paginator__elem_current">
-                        <span class="paginator__link">
-                            <?=$i?>
-                        </span>
-                    </li>
+                <li class="paginator__elem paginator__elem_current">
+                    <span class="paginator__link">
+                        <?=$i?>
+                    </span>
+                </li>
             <? else: ?>
                 <li class="paginator__elem">
                     <?

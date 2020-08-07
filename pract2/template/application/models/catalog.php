@@ -77,7 +77,6 @@
            
       }
     }
-    var_dump($breadCrumbs);
     include ("application/views/catalog.php");
   }
     

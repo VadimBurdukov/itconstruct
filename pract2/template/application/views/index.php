@@ -4,7 +4,8 @@
 ?>
     <h1 class="invisible">Company - Электронные сигареты</h1>
     <ul class="categories">
-    <?  foreach ($ctgs as $cat):
+    <?if($ctgs != NULL):
+        foreach ($ctgs as $cat):
             if (!$cat['img'])
                 $cat['img'] = "layout/img/category-none.jpg" ?>
             <li class="category">
@@ -14,6 +15,7 @@
                 </a>
             </li>
         <? endforeach ?>
+    <? endif; ?>
     </ul>
 <?
     require("application/views/includes/template_footer.php");

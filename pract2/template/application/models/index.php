@@ -5,7 +5,6 @@
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     $title = "Company";
-    if (($ctgs)  && ($news))
-        include ("application/views/index.php");
+    include ("application/views/index.php");
     
 ?>
