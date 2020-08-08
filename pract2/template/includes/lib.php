@@ -172,9 +172,7 @@ include ("config.php");
                       FROM product 
                       JOIN productcategories
                       ON  product.id = productcategories.product_id 
-                      JOIN categories 
-                      ON productcategories.cat_id = categories.id 
-                    WHERE categories.id = :cat_id 
+                    WHERE cat_id = :cat_id 
                     ';
             $maxPage = $pdo->prepare($sql);   
             $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
@@ -221,9 +219,7 @@ include ("config.php");
                      FROM product 
                      JOIN productcategories
                       ON  product.id = productcategories.product_id 
-                      JOIN categories 
-                      ON productcategories.cat_id = categories.id 
-                    WHERE categories.id = :cat_id AND
+                    WHERE cat_id = :cat_id AND
                           price >= :startPrice
                     ';
             $maxPage = $pdo->prepare($sql);
@@ -238,9 +234,7 @@ include ("config.php");
                      FROM product 
                      JOIN productcategories
                       ON  product.id = productcategories.product_id 
-                      JOIN categories 
-                      ON productcategories.cat_id = categories.id 
-                    WHERE categories.id = :cat_id AND
+                    WHERE cat_id = :cat_id AND
                           price <= :finalPrice
                     ';
             $maxPage = $pdo->prepare($sql);
@@ -255,9 +249,7 @@ include ("config.php");
                       FROM product 
                       JOIN productcategories
                       ON product.id = productcategories.product_id 
-                      JOIN categories 
-                      ON productcategories.cat_id = categories.id 
-                    WHERE categories.id = :cat_id AND 
+                    WHERE cat_id = :cat_id AND 
                     price >= :startPrice AND
                     price <= :finalPrice
                     ';
