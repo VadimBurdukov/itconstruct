@@ -16,6 +16,10 @@
 
     /*===============================MAIN PAGE=====================================*/
     /*----------------------------DB CONNECTION------------------------------------*/
-    const topMenuItems = array("index.php"=>"Главная","catalog.php"=>array("items"=>"","name"=>"Каталог"),"about.php" => "О компании","news.php" => "Новости", 
-                                "paydelivery.php" => "Доставка и оплата","contacts.php" => "Контакты" );    
+    $topMenuItems = array("index.php"=>array("items"=>array(),"name"=>"Главная"),
+                          "catalog.php"=>array("items"=>array(),"name"=>"Каталог"),
+                          "about.php" => array("items"=>array(),"name"=>"О компании"),
+                          "news.php" => array("items"=>array(),"name"=>"Новости"), 
+                          "paydelivery.php" => array("items"=>array(),"name"=>"Доставка и оплата"),
+                          "contacts.php" => array("items"=>array(),"name"=>"Контакты" ));    
 ?>

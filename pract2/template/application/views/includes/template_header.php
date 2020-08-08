@@ -35,9 +35,9 @@
 			<div class="wrapper">
 				<span class="menu-toggler">Меню</span>
 				<ul class="menu-togglable">
-					<?foreach (topMenuItems as $href => $item) :?>				
+					<?foreach ($topMenuItems as $href => $item) :?>				
 						<li class="header-nav-item">	
-							<?if($href=="catalog.php"):
+							<?/*if($href=="catalog.php"):
 								if($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
 									<span class="header-nav-item__link header-nav-item__link_current">
 										<?=$item['name']?>
@@ -69,7 +69,7 @@
 							<a class="header-nav-item__link" href="<?=$href?>">
 								<?=$item?>
 							</a>
-							<?endif;?>
+							<?endif;*/?>
 							</span>
 						</li>
 					<? endforeach ?>
