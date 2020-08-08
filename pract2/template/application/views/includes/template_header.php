@@ -37,7 +37,7 @@
 				<ul class="menu-togglable">
 					<?foreach ($topMenuItems as $href => $item) :?>				
 						<li class="header-nav-item">	
-							<?/*if($href=="catalog.php"):
+							<?if(!empty($item['items'])):
 								if($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
 									<span class="header-nav-item__link header-nav-item__link_current">
 										<?=$item['name']?>
@@ -50,26 +50,24 @@
 									</span>
 								<?endif;?>
 								<ul class="sub-menu">
-									<?
-										global $ctgs;
-											foreach ($ctgs as $cat) : ?>
-												<li class="sub-menu__list-item">
-													<a class="sub-menu__link" href="catalog.php?catId=<?=$cat['id']?>">
-														<?=$cat['name']?>
-													</a>
-												</li>
-									<? 		endforeach 		?>
+									<? foreach ($item['items'] as $h => $n) : ?>
+										<li class="sub-menu__list-item">
+											<a class="sub-menu__link" href="<?=$h?>">
+												<?=$n?>
+											</a>
+										</li>
+									<?endforeach ?>
 								</ul>						
 							<? elseif($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
 							<span>
 								<span class="header-nav-item__link header-nav-item__link_current">
-									<?=$item?>
+									<?=$item['name']?>
 								</span>
 							<?else:?>
 							<a class="header-nav-item__link" href="<?=$href?>">
-								<?=$item?>
+								<?=$item['name']?>
 							</a>
-							<?endif;*/?>
+							<?endif;?>
 							</span>
 						</li>
 					<? endforeach ?>
