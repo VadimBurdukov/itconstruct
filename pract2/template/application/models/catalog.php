@@ -13,9 +13,9 @@
   $maxPage = (int)paginationCount($pdo,$startPrice,$finalPrice,$catId);
   $products = getProducst__Limited($pdo, $curPage, $startPrice,$finalPrice,$catId); 
 
-  if (isset($startPrice))
+  if (isset($startPrice) && $startPrice > 0)
     $outputFilt['cost-from'] = $startPrice;             
-  if (isset($finalPrice))
+  if (isset($finalPrice) && $finalPrice > 0)
     $outputFilt['cost-to'] = $finalPrice;  
 
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/

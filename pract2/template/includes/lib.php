@@ -161,25 +161,27 @@ include ("config.php");
                     WHERE cat_id = '.$catId; 
             if (($startPrice)||($finalPrice))
             {
-                $sql .= 'AND';
+                $sql .= ' AND';
             }
         }
         elseif(($startPrice)||($finalPrice))
         {
             $sql .= ' WHERE';
         }
+       
         if($startPrice)
         {
             $sql .= ' price >= '.$startPrice;
             if($finalPrice)
             {
-                $sql .= ' and price <= '.$finalPrice;
+                
+                $sql .= ' AND';
             }
             
         }
         if($finalPrice)
         {
-                $sql .= ' and price <= '.$finalPrice;       
+                $sql .= ' price <= '.$finalPrice;       
         }
         $maxPage = $pdo->query( $sql)->fetch(PDO::FETCH_ASSOC);
         if( (int)$maxPage['count(id)']%prodPerPage ==0 )
