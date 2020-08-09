@@ -4,7 +4,6 @@
     $newsId = 0;
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    
     foreach ($news as $n) 
     {
         if ($n['id'] == $id)

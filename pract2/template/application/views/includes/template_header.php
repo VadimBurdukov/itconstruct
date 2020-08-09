@@ -10,7 +10,6 @@
 	<script src="layout/js/script.js"></script>
 	<title><?=$title?></title>
 </head>
-
 <body>
 	<header class="page-header">
 		<div class="wrapper">
@@ -75,7 +74,6 @@
 			</div>
 		</nav>
 	</header>
-
 	<div class="content">
 		<div class="wrapper content__wrapper">
 			<?if($href=="index.php"):?>

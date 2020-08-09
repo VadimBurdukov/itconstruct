@@ -13,7 +13,6 @@
   {
     $startPrice = 0;
   } 
-
   if (isset($finalPrice) && $finalPrice > 0)
   {
     $outputFilt['cost-to'] = $finalPrice;    
@@ -23,12 +22,8 @@
     $finalPrice = 0;
   }
   $pageNprods = paginationCount($pdo,$curPage,$startPrice,$finalPrice,$catId);
-  //$products = getProducst__Limited($pdo, $curPage, $startPrice,$finalPrice,$catId); 
- // var_dump($pageNprods);
-
   $products = $pageNprods['products'];
   $maxPage =  $pageNprods['count'];
-  //var_dump($products);
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
   {
@@ -51,18 +46,16 @@
     }
     foreach ($topMenuItems as $item => $lvl2Item)
     {
-        if($item=="catalog.php")
+      if($item=="catalog.php")
+      {
+        foreach ($ctgs as $cat) 
         {
-            foreach ($ctgs as $cat) 
-            {
-              $topMenuItems['catalog.php']['items']["catalog.php?catId=".$cat['id']] =  $cat['name'];
-            }
-            
+          $topMenuItems['catalog.php']['items']["catalog.php?catId=".$cat['id']] =  $cat['name'];
         }
+      }
     }
     include ("application/views/catalog.php");
-  }
-    
+  }  
   else 
     include ("404.php");
 ?>

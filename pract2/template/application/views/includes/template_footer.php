@@ -34,10 +34,9 @@
 				</section>
 			<?endif;?>
 		</div>
-		<?
-			if (isset($seo_article))
-				require($seo_article);
-		?> 
+		<?if (isset($seo_article)):
+			require($seo_article);
+		endif?> 
 	</div>
 </div>
 <footer class="page-footer">
@@ -74,7 +73,7 @@
 						<?endif;?>
 						</span>
 					</li>
-				<? endforeach ?>
+				<?endforeach?>
 			</ul>
 		</nav>
 		<div class="developer">
@@ -84,5 +83,4 @@
 	</div>
 </footer>
 </body>
-
 </html>

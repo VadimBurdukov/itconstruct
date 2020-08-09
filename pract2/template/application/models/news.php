@@ -10,6 +10,7 @@
         include("application/views/news.php"); 
     }
     else
+    {
         include("404.php"); 
-
+    }
 ?>

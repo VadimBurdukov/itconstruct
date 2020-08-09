@@ -1,6 +1,5 @@
 <?
     require("application/views/includes/template_header.php");
-
 ?>
 
     <nav class="bread-crumbs-container product__bread-crumbs">

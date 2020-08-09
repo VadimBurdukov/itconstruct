@@ -11,6 +11,5 @@
         }
         
     }
-    
     include("application/models/contacts.php");
 ?>
