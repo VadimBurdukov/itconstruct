@@ -52,12 +52,10 @@ include ("config.php");
         elseif ((!$startPrice)&&(!$finalPrice)) 
         {
             $sql = 'SELECT * 
-                    FROM categories
+                    FROM product
                     JOIN productcategories
-                    ON categories.id = productcategories.cat_id
-                    JOIN product
-                    ON productcategories.product_id = product.id 
-                WHERE categories.id = :cat_id
+                    ON product.id = productcategories.product_id
+   				WHERE cat_id = :cat_id
                 LIMIT :start, :end 
                     ';
             $products = $pdo->prepare($sql);
@@ -102,13 +100,11 @@ include ("config.php");
         elseif((!$finalPrice)&& ($catId))
         {
             $sql = 'SELECT * 
-                    FROM categories 
+                    FROM product
                     JOIN productcategories
-                    ON categories.id = productcategories.cat_id 
-                    JOIN product 
-                    ON productcategories.product_id = product.id 
-                 WHERE categories.id = :cat_id AND
-                       price >= :startPrice 
+                    ON product.id = productcategories.product_id
+   				WHERE cat_id = :cat_id AND
+                      price >= :startPrice 
                 LIMIT :start, :end    
                     ';
             $products = $pdo->prepare($sql);   
@@ -119,12 +115,10 @@ include ("config.php");
         elseif((!$startPrice)&& ($catId))
         {
             $sql = 'SELECT * 
-                    FROM categories 
+                    FROM product
                     JOIN productcategories
-                    ON categories.id = productcategories.cat_id 
-                    JOIN product 
-                    ON productcategories.product_id = product.id 
-                 WHERE categories.id = :cat_id AND
+                    ON product.id = productcategories.product_id
+   				WHERE cat_id = :cat_id AND
                        price <= :finalPrice 
                 LIMIT :start, :end    
                     ';
@@ -135,12 +129,10 @@ include ("config.php");
         else 
         {
             $sql = 'SELECT * 
-                    FROM categories 
+                    FROM product
                     JOIN productcategories
-                    ON categories.id = productcategories.cat_id 
-                    JOIN product 
-                    ON productcategories.product_id = product.id 
-                 WHERE categories.id = :cat_id AND
+                    ON product.id = productcategories.product_id
+   				WHERE cat_id = :cat_id AND
                        price >= :startPrice AND
                        price <= :finalPrice
                 LIMIT :start, :end    
@@ -159,143 +151,59 @@ include ("config.php");
     }
     function paginationCount($pdo, $startPrice,$finalPrice, $catId)
     {
-        if ((!$catId) &&(!$startPrice)&&(!$finalPrice)) 
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                   ';
-            $maxPage =  $pdo->query( $sql);
-        }
-         elseif((!$startPrice)&&(!$finalPrice))
-        {
-             $sql = ' SELECT * 
-                      FROM product 
-                      JOIN productcategories
-                      ON  product.id = productcategories.product_id 
-                    WHERE cat_id = :cat_id 
-                    ';
-            $maxPage = $pdo->prepare($sql);   
-            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $maxPage-> execute();
-        }
-        elseif((!$catId) && (($startPrice)&&($finalPrice)))
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     WHERE price >= :startPrice AND
-                           price <= :finalPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':startPrice', $startPrice);  
-            $maxPage->bindValue(':finalPrice', $finalPrice);  
-            $maxPage-> execute();
-            
-        }
-        elseif((!$finalPrice)&& (!$catId))
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     WHERE price >= :startPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':startPrice', $startPrice);  
-            $maxPage-> execute();
-            
-        }
-        elseif((!$startPrice)&& (!$catId))
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     WHERE price <= :finalPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':finalPrice', $finalPrice);  
-            $maxPage-> execute();
-            
-        }
-        elseif((!$finalPrice)&& ($catId))
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     JOIN productcategories
-                      ON  product.id = productcategories.product_id 
-                    WHERE cat_id = :cat_id AND
-                          price >= :startPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':startPrice', $startPrice);  
-            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $maxPage-> execute();
-            
-        }
-         elseif((!$startPrice)&& ($catId))
-        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     JOIN productcategories
-                      ON  product.id = productcategories.product_id 
-                    WHERE cat_id = :cat_id AND
-                          price <= :finalPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':finalPrice', $finalPrice);  
-            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $maxPage-> execute();
-            
-        }
-        else
-        {
-            $sql = '  SELECT * 
-                      FROM product 
-                      JOIN productcategories
-                      ON product.id = productcategories.product_id 
-                    WHERE cat_id = :cat_id AND 
-                    price >= :startPrice AND
-                    price <= :finalPrice
-                    ';
-            $maxPage = $pdo->prepare($sql);
-            $maxPage->bindValue(':cat_id', $catId, PDO::PARAM_INT); 
-            $maxPage->bindValue(':startPrice', $startPrice);  
-            $maxPage->bindValue(':finalPrice', $finalPrice);  
-            $maxPage-> execute();
-        }
-        $maxPage = $maxPage->rowCount();
+         $sql = ' SELECT count(id) 
+                     FROM product';
         
-        if( $maxPage%prodPerPage ==0 )
-            return $maxPage/prodPerPage;
+        if ($catId) 
+        {
+            $sql .= ' JOIN productcategories
+                      ON  product.id = productcategories.product_id 
+                    WHERE cat_id = '.$catId; 
+            if (($startPrice)||($finalPrice))
+            {
+                $sql .= 'AND';
+            }
+        }
+        elseif(($startPrice)||($finalPrice))
+        {
+            $sql .= ' WHERE';
+        }
+        if($startPrice)
+        {
+            $sql .= ' price >= '.$startPrice;
+            if($finalPrice)
+            {
+                $sql .= ' and price <= '.$finalPrice;
+            }
+            
+        }
+        if($finalPrice)
+        {
+                $sql .= ' and price <= '.$finalPrice;       
+        }
+        $maxPage = $pdo->query( $sql)->fetch(PDO::FETCH_ASSOC);
+        if( (int)$maxPage['count(id)']%prodPerPage ==0 )
+            return  (int)$maxPage['count(id)']/prodPerPage;
         else
-            return (int)($maxPage/prodPerPage) + 1;
+            return (int)((int)$maxPage['count(id)']/prodPerPage) + 1;
     }
 
 /*=======================================PRODUCT=================================== */
    function getProd($pdo, $id, $catId)
    {
+       $sql = 'SELECT *
+                     FROM product ';
        if ($catId) 
        {
-             $sql = ' SELECT product.id,  product.name, product.description, product.price, product.img
-                     FROM product 
-                     JOIN productcategories
+             $sql.= ' JOIN productcategories
                      ON  product.id = product_id
-                     JOIN categories
-                     ON cat_id = categories.id
-                     WHERE product.id = :id AND
-                           categories.id = :catId
-                ';
-            $prod = $pdo->prepare($sql);
-            $prod -> bindValue(':catId', $catId, PDO::PARAM_INT);
-            
+                     WHERE cat_id ='.$catId.' AND ';
        }
        else
        {
-            $sql = ' SELECT * 
-                     FROM product 
-                     WHERE product.id = :id 
-                   ';
-            $prod = $pdo->prepare($sql);
+            $sql .= ' WHERE';
        }
-        
-        $prod -> bindValue(':id', $id, PDO::PARAM_INT);
-        $prod-> execute(); 
+        $sql.=' product.id ='. $id;
         $prod = $prod-> fetchAll(PDO::FETCH_ASSOC); 
         
         return $prod;

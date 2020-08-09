@@ -3,61 +3,22 @@
   $pdo = getDBConnection();
   $ctgs = getAllCtgrs($pdo);
   $news = getAllNews($pdo);
+  if (!isset($catId))
+    $catId = 0;
+  if(!isset( $startPrice))
+    $startPrice = 0;
+  if(!isset( $finalPrice))
+    $finalPrice = 0;
 
-  if ((isset($catId)) && (isset( $startPrice) || isset($finalPrice)))
-  {
-    if ( (isset( $startPrice)) && (isset($finalPrice) ))
-    {
-      $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,$catId);
-      $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,$catId); 
-    }
-    elseif(isset( $startPrice))
-    {
-      $maxPage = (int)paginationCount($pdo, $startPrice, 0,$catId);
-      $products = getProducst__Limited($pdo, $curPage, $startPrice, 0,$catId); 
-    }
-    else 
-    {
-      $maxPage = (int)paginationCount($pdo, 0, $finalPrice,$catId);
-      $products = getProducst__Limited($pdo, $curPage, 0, $finalPrice,$catId); 
-    }
-    
-  }
-  elseif ((isset($startPrice)) || (isset($finalPrice)))
-  {
-    
-    if ( (isset( $startPrice)) && (isset($finalPrice) ))
-    {
-      $maxPage = (int)paginationCount($pdo, $startPrice, $finalPrice,0);
-      $products = getProducst__Limited($pdo, $curPage, $startPrice, $finalPrice,0); 
-    }
-    elseif(isset( $startPrice))
-    {
-      $maxPage = (int)paginationCount($pdo, $startPrice, 0,0);
-      $products = getProducst__Limited($pdo, $curPage, $startPrice, 0,0); 
-    }
-    else 
-    {
-      $maxPage = (int)paginationCount($pdo, 0, $finalPrice,0);
-      $products = getProducst__Limited($pdo, $curPage, 0, $finalPrice,0); 
-    }
-  }
-  elseif (isset($catId))
-  {
-    $maxPage = (int)paginationCount($pdo, 0, 0,$catId);
-    $products = getProducst__Limited($pdo, $curPage, 0, 0,$catId); 
-  }
-  else
-  {
-    $maxPage = (int)paginationCount($pdo,0,0,0);
-    $products = getProducst__Limited($pdo, $curPage, 0,0,0); 
-  } 
+  $maxPage = (int)paginationCount($pdo,$startPrice,$finalPrice,$catId);
+  $products = getProducst__Limited($pdo, $curPage, $startPrice,$finalPrice,$catId); 
 
   if (isset($startPrice))
-    $outputFilt = array('cost-from' => $startPrice);             
+    $outputFilt['cost-from'] = $startPrice;             
   if (isset($finalPrice))
-    $outputFilt = array('cost-to' => $finalPrice);
-  
+    $outputFilt['cost-to'] = $finalPrice;  
+
+/*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
   {
     $curHref="";
@@ -83,14 +44,11 @@
         {
             foreach ($ctgs as $cat) 
             {
-              //var_dump($cat);
               $topMenuItems['catalog.php']['items']["catalog.php?catId=".$cat['id']] =  $cat['name'];
-               //var_dump( $lvl2Item['items'][$cat['name']]);
             }
             
         }
     }
-    //var_dump( $topMenuItems['catalog.php']['items']);
     include ("application/views/catalog.php");
   }
     

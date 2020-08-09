@@ -50,9 +50,9 @@
 		</div>
 		<nav class="footer-nav">
 			<ul class="footer-nav__list">
-				<?foreach (topMenuItems as $href => $item) :?>
-					<li class="footer-nav__list-item">
-						<?if($href=="catalog.php"):
+				<?foreach ($topMenuItems as $href => $item) :?>				
+					<li class="footer-nav__list-item">	
+						<?if(!empty($item['items'])):
 							if($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
 								<span class="footer-nav__link">
 									<?=$item['name']?>
@@ -61,16 +61,18 @@
 								<a class="footer-nav__link" href="<?=$href?>">
 									<?=$item['name']?>
 								</a>
-							<?endif;?>			
+							<?endif;?>					
 						<? elseif($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>
-						<span class="footer-nav__link">
-							<?=$item?>
-						</span>	
+						<span>
+							<span class="footer-nav__link">
+								<?=$item['name']?>
+							</span>
 						<?else:?>
-							<a class="footer-nav__link" href="<?=$href?>">
-								<?=$item?>
-							</a>
+						<a class="footer-nav__link" href="<?=$href?>">
+							<?=$item['name']?>
+						</a>
 						<?endif;?>
+						</span>
 					</li>
 				<? endforeach ?>
 			</ul>
