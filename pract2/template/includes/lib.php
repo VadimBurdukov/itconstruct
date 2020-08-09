@@ -39,174 +39,78 @@ include ("config.php");
         return $news;  
     }
 /*=======================================CATALOG=================================== */
-    function getProducst__Limited($pdo, $page, $startPrice, $finalPrice, $catId)
+    function paginationCount($pdo, $page,$startPrice,$finalPrice, $catId)
     {
-        if((!$catId) && (!$startPrice)&&(!$finalPrice)) 
-        {
-            $sql = 'SELECT * 
-                    FROM product 
-                    LIMIT :start, :end
-                   ';
-            $products = $pdo->prepare($sql);
-        }
-        elseif ((!$startPrice)&&(!$finalPrice)) 
-        {
-            $sql = 'SELECT * 
-                    FROM product
-                    JOIN productcategories
-                    ON product.id = productcategories.product_id
-   				WHERE cat_id = :cat_id
-                LIMIT :start, :end 
-                    ';
-            $products = $pdo->prepare($sql);
-            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-        }
-        elseif((!$catId) && (($startPrice)&&($finalPrice)))
-        {
-            $sql = 'SELECT * 
-                    FROM product 
-                WHERE price >= :startPrice AND
-                      price <= :finalPrice
-                LIMIT :start, :end                
-                    ';
-            $products = $pdo->prepare($sql);
-            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
-            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);     
-        }
-        elseif((!$finalPrice)&& (!$catId))
-        {
-            $sql = 'SELECT * 
-                    FROM product 
-                WHERE price >= :startPrice
-                LIMIT :start, :end                
-                    ';
-            $products = $pdo->prepare($sql);
-            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
-            
-        }
-        elseif((!$startPrice) && (!$catId))
-        {
-            
-            $sql = 'SELECT * 
-                    FROM product 
-                WHERE price <= :finalPrice
-                LIMIT :start, :end                
-                    ';
-            $products = $pdo->prepare($sql);
-            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
-            
-            
-        }
-        elseif((!$finalPrice)&& ($catId))
-        {
-            $sql = 'SELECT * 
-                    FROM product
-                    JOIN productcategories
-                    ON product.id = productcategories.product_id
-   				WHERE cat_id = :cat_id AND
-                      price >= :startPrice 
-                LIMIT :start, :end    
-                    ';
-            $products = $pdo->prepare($sql);   
-            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
-             
-        }
-        elseif((!$startPrice)&& ($catId))
-        {
-            $sql = 'SELECT * 
-                    FROM product
-                    JOIN productcategories
-                    ON product.id = productcategories.product_id
-   				WHERE cat_id = :cat_id AND
-                       price <= :finalPrice 
-                LIMIT :start, :end    
-                    ';
-            $products = $pdo->prepare($sql);   
-            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
-        }
-        else 
-        {
-            $sql = 'SELECT * 
-                    FROM product
-                    JOIN productcategories
-                    ON product.id = productcategories.product_id
-   				WHERE cat_id = :cat_id AND
-                       price >= :startPrice AND
-                       price <= :finalPrice
-                LIMIT :start, :end    
-                    ';
-            $products = $pdo->prepare($sql);   
-            $products->bindValue(':cat_id', $catId, PDO::PARAM_INT);   
-            $products->bindValue(':startPrice', $startPrice, PDO::PARAM_INT);  
-            $products->bindValue(':finalPrice', $finalPrice, PDO::PARAM_INT);  
-            
-        }
-        $products->bindValue(':start', prodPerPage*($page -1), PDO::PARAM_INT);  
-        $products->bindValue(':end', prodPerPage, PDO::PARAM_INT);  
-        $products -> execute();
-        $products = $products->fetchAll(PDO::FETCH_ASSOC);
-        return $products;
-    }
-    function paginationCount($pdo, $startPrice,$finalPrice, $catId)
-    {
-         $sql = ' SELECT count(id) 
+        $sql = ' SELECT count(id) 
                      FROM product';
-        
+        $sqlProd = 'SELECT * 
+                    FROM product';
         if ($catId) 
         {
-            $sql .= ' JOIN productcategories
+            $add= ' JOIN productcategories
                       ON  product.id = productcategories.product_id 
                     WHERE cat_id = '.$catId; 
+            $sql.=$add;
+            $sqlProd.=$add;
             if (($startPrice)||($finalPrice))
             {
                 $sql .= ' AND';
+                $sqlProd.= ' AND';
             }
         }
         elseif(($startPrice)||($finalPrice))
         {
             $sql .= ' WHERE';
+            $sqlProd.= ' WHERE';
         }
        
         if($startPrice)
         {
             $sql .= ' price >= '.$startPrice;
+            $sqlProd.= ' price >= '.$startPrice;
             if($finalPrice)
             {
                 
                 $sql .= ' AND';
+                $sqlProd .= ' AND';
             }
             
         }
         if($finalPrice)
         {
-                $sql .= ' price <= '.$finalPrice;       
+                $sql .= ' price <= '.$finalPrice;
+                $sqlProd .= ' price <= '.$finalPrice;            
         }
+        $start = (int)prodPerPage*($page -1);
+        $end = (int)prodPerPage;
+        $sqlProd .= ' LIMIT '.$start.','. $end ;
         $maxPage = $pdo->query( $sql)->fetch(PDO::FETCH_ASSOC);
+        $products = $pdo->query( $sqlProd)->fetchAll(PDO::FETCH_ASSOC);
+        
         if( (int)$maxPage['count(id)']%prodPerPage ==0 )
-            return  (int)$maxPage['count(id)']/prodPerPage;
+            $countRes = (int)$maxPage['count(id)']/prodPerPage;   
         else
-            return (int)((int)$maxPage['count(id)']/prodPerPage) + 1;
+            $countRes =  (int)((int)$maxPage['count(id)']/prodPerPage) + 1;
+        return  array('count' => $countRes, 'products' =>$products);
     }
 
 /*=======================================PRODUCT=================================== */
    function getProd($pdo, $id, $catId)
    {
-       $sql = 'SELECT *
-                     FROM product ';
-       if ($catId) 
-       {
-             $sql.= ' JOIN productcategories
-                     ON  product.id = product_id
-                     WHERE cat_id ='.$catId.' AND ';
-       }
-       else
-       {
-            $sql .= ' WHERE';
-       }
+        $sql = 'SELECT *
+                        FROM product ';
+        if ($catId) 
+        {
+                $sql.= ' JOIN productcategories
+                        ON  product.id = product_id
+                        WHERE cat_id ='.$catId.' AND ';
+        }
+        else
+        {
+                $sql .= ' WHERE';
+        }
         $sql.=' product.id ='. $id;
-        $prod = $prod-> fetchAll(PDO::FETCH_ASSOC); 
+        $prod = $pdo->query( $sql)->fetchAll(PDO::FETCH_ASSOC); 
         
         return $prod;
    }

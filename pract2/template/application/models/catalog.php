@@ -5,19 +5,30 @@
   $news = getAllNews($pdo);
   if (!isset($catId))
     $catId = 0;
-  if(!isset( $startPrice))
-    $startPrice = 0;
-  if(!isset( $finalPrice))
-    $finalPrice = 0;
-
-  $maxPage = (int)paginationCount($pdo,$startPrice,$finalPrice,$catId);
-  $products = getProducst__Limited($pdo, $curPage, $startPrice,$finalPrice,$catId); 
-
   if (isset($startPrice) && $startPrice > 0)
-    $outputFilt['cost-from'] = $startPrice;             
-  if (isset($finalPrice) && $finalPrice > 0)
-    $outputFilt['cost-to'] = $finalPrice;  
+  {
+    $outputFilt['cost-from'] = $startPrice;    
+  }     
+  elseif(!isset( $startPrice))
+  {
+    $startPrice = 0;
+  } 
 
+  if (isset($finalPrice) && $finalPrice > 0)
+  {
+    $outputFilt['cost-to'] = $finalPrice;    
+  }     
+  elseif(!isset( $finalPrice))
+  {
+    $finalPrice = 0;
+  }
+  $pageNprods = paginationCount($pdo,$curPage,$startPrice,$finalPrice,$catId);
+  //$products = getProducst__Limited($pdo, $curPage, $startPrice,$finalPrice,$catId); 
+ // var_dump($pageNprods);
+
+  $products = $pageNprods['products'];
+  $maxPage =  $pageNprods['count'];
+  //var_dump($products);
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
   if (($ctgs) && ($news) && ($products) && ($maxPage)) 
   {

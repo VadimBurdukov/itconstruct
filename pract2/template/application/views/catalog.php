@@ -50,8 +50,8 @@
     <ul class="categories categories__reposition">
         <?  foreach ($products as $product):
                 $prodParam = array();
-                if (isset($catId))
-                    $prodParam+=['catIdProd' => $catId];
+                if (isset($catId) && $catId> 0)
+                    $prodParam['catIdProd'] = $catId;
                 $prodParam+=['id' => $product['id']];
                 $prodParamString = http_build_query($prodParam);
                 if (!$product['img'])
