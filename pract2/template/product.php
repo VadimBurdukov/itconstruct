@@ -5,7 +5,9 @@
     }
         else 
         {
-            require("404.php");
+            http_response_code(404);
+            header("Location: 404.php");
+            exit();
         }         
     if (isset( $_GET['catIdProd']))
     {
@@ -13,7 +15,9 @@
             $catId = (int)$_GET['catIdProd'];
         else 
         {
-            require("404.php");
+            http_response_code(404);
+            header("Location: 404.php");
+            exit();
         }        
     }
     include("application/models/product.php");

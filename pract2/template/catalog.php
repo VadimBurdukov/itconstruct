@@ -10,7 +10,8 @@
         else
         {  
             http_response_code(404);
-            header("Location: http://404.php");
+            header("Location: 404.php");
+            exit();
         }   
     }
     else
@@ -42,7 +43,7 @@
         else
         {
             http_response_code(404);
-            header("Refresh:0; url=404.php");
+            header("Location: 404.php");
             exit();
         }     
     }

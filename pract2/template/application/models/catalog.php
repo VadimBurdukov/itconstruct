@@ -58,30 +58,27 @@
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
   if ( $maxPage) 
   {
-    $curHref="";
     $title = "Каталог";
-    $breadCrumbs = array("index.php" => "Главная", "$curHref"=> "Каталог"); 
-    if (isset($catId)) 
+    $breadCrumbs = array("index.php" => "Главная"); 
+    if (isset($catId)&& $catId) 
     {
-      foreach ($ctgs as $cat) 
-      {
-        if($cat['id'] == $catId)
-        {
-          $title = $cat['name'];  
-          unset($breadCrumbs[$curHref]);
-          $breadCrumbs['catalog.php'] = "Каталог";
-          $breadCrumbs[$curHref] = $title;
-        }
-           
-      }
-      $items = menu("catalog.php", $ctgs);
+      $title = $ctgs[$catId]['name'];  
+      $breadCrumbs['catalog.php'] = "Каталог";
+      $breadCrumbs[''] = $ctgs[$catId-1]['name'];
+     
     }
+    else 
+    {
+      $breadCrumbs[''] = "Каталог";
+    }
+     $items = menu("catalog.php", $ctgs);
     include ("application/views/catalog.php");
   }  
   else 
   {
-    header("Location: 404.php");
     http_response_code(404);
+    header("Location: 404.php");
+    exit();
   }
     
 ?>
