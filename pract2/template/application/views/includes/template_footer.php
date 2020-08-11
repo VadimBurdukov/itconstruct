@@ -1,7 +1,7 @@
    
-	</main>  
-		<div class="sidebar">
-   			<?if($ctgs != NULL):?>
+	</main>   		
+		<div class="sidebar">   
+			<?if(count($ctgs) != NULL):?>			
 				<section class="catalog">
 					<h2 class="sidebar__headline">Каталог</h2>
 					<ul class="catalog-list">				
@@ -17,7 +17,7 @@
 					</ul>
 				</section>
 			<?endif;
-			if($news != NULL):?>
+			if(count($news) != NULL):?>
 				<section class="news">
 					<h2 class="sidebar__headline news__headline">Новости</h2>				
 						<ul class="news-list">			
@@ -31,7 +31,7 @@
 							<?endforeach;?>					
 						</ul>					
 					<span class="archive"><a class="archive__link" href="news.php">Архив новостей</a></span>
-				</section>
+				</section>	
 			<?endif;?>
 		</div>
 		<?if (isset($seo_article)):

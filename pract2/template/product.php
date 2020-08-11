@@ -14,7 +14,9 @@
         if((int)$output['catIdProd']>0)
             $catId = (int)$output['catIdProd'];
         else 
+        {
             require("404.php");
+        }        
     }
     include("application/models/product.php");
 ?>

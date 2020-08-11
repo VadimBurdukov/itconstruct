@@ -7,5 +7,8 @@
         include("application/models/news-detail.php"); 
     }
     else
+    {
         include("404.php"); 
+    }
+       
 ?>
