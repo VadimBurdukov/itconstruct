@@ -45,6 +45,7 @@
             $breadCrumbs["catalog.php?catId=$catId"] = $curCategoryName;
         }
         $breadCrumbs[$curHref] = $title;
+        $items = menu("catalog.php", $ctgs);
         include ("application/views/product.php");
     }
     else 

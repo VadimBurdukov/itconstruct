@@ -92,22 +92,15 @@
         }
            
       }
-    }
-    foreach ($topMenuItems as $item => $lvl2Item)
-    {
-      if($item=="catalog.php")
-      {
-        foreach ($ctgs as $cat) 
-        {
-          $topMenuItems['catalog.php']['items']["catalog.php?catId=".$cat['id']] =  $cat['name'];
-        }
-      }
+      $items = menu("catalog.php", $ctgs);
+      //var_dump($items);
     }
     include ("application/views/catalog.php");
   }  
   else 
   {
-    include ("404.php");
+    header("Location: 404.php");
+    http_response_code(404);
   }
     
 ?>

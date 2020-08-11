@@ -34,7 +34,7 @@
 			<div class="wrapper">
 				<span class="menu-toggler">Меню</span>
 				<ul class="menu-togglable">
-					<?foreach ($topMenuItems as $href => $item) :?>				
+					<?foreach ($items as $href => $item) :?>				
 						<li class="header-nav-item">	
 							<?if(!empty($item['items'])):
 								if($href==(basename($_SERVER['SCRIPT_FILENAME']))):?>

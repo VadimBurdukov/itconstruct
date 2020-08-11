@@ -5,6 +5,7 @@
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     $title = "Company";
+    $items = menu("catalog.php", $ctgs);
     include ("application/views/index.php");
     
 ?>

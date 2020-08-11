@@ -14,6 +14,7 @@
         }
     }
     $title = "Контакты";
-    $breadCrumbs = array("index.php" => "Главная", "" => $title ); 
+    $breadCrumbs = array("index.php" => "Главная", "" => $title );
+    $items = menu("catalog.php", $ctgs); 
     include ("application/views/contacts.php");
 ?>

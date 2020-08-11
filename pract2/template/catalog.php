@@ -9,9 +9,10 @@
         if( (int)$output['page'] > 0)
             $curPage = (int)$output['page'];
         else
-        {
-            require("404.php");
-        }
+        {  
+            http_response_code(404);
+            header("Location: http://404.php");
+        } 
            
     }
     else
@@ -32,8 +33,10 @@
             $catId = (int)$output['catId'];
         else
         {
-            require("404.php");
-        }      
+            http_response_code(404);
+            header("Refresh:0; url=404.php");
+            exit();
+        }     
     }
     include("application/models/catalog.php");
 ?>

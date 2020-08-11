@@ -37,7 +37,23 @@ function getAllNews($pdo)
     $news = $news->fetchAll(PDO::FETCH_ASSOC);
     return $news;  
 }
-
+/*=======================================BREADCRUMB MENU=================================== */
+function menu($itemToFill, $ctgs)
+{
+    global $topMenuItems;
+    $items = $topMenuItems;
+    foreach (array_keys($items) as $item)
+    {   
+        if($item== $itemToFill)
+        {
+            foreach ($ctgs as $cat) 
+            {       
+                $items[$itemToFill]['items'][$itemToFill."?catId=".$cat['id']] =  $cat['name'];
+            }
+        }
+    }
+    return $items;
+} 
 /*=======================================CONTACTS=================================== */
 function addToSql($pdo, $author,$email, $text,$phone)
 { 
