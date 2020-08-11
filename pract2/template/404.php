@@ -14,6 +14,4 @@
             <input class="form-submit search-filter__drop" type="button" value="или сбросить фильтры">
         <?endif;?>
     </main>
-<?
-    require("application/views/includes/template_footer.php");
-?>
+<?require("application/views/includes/template_footer.php");?>

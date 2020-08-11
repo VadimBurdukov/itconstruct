@@ -1,4 +1,5 @@
 <?
+    include ("includes/lib.php");
     session_start();
     if (isset($_POST['feedback-author']) && (isset($_POST['email']))&& (isset($_POST['feedback-text'])))
     {

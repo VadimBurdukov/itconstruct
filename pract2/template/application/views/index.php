@@ -1,9 +1,6 @@
-<?
-    require("application/views/includes/template_header.php");
-
-?>
+<?require("application/views/includes/template_header.php");?>
     <h1 class="invisible">Company - Электронные сигареты</h1>
-    <?if(count ($ctgs) != NULL):?>
+    <?if(count ($ctgs)):?>
         <ul class="categories">
             <?foreach ($ctgs as $cat):
                 if (!$cat['img'])
@@ -17,5 +14,4 @@
             <? endforeach ?>
         </ul>
     <?endif;
-    require("application/views/includes/template_footer.php");
-?>
+require("application/views/includes/template_footer.php");?>

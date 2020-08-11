@@ -1,7 +1,4 @@
-<?
-    require("application/views/includes/template_header.php");
-?>
-
+<?require("application/views/includes/template_header.php");?>
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
             <?foreach ($breadCrumbs as $href => $b):
@@ -122,7 +119,7 @@ $(document).ready(function () {
         }
         else
         {
-              e.unbind('submit').submit();
+            e.unbind('submit').submit();
         }
     })
     $('form.registration-form').on('submit', function (e) {

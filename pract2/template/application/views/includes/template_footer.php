@@ -1,7 +1,7 @@
    
 	</main>   		
 		<div class="sidebar">   
-			<?if(count($ctgs) != NULL):?>			
+			<?if(count($ctgs)):?>			
 				<section class="catalog">
 					<h2 class="sidebar__headline">Каталог</h2>
 					<ul class="catalog-list">				
@@ -17,7 +17,7 @@
 					</ul>
 				</section>
 			<?endif;
-			if(count($news) != NULL):?>
+			if(count($news)):?>
 				<section class="news">
 					<h2 class="sidebar__headline news__headline">Новости</h2>				
 						<ul class="news-list">			

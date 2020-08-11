@@ -55,7 +55,7 @@ function menu($itemToFill, $ctgs)
     return $items;
 } 
 /*=======================================CONTACTS=================================== */
-function addToSql($pdo, $author,$email, $text,$phone)
+function addFeedbackData($pdo, $author,$email, $text,$phone)
 { 
     $sql =  'INSERT INTO feedback 
              (name, email, tel,request) 
@@ -67,4 +67,12 @@ function addToSql($pdo, $author,$email, $text,$phone)
     $req -> bindValue(':text', $text, PDO::PARAM_INT);
     $req -> bindValue(':phone', $phone, PDO::PARAM_INT);
     $req-> execute(); 
-}?>
+}
+/*=======================================404=================================== */
+function error()
+{ 
+    http_response_code(404);
+    header("Location: 404.php");
+    exit();
+}
+?>

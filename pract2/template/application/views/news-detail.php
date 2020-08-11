@@ -1,7 +1,4 @@
-<?
-    require("application/views/includes/template_header.php");
-?>  
-
+<?require("application/views/includes/template_header.php");?>  
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
             <?foreach ($breadCrumbs as $href => $b):
@@ -22,6 +19,4 @@
     </section>
 </main>
             
-<?
-    require("application/views/includes/template_footer.php");
-?>
+<?require("application/views/includes/template_footer.php");?>

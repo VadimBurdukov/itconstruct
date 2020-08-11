@@ -1,39 +1,26 @@
 <?
-/*=============================ФУНКЦИЯ ЗАПРОСА К БД===================================*/
-    function getProd($pdo, $id, $catId)
-    {
-        $sql = 'SELECT *
-                FROM product ';
-        if ($catId) 
-        {
-            $sql.= 'JOIN productcategories
-                    ON  product.id = product_id
-                    WHERE cat_id ='.$catId.' AND ';
-        }
-        else
-        {
-            $sql .= ' WHERE';
-        }
-        $sql.=' product.id ='. $id;
-        $prod = $pdo->query( $sql)->fetchAll(PDO::FETCH_ASSOC); 
-        return $prod;
-    }
 /*=============================ФОРМИРОВАНИЕ ДАННЫХ===================================*/
-    include ("includes/lib.php");
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    if (isset($catId))
+    if (isset($catId) && ($catId))
     {
-        foreach ($ctgs as $ct) 
-        {
-            if ($ct['id'] == $catId)
-                $curCategoryName = $ct['name'];
-        }
-        $prodInfo = getProd($pdo, $id, $catId);
+        $curCategoryName = $ctgs[$catId-1]['name'];
     }  
+    $sql = 'SELECT *    
+                FROM product ';
+    if ($catId) 
+    {
+        $sql.= 'JOIN productcategories
+                ON  product.id = product_id
+                WHERE cat_id ='.$catId.' AND ';
+    }
     else
-        $prodInfo = getProd($pdo, $id, 0);
+    {
+        $sql .= ' WHERE';
+    }
+    $sql.=' product.id ='. $id;
+    $prodInfo = $pdo->query( $sql)->fetchAll(PDO::FETCH_ASSOC); 
     if ($prodInfo)
     {
         $prod = $prodInfo[0];
@@ -50,8 +37,6 @@
     }
     else 
     {
-        http_response_code(404);
-        header("Location: 404.php");
-        exit();
+        error();
     }      
 ?>

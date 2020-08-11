@@ -1,5 +1,4 @@
 <?
-    include ("includes/lib.php");
     $pdo = getDBConnection();
     $newsId = 0;
     $ctgs = getAllCtgrs($pdo);
@@ -24,8 +23,6 @@
     }         
     else
     {
-        http_response_code(404);
-        header("Location: 404.php");
-        exit(); 
+       error();
     }   
 ?>
