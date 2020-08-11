@@ -41,7 +41,7 @@
 									<span class="header-nav-item__link header-nav-item__link_current">
 										<?=$item['name']?>
 									</span>
-								<?else:?>
+								<?else: ?>
 									<span class="header-nav-item__container-for-link">
 										<a class="header-nav-item__link" href="<?=$href?>">
 											<?=$item['name']?>

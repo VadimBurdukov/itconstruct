@@ -51,30 +51,12 @@
   include ("includes/lib.php");
   $pdo = getDBConnection();
   $ctgs = getAllCtgrs($pdo);
-  $news = getAllNews($pdo);
-  if (!isset($catId))
-    $catId = 0;
-  if (isset($startPrice) && $startPrice > 0)
-  {
-    $outputFilt['cost-from'] = $startPrice;    
-  }     
-  elseif(!isset( $startPrice))
-  {
-    $startPrice = 0;
-  } 
-  if (isset($finalPrice) && $finalPrice > 0)
-  {
-    $outputFilt['cost-to'] = $finalPrice;    
-  }     
-  elseif(!isset( $finalPrice))
-  {
-    $finalPrice = 0;
-  }
+  $news = getAllNews($pdo);   
   $pageNprods = requests($pdo,$curPage,$startPrice,$finalPrice,$catId);
   $products = $pageNprods['products'];
   $maxPage =  $pageNprods['count'];
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
-  if (($ctgs) && ($news) && ($products) && ($maxPage)) 
+  if ( $maxPage) 
   {
     $curHref="";
     $title = "Каталог";
@@ -93,7 +75,6 @@
            
       }
       $items = menu("catalog.php", $ctgs);
-      //var_dump($items);
     }
     include ("application/views/catalog.php");
   }  
