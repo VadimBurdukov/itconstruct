@@ -1,18 +1,16 @@
 <?
-    $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
-    parse_str($paramString, $output);
-    if (isset( $output['id']) && (int)$output['id']>0 )
+    if (isset( $_GET['id']) && (int)$_GET['id']>0 )
     {
-        $id = (int)$output['id'];
+        $id = (int)$_GET['id'];
     }
         else 
         {
             require("404.php");
         }         
-    if (isset( $output['catIdProd']))
+    if (isset( $_GET['catIdProd']))
     {
-        if((int)$output['catIdProd']>0)
-            $catId = (int)$output['catIdProd'];
+        if((int)$_GET['catIdProd']>0)
+            $catId = (int)$_GET['catIdProd'];
         else 
         {
             require("404.php");

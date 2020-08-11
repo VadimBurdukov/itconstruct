@@ -1,36 +1,31 @@
 
 <?php
-    $paramString = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
-    
-    parse_str($paramString, $output);
-    if (isset( $output['page']) )
+    if (isset( $_GET['page']) )
     {
-       // var_dump($_GET['page']);
-        if( (int)$output['page'] > 0)
-            $curPage = (int)$output['page'];
+        if( (int)$_GET['page'] > 0)
+            $curPage = (int)$_GET['page'];
         else
         {  
             http_response_code(404);
             header("Location: http://404.php");
-        } 
-           
+        }   
     }
     else
     {
         $curPage = 1;
     }       
-    if (isset( $output['cost-from'])&& ($output['cost-from'] >=0 ))
+    if (isset( $_GET['cost-from'])&& ($_GET['cost-from'] >=0 ))
     {
-        $startPrice = (float)$output['cost-from'];
+        $startPrice = (float)$_GET['cost-from'];
     }
-    if ( isset( $output['cost-to'])&& ($output['cost-to']  >=0 ))
+    if ( isset( $_GET['cost-to'])&& ($_GET['cost-to']  >=0 ))
     {
-        $finalPrice = (float)$output['cost-to'];
+        $finalPrice = (float)$_GET['cost-to'];
     }
-    if (isset( $output['catId']))
+    if (isset( $_GET['catId']))
     {
-        if( (int)$output['catId'] > 0)
-            $catId = (int)$output['catId'];
+        if( (int)$_GET['catId'] > 0)
+            $catId = (int)$_GET['catId'];
         else
         {
             http_response_code(404);

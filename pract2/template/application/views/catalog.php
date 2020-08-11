@@ -17,23 +17,15 @@
     <form class="search-filter" id="catalog-page__search-filter-1" action="catalog.php" method="GET">
         <span class="search-filter__item">
             <label class="search-filter__label" for="cost-from">Цена</label>
-            <?if(isset( $startPrice) && $startPrice>0):?>
-                <input class="search-filter__input" step="0.01" type="number" min="0" value=<?=$startPrice?> name="cost-from" id="cost-from" placeholder="от">
-            <?else:?>
-                <input class="search-filter__input" step="0.01" type="number" min="0" name="cost-from" id="cost-from" placeholder="от">
-            <?endif;?>
+            <input class="search-filter__input" step="0.01" type="number" min="0" <?if (isset( $startPrice) && $startPrice>0):?> value=<?=$startPrice?> <?endif;?> name="cost-from" id="cost-from" placeholder="от">
         </span>
         <span class="search-filter__item">
             <label class="search-filter__label" for="cost-to">—</label>
-            <?if(isset( $finalPrice) && $finalPrice>0):?>
-                <input class="search-filter__input" step="0.01" type="number" min="0" value=<?=$finalPrice?> name="cost-from" id="cost-from" placeholder="от">
-            <?else:?>
-                 <input class="search-filter__input" type="number" min="0"  name="cost-to" id="cost-to" placeholder="до">
-            <?endif;?>      
+            <input class="search-filter__input" step="0.01" type="number" min="0" <?if (isset( $finalPrice) && $finalPrice>0):?> value=<?=$finalPrice?> <?endif;?>name="cost-to" id="cost-to" placeholder="до">     
         </span>  
-        <?foreach ($output as $o =>$value):
-            if ($o == "catId"): ?>
-                <input type="hidden" name=<?=$o?> value=<?=$value?>>
+        <?foreach ($_GET as $g =>$value):
+            if ($g == "catId"): ?>
+                <input type="hidden" name=<?=$g?> value=<?=$value?>>
             <?endif;?>
         <? endforeach?>     
         <input class="form-submit search-filter__apply" type="submit" value="Применить">
@@ -59,8 +51,8 @@
     </ul>
     <ul class="paginator catalog-page__paginator">
         <?if ($curPage != 1): 
-            $output['page'] = $curPage-1;
-            $paramString = http_build_query($output); ?>
+            $_GET['page'] = $curPage-1;
+            $paramString = http_build_query($_GET); ?>
                 <li class="paginator__elem paginator__elem_next">
                     <a href="catalog.php?<?=$paramString?>" class="paginator__link">
                         Предыдущая страница
@@ -78,8 +70,8 @@
             <? else: ?>
                 <li class="paginator__elem">
                     <?
-                        $output['page'] = $i;
-                        $paramString = http_build_query($output);
+                        $_GET['page'] = $i;
+                        $paramString = http_build_query($_GET);
                     ?>
                     <a href="catalog.php?<?=$paramString?>" class="paginator__link">  
                         <?=$i;?>
@@ -88,8 +80,8 @@
             <? endif;
         }
         if ($curPage != $maxPage):
-            $output['page'] = $curPage+1;
-            $paramString = http_build_query($output); ?>
+            $_GET['page'] = $curPage+1;
+            $paramString = http_build_query($_GET); ?>
                 <li class="paginator__elem paginator__elem_next">
                     <a href="catalog.php?<?=$paramString?>" class="paginator__link">
                         Следующая страница

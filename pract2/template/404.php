@@ -4,6 +4,7 @@
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     $title="Ошибка";
+    $items = menu("catalog.php", $ctgs);
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">

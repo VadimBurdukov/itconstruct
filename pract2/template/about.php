@@ -5,6 +5,7 @@
     $news = getAllNews($pdo);
     $title="О компании";
     $breadCrumbs = array("index.php" => "Главная", "" => $title); 
+    $items = menu("catalog.php", $ctgs);
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">
