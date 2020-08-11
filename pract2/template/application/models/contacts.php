@@ -1,15 +1,24 @@
 <?
+    //include ("includes/lib.php");
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
     $errorParam = 0;
-    if (isset($_SESSION['author']) && (isset($_SESSION['email']))&& (isset($_SESSION['text'])))
+    if (isset($name) && isset($email)&&isset($request))
     {
-        $errorParam = 1;
-        addFeedbackData($pdo, $_SESSION['author'], $_SESSION['email'],$_SESSION['text'],0);
-        if (isset($_SESSION['phone']))
+        if(!isset($phone))
+            $phone = '-';
+        if ( $errors=='')
         {
-            addFeedbackData($pdo, $_SESSION['author'], $_SESSION['email'],$_SESSION['text'],$_SESSION['phone']);
+            $sql =  "INSERT INTO feedback (name, email, tel, request)
+                    VALUES('".$name."', '".$email."', '".$phone."','".$request."')";
+            $pdo-> query($sql); 
+            $_SESSION['subFlag'] = trUe;
+            $name = '';
+            $email = '';
+            $phone = '';
+            $request = '';
+            /* ЗДЕСЬ НУЖНО БУДЕТ ПОМЕНЯТЬ НА ПОСТ !!!!! */
         }
     }
     $title = "Контакты";

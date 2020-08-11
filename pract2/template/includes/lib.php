@@ -57,16 +57,7 @@ function menu($itemToFill, $ctgs)
 /*=======================================CONTACTS=================================== */
 function addFeedbackData($pdo, $author,$email, $text,$phone)
 { 
-    $sql =  'INSERT INTO feedback 
-             (name, email, tel,request) 
-             VALUES (:author, :email, :text, :phone)
-            ';
-    $req = $pdo->prepare($sql);
-    $req -> bindValue(':author', $author, PDO::PARAM_INT);
-    $req -> bindValue(':email', $email, PDO::PARAM_INT);
-    $req -> bindValue(':text', $text, PDO::PARAM_INT);
-    $req -> bindValue(':phone', $phone, PDO::PARAM_INT);
-    $req-> execute(); 
+    
 }
 /*=======================================404=================================== */
 function error()

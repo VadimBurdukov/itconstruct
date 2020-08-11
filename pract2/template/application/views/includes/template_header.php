@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" href="layout/img/favicon.png" type="image/png">
 	<link rel="alternate" href="https://allfont.ru/allfont.css?fonts=arial-narrow">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="layout/js/script.js"></script>
+	<script src="layout/js/script.js"></script> 
 	<title><?=$title?></title>
 </head>
 <body>

@@ -1,4 +1,4 @@
-<?require("application/views/includes/template_header.php");?>
+<?include("application/views/includes/template_header.php");?>
     <nav class="bread-crumbs-container product__bread-crumbs">
         <ul class="bread-crumbs">
             <?foreach ($breadCrumbs as $href => $b):
@@ -61,29 +61,34 @@
             </tr>
         </tbody>
     </table>
+    <?if(( $_SESSION['subFlag'])):?>
+        <h2 class="feedback-form__headline">Благодарим за отзыв!</h2>
+    <?else:?>  
     <section class="feedback-form">
         <h2 class="feedback-form__headline">Форма обратной связи</h2>
         <p class="feedback-form__hint">
             <span class="required-star">*</span> — обязательные для заполнения поля
         </p>
-        <aside class="error-box error-text" >
-            <p class="error-message">
-                Отзыв уже был отправлен. Пожалуйста, повторите попытку позже
-            </p>
-        </aside>
+        <?if ($errors!=''):?>
+            <aside class="error-box error-text" >
+                <p class="error-message">          
+                    <?echo $errors;?>
+                </p>
+            </aside>
+        <?endif;?>
         <form method="POST" class="registration-form" name="contats-page__feedback-form">
             <div class="feedback-form__row">
                 <label class="inner-label" for="feedback-author">
                     Имя <span class="required-star">*</span>
                 </label>
-                <input class="inner-input-box inner-input-box__name" type="text" name="feedback-author" id="feedback-author">
+                <input class="inner-input-box inner-input-box__name" <?if (isset( $name)):?> value=<?=$name;?> <?endif;?> type="text"  name="feedback-author"  id="feedback-author">
                 <span class="error-text feedback-form__error-hint error-emptyness invisible">Поле «Имя» должно быть заполнено</span>
             </div>
             <div class="feedback-form__row">
                 <label class="inner-label" for="email">
                     Электронная почта <span class="required-star">*</span>
                 </label>
-                <input class="inner-input-box inner-input-box__email" type="email" name="email" id="email">
+                <input class="inner-input-box inner-input-box__email" <?if (isset($email)):?>value=<?=$email?><?endif;?> type="email" name="email" id="email">
                 <span class="error-text feedback-form__error-hint error-emptyness invisible">Поле «Электронная почта» должно
                     быть заполнено</span>
             </div>
@@ -91,23 +96,24 @@
                 <label class="inner-label optional" for="phone">
                     Телефон
                 </label>
-                <input class="inner-input-box" type="tel" name="phone" id="phone">
+                <input class="inner-input-box" type="tel" <?if (isset($phone)):?>value=<?=$phone?><?endif;?> name="phone" id="phone">
             </div>
             <div class="feedback-form__row feedback-form__row_left-shift">
                 <label class="inner-label feedback-text-area__label" for="feedback-text">
                     Пожалуйста укажите какого рода информация вас интересует <span class="required-star">*</span>
                 </label>
-                <textarea class="inner-input-box feedback-text-area__input" name="feedback-text" id="feedback-text" required></textarea>
+                <textarea class="inner-input-box feedback-text-area__input"  name="feedback-text" id="feedback-text" ><?if (isset($request)):?><?=$request?><?endif;?></textarea>
                 <div>
-                    <input errorParam=<?=$errorParam?> class="form-submit data-send" type="submit" value="Отправить">
+                    <input class="form-submit data-send" type="submit" value="Отправить">
                     <input class="form-submit clear-inputs" type="button" value="Очистить поля">
                 </div>
             </div>
         </form>
     </section>
+    <?endif;?>
 </main>
 
-<script>
+<!-- <script>
 $(document).ready(function () {
     $('input.data-send').on('click', function (e) {
         
@@ -128,7 +134,7 @@ $(document).ready(function () {
         $('.error-box').css('opacity', 1);
     })
 });
-</script>
+</script> -->
 <?
     session_destroy();
     require("application/views/includes/template_footer.php");
