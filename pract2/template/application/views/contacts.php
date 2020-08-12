@@ -61,7 +61,7 @@
             </tr>
         </tbody>
     </table>
-    <?if(( $_SESSION['subFlag'])):?>
+    <?if((!$_SESSION['subFlag'])):?>
         <h2 class="feedback-form__headline">Благодарим за отзыв!</h2>
     <?else:?>  
     <section class="feedback-form">
@@ -69,7 +69,7 @@
         <p class="feedback-form__hint">
             <span class="required-star">*</span> — обязательные для заполнения поля
         </p>
-        <?if ($errors!=''):?>
+        <?if ($errors):?>
             <aside class="error-box error-text" >
                 <p class="error-message">          
                     <?echo $errors;?>
@@ -96,7 +96,7 @@
                 <label class="inner-label optional" for="phone">
                     Телефон
                 </label>
-                <input class="inner-input-box" type="tel" <?if (isset($phone)):?>value=<?=$phone?><?endif;?> name="phone" id="phone">
+                <input class="inner-input-box" <?if (isset($phone)&&($phone)): ?>value=<?=$phone?><?endif;?> type="tel"  name="phone" id="phone">
             </div>
             <div class="feedback-form__row feedback-form__row_left-shift">
                 <label class="inner-label feedback-text-area__label" for="feedback-text">
@@ -112,31 +112,4 @@
     </section>
     <?endif;?>
 </main>
-
-<!-- <script>
-$(document).ready(function () {
-    $('input.data-send').on('click', function (e) {
-        
-        var errorParam = $(this).attr("errorParam");
-        if(errorParam)
-        {
-            e.preventDefault();
-            $('.error-box').css('opacity', 1);
-        }
-        else
-        {
-            e.unbind('submit').submit();
-        }
-    })
-    $('form.registration-form').on('submit', function (e) {
-        $('.error-box').css('color', '#00b31d');
-        $('.error-box').text('Ваше письмо было отправлено. Спасибо за отзыв!');
-        $('.error-box').css('opacity', 1);
-    })
-});
-</script> -->
-<?
-    session_destroy();
-    require("application/views/includes/template_footer.php");
-    
-?>
+<?require("application/views/includes/template_footer.php");?>

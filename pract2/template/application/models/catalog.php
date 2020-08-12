@@ -41,9 +41,12 @@
   $sqlProd .= ' LIMIT '.$start.','. $end ;
   $max = $pdo->query( $sqlCount)->fetch(PDO::FETCH_ASSOC);
   $products = $pdo->query( $sqlProd)->fetchAll(PDO::FETCH_ASSOC);
-   $maxPage = (int)$max['count(id)']/prodPerPage;  
+  $maxPage = (int)$max['count(id)']/prodPerPage;  
   if( (int)$max['count(id)']%prodPerPage != 0 )
+  {
     $maxPage =  (int)((int)$max['count(id)']/prodPerPage) + 1;
+  }
+    
 /*=============================ДАННЫЕ СФОРМИРОВАНЫ===================================*/
   if ( $maxPage) 
   {

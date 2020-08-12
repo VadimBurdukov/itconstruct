@@ -69,7 +69,7 @@
 							<?endif;?>
 							</span>
 						</li>
-					<? endforeach ?>
+					<?endforeach?>
 				</ul>
 			</div>
 		</nav>

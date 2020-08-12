@@ -29,7 +29,9 @@
     if (isset( $_GET['catId']))
     {
         if( (int)$_GET['catId'] > 0)
-            $catId = (int)$_GET['catId'];
+        {
+             $catId = (int)$_GET['catId'];
+        }  
         else
         {
             error();

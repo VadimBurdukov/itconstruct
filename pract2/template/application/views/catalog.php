@@ -1,4 +1,3 @@
-
 <?
     require("application/views/includes/template_header.php");
 ?>
@@ -58,7 +57,7 @@
                         Предыдущая страница
                     </a>
                 </li>
-        <? endif; 
+        <?endif; 
         for ($i = 1; $i <=$maxPage; $i++) 
         {             
             if ($i == $curPage): ?>
@@ -87,7 +86,7 @@
                         Следующая страница
                     </a>
                 </li>
-        <? endif; ?>         
+        <?endif;?>         
     </ul>
 </main>
 <?

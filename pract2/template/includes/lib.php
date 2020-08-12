@@ -54,11 +54,6 @@ function menu($itemToFill, $ctgs)
     }
     return $items;
 } 
-/*=======================================CONTACTS=================================== */
-function addFeedbackData($pdo, $author,$email, $text,$phone)
-{ 
-    
-}
 /*=======================================404=================================== */
 function error()
 { 

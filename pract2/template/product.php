@@ -12,7 +12,9 @@
     if (isset( $_GET['catIdProd']))
     {
         if((int)$_GET['catIdProd']>0)
+        {
             $catId = (int)$_GET['catIdProd'];
+        }    
         else 
         {
            error();
