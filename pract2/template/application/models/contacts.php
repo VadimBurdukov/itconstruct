@@ -2,7 +2,7 @@
     $pdo = getDBConnection();
     $ctgs = getAllCtgrs($pdo);
     $news = getAllNews($pdo);
-    $errorParam = 0;
+    
     if (isset($name) && isset($email)&&isset($request))
     {
         if (!$errors)
@@ -13,11 +13,15 @@
             if($sendData)
             {
                 $_SESSION['subFlag'] = false;
-            }  
+            }
+            else 
+            {
+                $errorParam = 1;   
+            }
         }
     }
     $title = "Контакты";
     $breadCrumbs = array("index.php" => "Главная", "" => $title );
-    $items = menu("catalog.php", $ctgs); 
+    $items = extendMenu("catalog.php", $ctgs); 
     include ("application/views/contacts.php");
 ?>

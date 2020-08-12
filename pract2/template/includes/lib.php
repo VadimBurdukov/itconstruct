@@ -38,7 +38,7 @@ function getAllNews($pdo)
     return $news;  
 }
 /*=======================================BREADCRUMB MENU=================================== */
-function menu($itemToFill, $ctgs)
+function extendMenu($itemToFill, $ctgs)
 {
     global $topMenuItems;
     $items = $topMenuItems;

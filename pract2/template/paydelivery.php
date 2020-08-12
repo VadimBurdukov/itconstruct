@@ -5,7 +5,7 @@
 	$news = getAllNews($pdo);
 	$title="Доставка и оплата";
 	$breadCrumbs = array("index.php" => "Главная",  "" => $title); 
-	$items = menu("catalog.php", $ctgs);
+	$items = extendMenu("catalog.php", $ctgs);
     require("application/views/includes/template_header.php");
 ?>
     <main class="inside-content">

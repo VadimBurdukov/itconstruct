@@ -62,7 +62,7 @@
     {
       $breadCrumbs[''] = "Каталог";
     }
-    $items = menu("catalog.php", $ctgs);
+    $items = extendMenu("catalog.php", $ctgs);
     include ("application/views/catalog.php");
   }  
   else 

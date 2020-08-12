@@ -18,7 +18,7 @@
     {
         $title = $newsTitle;
         $breadCrumbs = array("index.php" => "Главная", "news.php"=> "Новости", "" => $title); 
-        $items = menu("catalog.php", $ctgs);
+        $items = extendMenu("catalog.php", $ctgs);
         include("application/views/news-detail.php");
     }         
     else
