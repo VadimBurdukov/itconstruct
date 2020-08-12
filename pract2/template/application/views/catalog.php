@@ -34,11 +34,15 @@
         <?foreach ($products as $product):
             $prodParam = array();
             if (isset($catId) && $catId> 0)
+            {   
                 $prodParam['catIdProd'] = $catId;
+            } 
             $prodParam+=['id' => $product['id']];
             $prodParamString = http_build_query($prodParam);
             if (!$product['img'])
-                $product['img'] = "layout/img/category-none.jpg" ?>
+            {
+                $product['img'] = "layout/img/category-none.jpg";
+            }?> 
             <li class="category good-piece">
                 <a class="category__link" href="product.php?<?=$prodParamString?>">
                     <img class="category__image good__image" src="<?=$product['img']?>" alt="category-image-1">
@@ -81,11 +85,11 @@
         if ($curPage != $maxPage):
             $_GET['page'] = $curPage+1;
             $paramString = http_build_query($_GET); ?>
-                <li class="paginator__elem paginator__elem_next">
-                    <a href="catalog.php?<?=$paramString?>" class="paginator__link">
-                        Следующая страница
-                    </a>
-                </li>
+            <li class="paginator__elem paginator__elem_next">
+                <a href="catalog.php?<?=$paramString?>" class="paginator__link">
+                    Следующая страница
+                </a>
+            </li>
         <?endif;?>         
     </ul>
 </main>

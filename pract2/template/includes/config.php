@@ -15,7 +15,6 @@
     const newsPerPage = 2;
 
     /*===============================MAIN PAGE=====================================*/
-    /*----------------------------DB CONNECTION------------------------------------*/
     $topMenuItems = array("index.php"=>array("items"=>array(),"name"=>"Главная"),
                           "catalog.php"=>array("items"=>array(),"name"=>"Каталог"),
                           "about.php" => array("items"=>array(),"name"=>"О компании"),
