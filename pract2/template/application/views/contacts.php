@@ -75,12 +75,6 @@
                     <?echo $errors;?>
                 </p>
             </aside>
-        <?elseif ($errorParam):?>
-            <aside class="error-box error-text" >
-                <p class="error-message">          
-                    <?echo "Произошла ошибка при отправке отзыва! Пожалуйста, повторите попытку позже";?>
-                </p>
-            </aside>
         <?endif;?>
         <form method="POST" class="registration-form" name="contats-page__feedback-form">
             <div class="feedback-form__row">
