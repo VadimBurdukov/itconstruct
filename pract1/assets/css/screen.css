@@ -282,7 +282,7 @@ li.car__item:first-child {
         font-size: 17px;
     }
 }
-.old__price{
+.car__old-price{
     color:#777777;
     display: block;
     font-size: 10px;
@@ -290,7 +290,7 @@ li.car__item:first-child {
     text-decoration: line-through;
 }
 @media(max-width:480px){
-    .old__price{
+    .car__old-price{
         font-size: 13px;
         display: flex;
     }
@@ -342,10 +342,13 @@ a.plus {
     }
 }
 .count{
+    background-color: #f8f9fb;
+    border: 1px solid;
+    border-color: #f0f0f1;
     height: 20px;
     font-size: 9px;
     text-align: center;
-    width: 131px;
+    width: 133px;
     
 }
 @media(max-width:480px){
