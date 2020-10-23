@@ -13,5 +13,9 @@ $result = json_decode($output);
 
 curl_close($cInit);
 
-echo '<pre>'.print_r($result, true).'</pre>';
+if ($info==200)
+{
+    echo '<pre>'.print_r($result, true).'</pre>';
+}
+
 ?>
