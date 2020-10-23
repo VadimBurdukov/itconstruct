@@ -61,8 +61,8 @@ class User
         return $result;
     }
 }
+
 $foo = new User("vadimburdukov");
 echo '<pre>';
     var_dump($foo->id); 
 echo '</pre>';
-?>

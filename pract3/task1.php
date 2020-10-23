@@ -17,5 +17,3 @@ if ($info==200)
 {
     echo '<pre>'.print_r($result, true).'</pre>';
 }
-
-?>

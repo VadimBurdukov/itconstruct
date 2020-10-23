@@ -67,4 +67,3 @@ $getInfo = "getInfo";
 UserInfo::$getInfo("vadimburdukov");
 //task6
 //UserInfo::getInfo("vadimburdukov");
-?>

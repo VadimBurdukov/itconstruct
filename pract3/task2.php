@@ -54,4 +54,3 @@ if ($info==200)
 echo '<pre>';
     var_dump($result);
 echo '</pre>';
-?>
