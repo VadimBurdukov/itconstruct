@@ -62,5 +62,9 @@ class UserInfo
         }
     }
 }
-UserInfo::getInfo("vadimburdukov");
+//task7
+$getInfo = "getInfo";
+UserInfo::$getInfo("vadimburdukov");
+//task6
+//UserInfo::getInfo("vadimburdukov");
 ?>
