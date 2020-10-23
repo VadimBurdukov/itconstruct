@@ -11,13 +11,21 @@ class User
     public string $reposUrl;
 
     public string $requestUrl;
-    //public  $user;
+    public  $userProps;
+
+    public function __get($prop)
+    {
+        return (in_array($prop, $this->userProps)&&
+                property_exists($this, $prop)) ? 
+                $this->$prop : NULL;
+    }
+
     public function __construct($login)
     {
         $this->login = $login;
         $this->requestUrl = $this->urlGenerate(self::$url, $this->login);
         $userInfo = $this->getInfo($this->requestUrl);
-       // $this->user = $userInfo;
+        $this->userProps = $userInfo;
         if ($userInfo)
         {
             $this->id = (int)$userInfo['id'];
@@ -28,7 +36,7 @@ class User
             $this->reposUrl = (string)$userInfo['repos_url'];
         }     
     }
-
+   
     public function urlGenerate($url, $login)
     {
         $requestUrl = $url.$login;
